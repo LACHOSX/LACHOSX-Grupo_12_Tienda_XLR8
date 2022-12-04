@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat';
+    background-color: lightgray;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*:::::::::::::::::::::::HEADER:::::::::::::::::::::::*/
+
+header {
+    background: #1E1E20;
+    width: 100%;    
+    padding: 10px;    
+}
+
+h2 {
+    color: #1259c3;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 15px;
+    text-align: center;
+    font-family: 'Montserrat';
+    border-top: #0EC5D9;
+}
+
+.menu-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.burger-menu {
+    padding: 5px;
+    display: flex;   
+    flex-direction: row;    
+}
+
+.burger-menu a{
+    display: inline-block;
+    text-decoration: none;
+    color: #ACEF35;
+    width: 50px;
+    line-height: 45px;
+    margin: 5px;
+    background-color: #24303c;
+    text-align: center;
+    transition: all 300ms ease; 
+}
+
+.burger-menu a:hover{
+    color:#0EC5D9;
+    text-shadow: 3px;
+    transition: all 0.1s ease-in-out;
+}
+
+.logo {
+    display: flex;    
+}
+
+.logo img{
+    max-width: 200px;
+    max-height: 80px;
+    padding: 5px;
+}
+
+.menu-perfil {
+    padding: 5px;
+    display: flex;   
+    flex-direction: row;    
+}
+
+
+.menu-perfil a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ACEF35;
+    width: 50px;
+    line-height: 45px;
+    margin: 5px;
+    background-color: #24303c;
+    text-align: center;
+    transition: all 300ms ease;    
+}
+
+.menu-perfil a:hover{
+    color:#0EC5D9;
+    text-shadow: 3px;
+    transition: all 0.1s ease-in-out;
+}
+
+.menu-categorias nav {
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    justify-content: space-around;
+    align-items: center;    
+    flex-direction: row;
+}
+
+.menu-genero {
+    display: flex;
+    justify-content: center;
+        
+}
+
+.menu-categorias a{
+    display: inline-block;
+    padding: 10px 5px;
+    align-items: center;
+    text-decoration: none;
+    color: #ACEF35;
+}
+
+h3 {
+    color: #ACEF35;
+    padding: 10px 5px;
+    font-size: 16px;
+
+}
+
+.menu-categorias nav {
+    display: none;    
+}
+
+ul {
+    text-align: center;    
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+nav ul li {
+    list-style-type: none;
+    margin: 0px 10px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+
+/*:::::::::::::::::::::::FORMULARIO:::::::::::::::::::::::*/
+
+
+.form-register {
+  width: 90%;
+  max-width: 500px;
+  background: #1E1E20;
+  padding: 30px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  border-radius: 40px;
+  font-family: 'Montserrat';
+  color: white;
+  
+}
+
+.form-register:hover {
+  box-shadow: 10px 10px 15px rgb(100, 100, 100);
+  cursor: pointer;
+}
+  
+.logo1 {
+  display: flex;
+  justify-content: center;
+}
+
+.logo1 img{
+  max-width: 200px;
+  max-height: 100px;
+  padding: 5px;
+  transition: all 0.7s ease-in-out;
+}
+
+.logo1 img:hover{
+  max-width: 300px;
+  max-height: 150px;
+  padding: 5px;
+}
+
+.form-register h4 {
+  margin: 0;
+  text-align: center;
+  height: 50px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid;
+  font-size: 20px;
+}
+
+.form-register h4:hover {
+  text-decoration: underline;
+  font-style: italic;
+}
+  
+.controls {
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #1f53c5;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  color: #acacb9bb;
+}
+  
+.form-register p {
+  height: 40px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.form-register p {
+  height: 40px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-register p:hover {
+  text-decoration: underline;
+}
+
+.form-register h5 {
+  height: 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.form-register h6 {
+  margin: 0;
+  text-align: center;
+  height: 50px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid;
+  font-size: 16px;
+}
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+}
+  
+.form-register a:hover {
+  color: white;
+  text-decoration: underline;
+  font-style: italic;
+}
+  
+.form-register .botons {
+  width: 100%;
+  background: #3A67CB;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 18px;
+  font-family: 'Trebuchet MS';
+  margin-top: 40px;
+}
+
+.form-register .botons:hover {
+  background: #1E1E20;
+  text-decoration: underline;
+  box-shadow: 10px 10px 15px rgb(100, 100, 100);
+  cursor: pointer;
+}

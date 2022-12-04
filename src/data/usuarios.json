@@ -1,0 +1,13 @@
+[
+    {
+        "name": "Alejandro",
+        "apellido": "Negri",
+        "email": "alemnegri84@gmail.com",
+        "telefono": 1122926663,
+        "password": "xyz12345",
+        "date": "23/11/1984",
+        "genero": "hombre"
+
+    }
+    
+]

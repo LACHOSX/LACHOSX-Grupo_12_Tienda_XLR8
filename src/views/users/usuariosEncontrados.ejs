@@ -1,0 +1,22 @@
+<%- include('../partials/metadata')  %> 
+<%- include('../partials/header')  %> 
+
+    
+    <main>
+        <h1 class="lista-usuarios-titulo"> LISTA DE USUARIOS </h1>
+        <ul>
+            <% for (let i = 0; i < usuariosEncontrados.length; i++) { %>
+                <li>
+                    <a href="usuarios/detalle/<%= usuariosEncontrados[i].id"> <%= usuariosEncontrados[i].name %> </a> 
+                </li>
+            <% } %>
+        </ul>
+        <h2> BUSCAR USUARUO </h2>
+        <form action="/usuarios/buscar" method="GET">
+            <input type="text" name="search">
+            <input type="submit" value="Buscar">
+        </form>
+
+    </main>
+
+<%- include('../partials/footer')  %>  

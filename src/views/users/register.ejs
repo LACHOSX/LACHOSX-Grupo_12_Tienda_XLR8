@@ -1,0 +1,50 @@
+<%- include('../partials/metadata')  %> 
+<%- include('../partials/header')  %> 
+
+    
+    <main>
+        <form action="/usuarios/guardar" method="POST"> 
+            <section class="form-register">
+                <div class="logo1">
+                    <a href="/">
+                        <img src="\images\completo-XLR8-mediano.png">
+                    </a>
+                </div>
+                <h4>Formulario de Registro</h4>
+                <input class="controls" type="name" name="nombres" id="nombres" placeholder="Nombre">
+                <input class="controls" type="apellido" name="apellido" id="apellido" placeholder="Apellido">
+                <input class="controls" type="email" name="correo" id="correo" placeholder="Correo Electrónico">
+                <input class="controls" type="text" name="telefono" id="telefono" placeholder="Teléfono">
+                <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña (Mínimo 8 caracteres)" minlength="8">
+                <input class="controls" type="password" name="password" id="password" placeholder="Reescriba su Contraseña" minlength="8">
+                <fieldset>
+                    <p>Fecha de nacimiento: <input type="date" name="date" value="Fecha de nacimiento"></p>
+                </fieldset>
+            </br>
+                  <fieldset>
+                    <legend>Seleccione su género:</legend>
+                    <div>
+                      <input type="radio" id="genero" name="genero" value="Masculino">
+                      <label for="Masculino">Masculino</label>
+                    </div>
+                
+                    <div>
+                      <input type="radio" id="genero" name="genero" value="Femenino">
+                      <label for="Femenino">Femenino</label>
+                    </div>
+                
+                    <div>
+                      <input type="radio" id="genero" name="genero" value="Sin genero">
+                      <label for="Sin genero">Sin género</label>
+                    </div>
+                </fieldset>
+                </br>
+                <h5>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></h5>
+                <button class="botons" type="submit"> REGISTRARME </button>
+                <h6><a href="/ingresar">¿Ya tienes una Cuenta?</a></h6>  
+          </section>
+          </form>
+    </main>
+
+    <%- include('../partials/footer')  %>     
+

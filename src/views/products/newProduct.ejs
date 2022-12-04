@@ -1,0 +1,69 @@
+<%- include('../partials/metadata')  %> 
+<%- include('../partials/header')  %> 
+
+    
+    <main>
+        <form action="/productos/crear" method="POST"> <!-- NO VA /GUARDAR la ruta ? -->
+            <!--enctype="multipart/form-data"-->
+            <section class="form-register">
+                <div class="logo1">
+                    <a href="/">
+                        <img src="\images\completo-XLR8-mediano.png">
+                    </a>
+                </div>
+                <h4>NUEVO PRODUCTO</h4>
+                <input class="controls" type="text" name="tituloProducto" id="tituloProducto" placeholder="tituloProducto">
+                <textarea id="controls" name="descripcion-area" rows="10" id="descripcion-area" placeholder="descripcion-area"></textarea>
+                <input class="agregar-foto" type="file" name="foto-1" id="foto-1" accept=".jpg, .png, .jpeg" placeholder="Agregar Foto Frente">
+                <input class="agregar-foto" type="file" name="foto-2" id="foto-2" accept=".jpg, .png, .jpeg" placeholder="Agregar Foto Frente">
+                <input class="agregar-foto" type="file" name="foto-3" id="foto-3" accept=".jpg, .png, .jpeg" placeholder="Agregar Foto Frente">
+                <input class="controls" type="number" name="precio" id="password" placeholder="Precio">
+                <input class="controls" type="number" name="precio-promo" id="precio-promo" placeholder="Precio Promocional">
+                <input class="controls" type="number" name="sku" id="sku" placeholder="sku">
+                <label for="talle">TALLE</label>
+                <select id="talle" name="talle">
+                    <option value="small">SMALL</option>
+                    <option value="medium">MEDIUM</option>
+                    <option value="large">LARGE</option>
+                    <option value="xl">XL</option>
+                </select>
+                <label for="color">COLOR</label>
+                <select id="color" name="color">
+                    <option value="negro">NEGRO</option>
+                    <option value="gris">GRIS</option>
+                    <option value="blanco">BLANCO</option>                    
+                    <option value="color">COLOR</option>                    
+                </select>
+                <div class="categorias">
+                    <!-- REVISAR CSS -->
+                    <p>CATEGORIAS </p>
+                    <label>HOMBRE<input type='radio' name='genero' value="hombre"> </label>
+                    </br>
+                    <label>MUJER<input type='radio' name='genero' value="mujer"> </label>
+                    </br>
+                    <label>UNISEX<input type='radio' name='genero' value="unisex"> </label>
+                    </br>
+                </div> 
+                <div class="categorias">
+                    <p> TIPO DE PRENDA </p>
+                    <label>REMERAS<input type='radio' name='categories' value="remeras"> </label>
+                    </br>
+                    <label>PANTALONES<input type='radio' name='categories' value="pantalones"> </label>
+                    </br>
+                    <label>SHORTS<input type='radio' name='categories' value="short"> </label>
+                    </br>
+                    <label>CALZAS<input type='radio' name='categories' value="calzas"> </label>
+                    </br>
+                    <label>CAMPERAS<input type='radio' name='categories' value="camperas"> </label>
+                    </br>
+                </div>
+                </br>
+                <button class="botons" type="submit"> AGREGAR PRODUCTO</button>
+                <button class="botons" type="submit"> EDITAR PRODUCTO</button>
+                <button class="botons" type="submit"> ELIMINAR PRODUCTO </button>
+                 
+          </section>
+          </form>
+    </main>
+
+    <%- include('../partials/footer')  %>   

@@ -1,0 +1,32 @@
+<article>
+    <div class="fotoProducto">
+        </% if(modoOfertas === true) {%>
+            <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
+        </% }; %>
+        <a href="/productos/detalle/</%= productoItem.id %>">
+            <img src="</%= productoItem.imagen -%>">
+        </a>
+    </div>
+    <h1 class="titulo-producto"> </%= productoItem.titulo -%></h1>
+    <div class="descripcion-producto">                        
+        <div class="precio-producto">
+            <p class="precio">
+                $</%= productoItem.precio -%>
+            </p>
+            <p class="descuento">
+                </%= productoItem.descuento -%>% OFF
+            </p>
+        </div>
+        <div class="etiquetas-categorias">
+            
+        </div>
+    </div>
+    <div class="etiquetas">
+        <div>
+            <p> Genero: </%= productoItem.genero -%></p>
+            <p> Talle: </%= productoItem.talles.join(' ') -%> </p>
+            <p> Color: </%= productoItem.color -%></p>
+        </div>
+        <button class="boton-de-compra" href="/productos/detalle">COMPRAR</button>
+    </div>
+</article>
