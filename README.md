@@ -24,10 +24,6 @@ Sitios de Referencia:
 Administradores del E-Commerce:
 Abbruzzese, Tadeo: Tengo 20 años, actualmente me encuentro viviendo en Buenos Aires, San Isidro. Estudio programación de forma autodidacta (mediante cursos de udemy) y también hago el curso de fullstack de DigitalHouse.
 
-Alonso, Lucia: Vivo en Buenos Aires, tengo 34 años. Estudiante de la carrera Desarrollo web y administración de empresas.  Actualmente trabajo como administrativa en un estudio contable.
-
-Alonso, Natalia: Vivo en Ramos Mejia, tengo 35.  Estoy cursando mis últimas materias de  Psicología en la UBA, me anoté en el curso de digital house y actualmente soy secretaria en un consultorio médico.
-
 Marín, Anderson: Actualmente vivo en Medellín, Colombia, tengo 26 años, trabajó como Poligrafista Profesional y soy Ingeniero en Telecomunicaciones, actualmente realizó el curso de Desarrollo Web Full Stack en Digital House de manera virtual.
 
 Negri, Alejandro: Actualmente vivo en Buenos Aires, tengo 37 años. Trabajo de diseñador gráfico en una importadora. Estoy haciendo el curso de Desarrollador Full Stack en Digital House.
