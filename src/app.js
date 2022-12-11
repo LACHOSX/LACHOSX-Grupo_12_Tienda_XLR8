@@ -13,7 +13,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded()); //por que no se usa {extended: false} ??
 app.use(methodOverride('_method')); //metodo para SOBRE-ESCRIBIR el metodo original del formulario (PUT o DELETE)
-app.use(session({secret: "ES UN SECRETO!"}));
+app.use(session({ secret: "ES UN SECRETO!" }));
 
 // ******** Template Engine - (dont touch) ******** //
 app.set('view engine', 'ejs');
@@ -22,13 +22,13 @@ app.set('views', path.join(__dirname, './views')); //define la ubicacion
 // ******** WRITE YOUR CODE FROM HERE ******** //
 // ******** Route System require and use () ******** //
 const mainRouters = require('./routers/mainRouters');
-const productosRouters = require('./routers/productosRouters');
-const usuariosRouters = require('./routers/usuariosRouters');
+const productsRouters = require('./routers/productsRouters');
+const usersRouters = require('./routers/usersRouters');
 
 app.use(express.json());
 app.use('/', mainRouters);
-app.use('/productos', productosRouters);
-app.use('/usuario', usuariosRouters);
+app.use('/products', productsRouters);
+app.use('/users', usersRouters);
 
 // VISTA ERROR 404
 app.use((req, res, next) => {

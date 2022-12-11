@@ -1,113 +1,192 @@
-<%- include('partials/metadata')  %> 
-<%- include('partials/header')  %> 
-
-
-    <main>
-        <div class="slider-carrusel">
-            <div>
-                <input type="radio" id="1" name="image-slide" hidden></input>
-                <input type="radio" id="2" name="image-slide" hidden></input>
-                <input type="radio" id="3" name="image-slide" hidden></input>
-            </div>
-            <div class="slider">
-                <div class="foto-slider">
-                    <img class="carru" src="/images/carrousel-01.jpg">
+<%- include('partials/metadata') %>
+    <%- include('partials/header') %>
+        <main>
+            <div class="slider-carrusel">
+                <div>
+                    <input type="radio" id="1" name="image-slide" hidden></input>
+                    <input type="radio" id="2" name="image-slide" hidden></input>
+                    <input type="radio" id="3" name="image-slide" hidden></input>
                 </div>
-                <div class="foto-slider">
-                    <img class="carru" src="/images/carrousel-02.jpg">
+                <div class="slider">
+                    <div class="foto-slider">
+                        <img class="carru" src="/images/carrousel-01.jpg">
+                    </div>
+                    <div class="foto-slider">
+                        <img class="carru" src="/images/carrousel-02.jpg">
+                    </div>
+                    <div class="foto-slider">
+                        <img class="carru" src="/images/carrousel-03.jpg">
+                    </div>
                 </div>
-                <div class="foto-slider">
-                    <img class="carru" src="/images/carrousel-03.jpg">
-                </div>
-            </div>
-            <div class="sistema-slider">
-                <label class="sistema-slider-item">
-                    <img src="/images/carrousel-01.jpg">
-                </label>
-                <label class="sistema-slider-item">
-                    <img src="/images/carrousel-02.jpg">
-                </label>
-                <label class="sistema-slider-item">
-                    <img src="/images/carrousel-03.jpg">
-                </label>
-            </div>
-        </div>
-        <section class="productos-novedades">
-            <h2 class="titulo-seccion"> OFERTAS DE ÚLTIMO MOMENTO, NO TE QUEDES AFUERA! </h2>
-            <div class="catalogo-productos">
-                <% ofertas.forEach(function(producto){ %>
-                    <%- include('partials/productoGrilla', { productoItem: producto, modoOfertas: true}); %>
-                <% }); %>
-            </div>
-        </section>        
-
-        <section class="banner-info">
-            <div class="textos-ayuda">
-                <div class="cajatxt-banner">
-                    <i class="fas fa-running"></i>
-                    <p class="info-p1">HACEMOS ROPA DEPORTIVA</p>
-                    <p class="info-p2">Nuestras prendas son confeccionadas especialmente para la comodidad de uso.</p>
-                </div>
-                <div class="cajatxt-banner">
-                    <i class="fas fa-tshirt"></i>
-                    <p class="info-p1">ENCONTRÁ TU TALLE</p>
-                    <p class="info-p2">Revisa la guía de talles para elegir el modelo justo para vos!</p>
-                </div>
-                <div class="cajatxt-banner">
-                    <i class="fab fa-whatsapp"></i>
-                    <p class="info-p1">Contactanos</p>
-                    <p class="info-p2">Necesitas mas info sobre los productos? Tenes dudas? Escribinos! </p>
+                <div class="sistema-slider">
+                    <label class="sistema-slider-item">
+                        <img src="/images/carrousel-01.jpg">
+                    </label>
+                    <label class="sistema-slider-item">
+                        <img src="/images/carrousel-02.jpg">
+                    </label>
+                    <label class="sistema-slider-item">
+                        <img src="/images/carrousel-03.jpg">
+                    </label>
                 </div>
             </div>
-        </section>
+            <section class="productos-novedades">
+                <h2 class="titulo-seccion"> OFERTAS DE ÚLTIMO MOMENTO, NO TE QUEDES AFUERA! </h2>
+                <div class="catalogo-productos">
+                    <!-- Aca traigo los productos que estan en oferta con la variable que cree en el indexController -->
+                    <!-- uso un for each ya que es un array de objetos lo que envia al front y necesito leer todos y cada uno de los productos y sus propiedades -->
+                    <% offers.forEach( product=> { %>
+                        <article>
+                            <div class="fotoProducto">
+                                <% if (product.discount !=0) { %>
+                                    <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
+                                    <% } %>
+                                        <a href="/products/detail/<%= product.id %>">
+                                            <img src="/images/products/<%= product.img1%>">
+                                        </a>
+                            </div>
+                            <h1 class="titulo-producto">
+                                <%= product.name %>
+                            </h1>
+                            <div class="descripcion-producto">
+                                <div class="precio-producto">
+                                    <% if (product.discount==0) { %>
+                                        <p class="precio">
+                                            $<%= product.price %>
+                                        </p>
+                                        <% } else { %>
+                                            <p class="precio">
+                                                $<%= toThousand(product.price-(product.price * product.discount /100))%>
+                                            </p>
+                                            <p class="descuento">
+                                                <%= product.discount %>% OFF
+                                            </p>
+                                            <% } %>
+                                </div>
+                                <div class="etiquetas-categorias">
 
-        <section class="productos-novedades">
-            <h2 class="titulo-seccion"> NOVEDADES XLR8...WOW!</h2>
-            <div class="catalogo-productos">
-                <% novedades.forEach(function(producto){ %>
-                    <%- include('partials/productoGrilla', { productoItem: producto, modoOfertas: false}); %>
-                <% }); %>
-            </div>
-        </section>
+                                </div>
+                            </div>
+                            <div class="etiquetas">
+                                <div>
+                                    <p> Genero: <%= product.genre %>
+                                    </p>
+                                    <p> Talle: <%= product.size %>
+                                    </p>
+                                    <p> Color: <%= product.color %>
+                                    </p>
+                                </div>
+                                <button class="boton-de-compra"
+                                    href="/products/detail/<% product.id %> ">COMPRAR</button>
+                            </div>
+                        </article>
+                        <% }) %>
+                </div>
+            </section>
+            <section class="banner-info">
+                <div class="textos-ayuda">
+                    <div class="cajatxt-banner">
+                        <i class="fas fa-running"></i>
+                        <p class="info-p1">HACEMOS ROPA DEPORTIVA</p>
+                        <p class="info-p2">Nuestras prendas son confeccionadas especialmente para la comodidad de uso.
+                        </p>
+                    </div>
+                    <div class="cajatxt-banner">
+                        <i class="fas fa-tshirt"></i>
+                        <p class="info-p1">ENCONTRÁ TU TALLE</p>
+                        <p class="info-p2">Revisa la guía de talles para elegir el modelo justo para vos!</p>
+                    </div>
+                    <div class="cajatxt-banner">
+                        <i class="fab fa-whatsapp"></i>
+                        <p class="info-p1">Contactanos</p>
+                        <p class="info-p2">Necesitas mas info sobre los productos? Tenes dudas? Escribinos! </p>
+                    </div>
+                </div>
+            </section>
 
-        <section class="banner">
-            <div class="banner-foto">                
-                <img src="/images/banner-01.jpg">
-                <p class="texto-banner"> TU TIENDA DEPORTIVA</p>
-            </div>
-        </section>
-        <section class="productos-novedades">
-            <h2 class="titulo-seccion"> NUESTRO CATALOGO...A SOLO UN CLICK DE DISTANCIA!</h2>
-            <div class="catalogo-productos">
-                <% catalogo.forEach(function(producto){ %>
-                    <%- include('partials/productoGrilla', { productoItem: producto, modoOfertas: false}); %>
-                <% }); %>
-            </div>
-        </section>
-        <div class="footer-flex">
-            <div class="footflexcontain">
-                <i class="fas fa-credit-card"></i>
-                <p class="footer-p1">Pagá como vos prefieras</p>
-                <p class="footer-p2">Tenes todas las opciones de pago, Efectivo, Transferencia Bancaria o Deposito,
-                    Mercadopago, Todo Pago, y Tarjeta de Debito y Credito con hasta 48 Cuotas Fijas. ¡Y siempre es
-                    seguro!</p>
-            </div>
-            <div class="footflexcontain">
-                <i class="fas fa-gift"></i>
-                <p class="footer-p1">Envío gratis desde $ 5.000 </p>
-                <p class="footer-p2">Registrate en nuestra tienda y obtené envíos gratis con tus compras superiores
-                    a $5.000. Ademas registrandote, sabrás de las novedades y lanzamientos de XLR8</p>
-            </div>
-            <div class="footflexcontain">
-                <i class="fas fa-user-shield"></i>
-                <p class="footer-p1">Seguridad, de principio a fin</p>
-                <p class="footer-p2">¿No te gusta? ¿No es tu talle? ¡Escribinos! XLR8 tiene productos comodos, si
-                    ese no era el tuyo, te lo cambiamos.</p>
-            </div>
-        </div>
-        <hr>
+            <section class="productos-novedades">
+                <h2 class="titulo-seccion"> NOVEDADES XLR8...WOW!</h2>
+                <div class="catalogo-productos">
+                    <!-- Aca traigo los productos que son novedad o nuevos con la variable que cree en el indexController -->
+                    <!-- uso un for each ya que es un array de objetos lo que envia al front y necesito leer todos y cada uno de los productos y sus propiedades -->
+                    <% newProducts.forEach( product=> { %>
+                        <article>
+                            <div class="fotoProducto">
+                                <% if (product.discount !=0) { %>
+                                    <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
+                                    <% } %>
+                                        <a href="/products/detail/<%= product.id %>">
+                                            <img src="/images/products/<%= product.img1%>">
+                                        </a>
+                            </div>
+                            <h1 class="titulo-producto">
+                                <%= product.name %>
+                            </h1>
+                            <div class="descripcion-producto">
+                                <div class="precio-producto">
+                                    <% if (product.discount==0) { %>
+                                        <p class="precio">
+                                            $<%= product.price %>
+                                        </p>
+                                        <% } else { %>
+                                            <p class="precio">
+                                                $<%= toThousand(product.price-(product.price * product.discount /100))%>
+                                            </p>
+                                            <p class="descuento">
+                                                <%= product.discount %>% OFF
+                                            </p>
+                                            <% } %>
+                                </div>
+                                <div class="etiquetas-categorias">
 
-    </main>
+                                </div>
+                            </div>
+                            <div class="etiquetas">
+                                <div>
+                                    <p> Genero: <%= product.genre %>
+                                    </p>
+                                    <p> Talle: <%= product.size %>
+                                    </p>
+                                    <p> Color: <%= product.color %>
+                                    </p>
+                                </div>
+                                <button class="boton-de-compra"
+                                    href="/products/detail/<% product.id %> ">COMPRAR</button>
+                            </div>
+                        </article>
+                        <% }) %>
+                </div>
+            </section>
 
-    <%- include('partials/footer')  %>     
+            <section class="banner">
+                <div class="banner-foto">
+                    <img src="/images/banner-01.jpg">
+                    <p class="texto-banner"> TU TIENDA DEPORTIVA</p>
+                </div>
+            </section>
 
+            <div class="footer-flex">
+                <div class="footflexcontain">
+                    <i class="fas fa-credit-card"></i>
+                    <p class="footer-p1">Pagá como vos prefieras</p>
+                    <p class="footer-p2">Tenes todas las opciones de pago, Efectivo, Transferencia Bancaria o Deposito,
+                        Mercadopago, Todo Pago, y Tarjeta de Debito y Credito con hasta 48 Cuotas Fijas. ¡Y siempre es
+                        seguro!</p>
+                </div>
+                <div class="footflexcontain">
+                    <i class="fas fa-gift"></i>
+                    <p class="footer-p1">Envío gratis desde $ 5.000 </p>
+                    <p class="footer-p2">Registrate en nuestra tienda y obtené envíos gratis con tus compras superiores
+                        a $5.000. Ademas registrandote, sabrás de las novedades y lanzamientos de XLR8</p>
+                </div>
+                <div class="footflexcontain">
+                    <i class="fas fa-user-shield"></i>
+                    <p class="footer-p1">Seguridad, de principio a fin</p>
+                    <p class="footer-p2">¿No te gusta? ¿No es tu talle? ¡Escribinos! XLR8 tiene productos comodos, si
+                        ese no era el tuyo, te lo cambiamos.</p>
+                </div>
+            </div>
+            <hr>
+
+        </main>
+        <%- include('./partials/footer.ejs') %>

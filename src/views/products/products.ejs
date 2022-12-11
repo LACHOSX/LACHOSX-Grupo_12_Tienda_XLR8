@@ -1,0 +1,66 @@
+<%- include('../partials/metadata') %>
+    <%- include('../partials/header') %>
+
+
+        <main>
+            <section class="banner">
+                <div class="banner-foto">
+                    <img src="/images/banner-01.jpg">
+                    <p class="texto-banner"> TU TIENDA DEPORTIVA</p>
+                </div>
+            </section>
+            <section class="productos-novedades">
+                <h2 class="titulo-seccion"> TODOS LOS PRODUCTOS</h2>
+                <div class="catalogo-productos">
+                    <% products.forEach( product=> { %>
+                        <article>
+                            <div class="fotoProducto">
+                                <% if (product.discount !=0) { %>
+                                    <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
+                                    <% } %>
+                                        <a href="/products/detail/<%= product.id %>">
+                                            <img src="/images/products/<%= product.img1%>">
+                                        </a>
+                            </div>
+                            <h1 class="titulo-producto">
+                                <%= product.name -%>
+                            </h1>
+                            <div class="descripcion-producto">
+                                <div class="precio-producto">
+                                    <% if (product.discount==0) { %>
+                                        <p class="precio">
+                                            $<%= product.price %>
+                                        </p>
+                                        <% } else { %>
+                                            <p class="precio">
+                                                $<%= toThousand(product.price-(product.price * product.discount /100))%>
+                                            </p>
+                                            <p class="descuento">
+                                                <%= product.discount %>% OFF
+                                            </p>
+                                            <% } %>
+                                </div>
+                                <div class="etiquetas-categorias">
+
+                                </div>
+                            </div>
+                            <div class="etiquetas">
+                                <div>
+                                    <p> Genero: <%= product.genre %>
+                                    </p>
+                                    <p> Talle: <%= product.size %>
+                                    </p>
+                                    <p> Color: <%= product.color %>
+                                    </p>
+                                </div>
+                                <button class="boton-de-compra"
+                                    href="/products/detail/<%=product.id %> ">COMPRAR</button>
+                            </div>
+                        </article>
+                        <% }) %>
+                </div>
+            </section>
+            <hr>
+
+        </main>
+

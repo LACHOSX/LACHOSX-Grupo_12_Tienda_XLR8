@@ -3,15 +3,15 @@ const express = require('express');
 const router = express.Router();
 
 // importo el controlador
-const mainController = require('../controllers/mainController');
+const mainControllers = require('../controllers/mainControllers');
 
-// quiero un metodo de mainController
-router.get('/', mainController.renderHome)
+// quiero un metodo de mainControllers
+router.get('/', mainControllers.renderHome)
 // elegi cual metodo de mainController
 
-router.get('/contacto', mainController.contactanos)
+router.get('/contacto', mainControllers.contact)
 
-router.get('/terminos', mainController.terminos)
+router.get('/terminos', mainControllers.terms)
 
 
 module.exports = router;

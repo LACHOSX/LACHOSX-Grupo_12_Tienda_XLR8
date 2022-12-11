@@ -1,97 +1,75 @@
 <%- include('../partials/metadata') %>
     <%- include('../partials/header') %>
-
-
         <main>
-
             <div class="padre-contenedor">
                 <div class="container">
                     <div class="div-foto">
                         <div class="div-contenedor">
-
-                            <img class="img-grande" src="./images/productos/<%= producto.foto-1 %>" alt="">
-
+                            <img class="img-grande" src="/images/products/<%= producto.img1 %>" alt="">
                         </div>
                         <div class="div-contenedor-img-principal">
-                            <img class="img-chica " src="./images/productos/<%= producto.foto-1 %>" alt="">
+                            <img class="img-chica " src="/images/products/<%= producto.img1 %>" alt="">
                         </div>
-
                     </div>
-
                 </div>
-                <div class="container-1" >
+                <div class="container-1">
                     <div class="div-detalle">
                         <div class="detalle-titulo">
                             <h1>
-                                <%= producto.titulo-producto %>
+                                <%= producto.name %>
                             </h1>
                         </div>
-
                         <div class="price">
-                            <p class="precio-producto">$<%= producto.precio %>
+                            <% if (producto.discount==0) { %>
+                                <p class="precio-producto">
+                                    $<%= toThousand(producto.price) %>
+                                </p>
+                                <% } else { %>
+                                    <p class="precio-producto">$<%= toThousand(producto.price-(producto.price *
+                                            producto.discount /100))%> &nbsp
+                                            <FONT SIZE=5 style="color:#009900" ;>
+                                                <%= producto.discount %>% Off
+                                            </font>
+                                    </p>
+                                    <% } %>
+
+                        </div>
+                        <div class="cuotas">
+                            <p class="price"> 3 cuotas sin interés de
+                                <% if (producto.discount==0) { %>
+                                    $<%= toThousand(producto.price/3) %>
+                                        <% } else { %>
+                                            $<%= toThousand((producto.price-(producto.price * producto.discount
+                                                /100))/3) %>
+                                                <% } %>
                             </p>
                         </div>
-
-                        <div class="cuotas">
-                            <p class="price"> 3 cuotas sin interés de 233$</p>
-                        </div>
-
                         <div class="medios-pagos">
                             <a class="a-pagos" href="#">ver medios de pagos</a>
                         </div>
-
                         <div class="form-color" action="">
                             <label class="label-color " for="color">Color:</label>
                             <input type="color" id="color" name="color">
                         </div>
-
                         <div class="talles">
-                            <p class="talle">Talles:<%= producto.talle %> </p>
-                            
-                               
-                              
+                            <p class="talle">Talles:<%= producto.size %>
+                            </p>
                         </div>
-
                         <div class="cantidad">
                             <label for="cantidad">Cantidad: </label>
                             <input class="input" type="number" id="cantidad" name="cantidad">
-
                         </div>
-
                         <input type="submit" class="boton-agregar-carrito"> Agregar al carrito
 
-                        <!-- <form class="envio" action="">
-                        <label class="label-envio" for="envio">Envio: </label>
-                        <input type="text" placeholder="ingrese su codigo postal" id="envio" name="envio">
-                        <button class="calcular-boton">Calcular</button>
-                    </form>
-    
-                    <div class="olvide-postal">
-                        <a class="a-postal" href="#">Olvide mi codigo postal</a>
-                    </div> -->
+                        <a href="/products/edit/<%= producto.id%>"><button type="submit" class="button-div">Editar
+                                producto</button></a>
 
-                    <form action="/productos/edit/<%= producto.id %>" method="GET">
-                        <button type="submit" class="button-div">Editar producto</button>
-                    </form>
-
-                         
-                            <!--<button class="button-div">Editar producto</button>-->
-                            
-                        
-                        <form action="/productos/delete/<%= producto.id %>?_method=DELETE" method="POST">
+                        <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST">
                             <button type="submit" class="button-div">Eliminar producto</button>
                         </form>
-                        
-
-
                     </div>
-
 
                 </div>
             </div>
-
-
-
         </main>
-
         <%- include('../partials/footer') %>

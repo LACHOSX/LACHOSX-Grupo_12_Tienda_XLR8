@@ -1,33 +1,32 @@
-<%- include('../partials/metadata')  %> 
-<%- include('../partials/header')  %> 
+<%- include('../partials/metadata') %>
+    <%- include('../partials/header') %>
+        <main>
+            <h1 class="lista-usuarios-titulo"> LISTA DE USUARIOS </h1>
+            <ul>
+                <% users.forEach(user=> { %>
+                    <li>
+                        <a href="users/detail/<%= user.id %>">
+                            <%= user.name %>
+                        </a>
 
-    
-    <main>
-        <h1 class="lista-usuarios-titulo"> LISTA DE USUARIOS </h1>
-        <ul>
-            <% for (let i = 0; i < users.length; i++) { %>
-                <li>
-                    <a href="usuarios/detalle/<%= users[i].id"> <%= users[i].name %> </a> 
+                        <a href="/users/edit/<%= user.id %> "><button class="botons" type="submit"> EDITAR </button></a>
+                        <!-- BOTON FORMULARIO PUT PARA EDITAR EL USUARIO -->
 
-                    <form method="POST" action="/usuarios/editar/<%= users[i].id?_method=PUT">
-                        <button class="botons" type="submit"> EDITAR </button>
-                    </form>
-                    // BOTON FORMULARIO PUT PARA EDITAR EL USUARIO
-                    
-                    <form method="POST" action="/usuarios/eliminar/<%= users[i].id?_method=DELETE">
-                      <button class="botons" type="submit"> BORRAR </button>
-                    </form>
-                    // BOTON FORMULARIO DELETE PARA BORRAR EL USUARIO
-                    
-                </li>
-            <% } %>
-        </ul>
-        <h2> BUSCAR USUARUO </h2>
-        <form action="/usuarios/buscar" method="GET">
-            <input type="text" name="search">
-            <input type="submit" value="Buscar">
-        </form>
+                        <form action="/users/delete/<%= user.id %>?_method=DELETE" method="POST">
+                            <button class="botons" type="submit"> BORRAR </button>
+                        </form>
+                        <!-- BOTON FORMULARIO DELETE PARA BORRAR EL USUARIO -->
 
-    </main>
+                    </li>
+                    <% }) %>
 
-<%- include('../partials/footer')  %>  
+            </ul>
+            <h2> BUSCAR USUARUO </h2>
+            <form action="/users/searchUser" method="GET">
+                <input type="text" name="search">
+                <input type="submit" value="Buscar">
+            </form>
+
+        </main>
+
+        <%- include('../partials/footer') %>
