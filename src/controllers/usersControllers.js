@@ -24,7 +24,6 @@ const createUser = (req, res) => {
         genre: req.body.genre
     }
     // Asi agrega al final del archivo
-    console.log(usuario);
     users.push(usuario);
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
     res.redirect('/');

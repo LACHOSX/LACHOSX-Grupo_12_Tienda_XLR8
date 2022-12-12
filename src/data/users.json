@@ -1,13 +1,22 @@
 [
-    {
-        "name": "Alejandro",
-        "apellido": "Negri",
-        "email": "alemnegri84@gmail.com",
-        "telefono": 1122926663,
-        "password": "xyz12345",
-        "date": "23/11/1984",
-        "genero": "hombre"
-
-    }
-    
+  {
+    "id": 1,
+    "name": "Alejandro",
+    "apellido": "Negri",
+    "email": "alemnegri84@gmail.com",
+    "telefono": 1122926663,
+    "password": "xyz12345",
+    "date": "23/11/1984",
+    "genero": "hombre"
+  },
+  {
+    "id": 2,
+    "name": "Tadeo",
+    "lastName": "Abbruzzese",
+    "email": "tadeoabbruzzese@gmail.com",
+    "phone": "1111233431",
+    "password1": "12121212121211",
+    "date": "2022-12-13",
+    "genre": "Masculino"
+  }
 ]

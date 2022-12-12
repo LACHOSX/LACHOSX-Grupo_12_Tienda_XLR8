@@ -1,7 +1,7 @@
 {
   "name": "tiendaxlr8",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tienda de Indumentaria Deportiva",
   "main": "app.js",
   "scripts": {
     "start": "node src/app.js",
