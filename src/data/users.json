@@ -18,5 +18,15 @@
     "password1": "12121212121211",
     "date": "2022-12-13",
     "genre": "Masculino"
+  },
+  {
+    "id": 3,
+    "name": "Horacio",
+    "lastName": "Rodriguez",
+    "email": "horacio.prs@gmail.com",
+    "phone": "2615667780",
+    "password1": "1234567890",
+    "date": "16/09/80",
+    "genre":"hombre"
   }
 ]
