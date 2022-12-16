@@ -50,7 +50,10 @@ const updateProduct = (req, res) => {
 }
 
 const deleteProduct = (req, res) => {
-    res.render('/products')
+    let newProducts = products.filter(product => product.id != req.params.id)
+    let newProductsJSON = JSON.stringify(newProducts, null, 2)
+		fs.writeFileSync(productsFilePath, newProductsJSON);
+    res.redirect('/products')
 }
 
 const cart = (req, res) => {
