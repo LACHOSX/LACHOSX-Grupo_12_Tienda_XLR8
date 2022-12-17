@@ -3,7 +3,7 @@
 
     
     <main>
-        <form action="/productos/edit/<%=productoParaEditar.id%>?_method=PUT" method="POST"> <!-- NO VA /GUARDAR la ruta ? -->
+        <form action="/products/edit/<%=update.id%>?_method=PUT" method="POST"> <!-- NO VA /GUARDAR la ruta ? -->
             <!--enctype="multipart/form-data"-->
             <section class="form-register">
                 <div class="logo1">
@@ -12,17 +12,16 @@
                     </a>
                 </div>
                 <h4>EDITAR PRODUCTO</h4>
-                <input class="controls" type="text" name="tituloProducto" id="tituloProducto" value="<%= productoParaEditar.tituloProducto  %> ">
-                <textarea id="controls" name="descripcion-area" rows="10" id="descripcion-area" value="<%= productoParaEditar.descripcion %> "></textarea>
-                <input class="agregar-foto" type="file" name="foto-1" id="foto-1" accept=".jpg, .png, .jpeg" value="<%= productoParaEditar.foto-1 %> ">
-                <input class="agregar-foto" type="file" name="foto-2" id="foto-2" accept=".jpg, .png, .jpeg" value="<%= productoParaEditar.foto-2 %> ">
-                <input class="agregar-foto" type="file" name="foto-3" id="foto-3" accept=".jpg, .png, .jpeg" value="<%= productoParaEditar.foto-3 %> ">
-                <input class="controls" type="number" name="precio" id="password" value="<%= productoParaEditar.precio %> ">
-                <input class="controls" type="number" name="precio-promo" id="precio-promo" value="">
-                <input class="controls" type="number" name="sku" id="sku" value="<%= productoParaEditar.sku %> ">
-                
+                <input class="controls" type="text" name="name" id="tituloProducto" value="<%= update.tituloProducto  %>">
+                <textarea id="controls" name="description" rows="10" id="descripcion-area" value="<%= update.descripcion %>"></textarea>
+                <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value="<%= update.img1 %>">
+                <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value="<%= update.img2%> ">
+                <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value="<%= update.img2%> ">
+                <input class="controls" type="number" name="price" id="price" value="<%= update.price %> " >
+                <input class="controls" type="number" name="discount" id="discount-price" value="<%= update.discount%> ">
+                <input class="controls" type="number" name="sku" id="sku" value="<%= update.sku %> ">
                 <label for="talle">TALLE</label>
-                <select id="talle" name="talle">
+                <select id="talle" name="size">
                     <option value="small">SMALL</option>
                     <option value="medium">MEDIUM</option>
                     <option value="large">LARGE</option>
@@ -32,10 +31,10 @@
                 <select id="color" name="color">
                     <option value="negro">NEGRO</option>
                     <option value="gris">GRIS</option>
-                    <option value="blanco">BLANCO</option>                    
-                    <option value="color">COLOR</option>                    
+                    <option value="blanco">BLANCO</option>
+                    <option value="color">COLOR</option>
                 </select>
-                <div class="categorias">
+                <div class="genre">
                     <!-- REVISAR CSS -->
                     <p>CATEGORIAS </p>
                     <label>HOMBRE<input type='radio' name='genero' value="hombre"> </label>
@@ -44,8 +43,8 @@
                     </br>
                     <label>UNISEX<input type='radio' name='genero' value="unisex"> </label>
                     </br>
-                </div> 
-                <div class="categorias">
+                </div>
+                <div class="categories">
                     <p> TIPO DE PRENDA </p>
                     <label>REMERAS<input type='radio' name='categories' value="remeras"> </label>
                     </br>
@@ -58,8 +57,14 @@
                     <label>CAMPERAS<input type='radio' name='categories' value="camperas"> </label>
                     </br>
                 </div>
+                <div class="categories">
+                    <p> NUEVO PRODUCTO </p>
+                    <label>SI<input type='radio' name='new' value="true"> </label>
+                    </br>
+                    <label>NO<input type='radio' name='new' value="false"> </label>
+                    </br>
+                </div>
                 </br>
-                <button class="botons" type="submit"> AGREGAR PRODUCTO</button>
                 <button class="botons" type="submit"> EDITAR PRODUCTO</button>
                 <button class="botons" type="submit"> ELIMINAR PRODUCTO </button>
                  

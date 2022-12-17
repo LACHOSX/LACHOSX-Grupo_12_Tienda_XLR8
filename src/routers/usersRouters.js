@@ -11,6 +11,7 @@ router.get('/login', userController.loginUser)
 router.post('/mostrarNumeroSession', userController.login)
 
 router.get('/search', userController.searchUser);
+router.get('/list', userController.userList)
 
 router.get('/detail/:id', userController.detail)
 

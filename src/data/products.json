@@ -1,5 +1,4 @@
-[
-  {
+[{
     "id": 1,
     "name": "remera adidas",
     "description": "remera en venta",
@@ -26,5 +25,4 @@
     "categories": "camperas",
     "new": "false",
     "img1": "img1-1670804667379.jpg"
-  }
-]
+  }]

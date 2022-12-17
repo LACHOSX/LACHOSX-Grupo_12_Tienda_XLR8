@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const productsFilePath = path.join(__dirname, '../data/products.json');
 // Guarda en una variable la transformacion de JSON en array de objetos.
-const products = JSON.parse(fs.readFileSync(productsFilePath, { encoding: 'utf-8' }));
+let products = JSON.parse(fs.readFileSync(productsFilePath, { encoding: 'utf-8' }));
 //sirve para limitar los 0 detras de la coma y que no quede feo a la vista o con muchos decimales
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -40,8 +40,13 @@ const productDetail = (req, res) => {
 
 const editProduct = (req, res) => {
     let productoId = req.params.id
-    let productoParaEditar = products.find(producto => producto.id == productoId);
-    res.render('products/editProduct', { productoParaEditar }); //
+    let update = products.find(producto => producto.id == productoId);
+    console.log(update)
+    if(!update) {
+        return res.send("No existe el producto")
+    }
+    res.render('products/editProduct', { update: update }); //
+    
 
 }
 
@@ -54,6 +59,8 @@ const updateProduct = (req, res) => {
 
 const deleteProduct = (req, res) => {
     let newProducts = products.filter(product => product.id != req.params.id)
+    //actualizar los datos de products ya que FILTER devuelve un nuevo array.
+    products = newProducts;
     let newProductsJSON = JSON.stringify(newProducts, null, 2)
 		fs.writeFileSync(productsFilePath, newProductsJSON);
     res.redirect('/products')

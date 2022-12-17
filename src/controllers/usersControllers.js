@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, { encoding: 'utf-8' }));
+let users = JSON.parse(fs.readFileSync(usersFilePath, { encoding: 'utf-8' }));
 
 const userList = (req, res) => {
     res.render('users/userList', { users });
@@ -72,7 +72,18 @@ const userUpdate = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
+    let userDelete = users.filter(user => user.id != req.params.id)
+    //actualizar los datos de usuarios ya que FILTER devuelve un nuevo array.
+    users = userDelete;
+    let userDeleteJSON = JSON.stringify(userDelete, null, 2)
+		fs.writeFileSync(usersFilePath, userDeleteJSON);
+    res.redirect('/users')
 
+    if(!users) {
+        return res.send("No existe usuario");
+    }
 }
+
+
 
 module.exports = { userList, register, createUser, login, loginUser, searchUser, detail, userEdit, userUpdate, deleteUser };
