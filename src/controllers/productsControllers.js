@@ -46,7 +46,10 @@ const editProduct = (req, res) => {
 }
 
 const updateProduct = (req, res) => {
-
+    const productoId = req.params.id;
+    const productUpdate = products.find(producto => producto.id == productoId);
+    const update = [...productDetail, ...productUpdate];
+    res.render('products/productDetail', {update: update})
 }
 
 const deleteProduct = (req, res) => {
