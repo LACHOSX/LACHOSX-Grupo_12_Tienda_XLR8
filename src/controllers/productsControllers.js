@@ -7,13 +7,13 @@ let products = JSON.parse(fs.readFileSync(productsFilePath, { encoding: 'utf-8' 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
-const productsList = (req, res) => {
-    res.render('products/products', { products, toThousand })
-}
 
 const createProduct = (req, res) => {
-    res.render('products/newProduct')
+    
+    res.render('../views/products/newProduct.ejs')
+    
 }
+
 
 const storeProduct = (req, res) => {
     // Agregar producto
@@ -33,26 +33,34 @@ const storeProduct = (req, res) => {
 }
 
 const productDetail = (req, res) => {
+    
+    
     const productoId = req.params.id;
+    // console.log(productoId) + "----------------------------------------------------------------------";
     const producto = products.find(producto => producto.id == productoId);
+    // console.log(producto) + "----------------------------------------------------------------------";
     res.render('products/productDetail', { producto, toThousand })
+   
 }
 
 const editProduct = (req, res) => {
-    let productoId = req.params.id
-    let update = products.find(producto => producto.id == productoId);
-    console.log(update)
-    if(!update) {
-        return res.send("No existe el producto")
-    }
-    res.render('products/editProduct', { update: update }); //
-    
+ 
+    const productoId = req.params.id
+    const update = products.find(producto => producto.id == productoId);
+    // let update = products.find(producto => producto.id == productoId);
+
+    // return res.send(update)
+    res.render('products/editProduct', { update }); 
 
 }
 
 const updateProduct = (req, res) => {
+    
     const productoId = req.params.id;
+    
     const productUpdate = products.find(producto => producto.id == productoId);
+
+    
     const update = [...productDetail, ...productUpdate];
     res.render('products/productDetail', {update: update})
 }
@@ -69,5 +77,14 @@ const deleteProduct = (req, res) => {
 const cart = (req, res) => {
     res.render('products/productCart')
 }
+
+const productsList = (req, res) => {
+    res.render('products/products', { products, toThousand })
+
+}
+
+
+
+
 
 module.exports = { productsList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart };

@@ -1,23 +1,10 @@
-[{
-    "id": 1,
-    "name": "remera adidas",
-    "description": "remera en venta",
-    "price": "999",
-    "discount": "111",
-    "sku": "111",
-    "size": "large",
-    "color": "blanco",
-    "genero": "mujer",
-    "categories": "camperas",
-    "new": "true",
-    "img1": "img1-1670804059657.jpg"
-  },
+[
   {
     "id": 2,
     "name": "remera nike",
     "description": "remera en venta",
-    "price": "9999",
-    "discount": "0",
+    "price": 9999,
+    "discount": "20",
     "sku": "111",
     "size": "large",
     "color": "blanco",
@@ -25,4 +12,5 @@
     "categories": "camperas",
     "new": "false",
     "img1": "img1-1670804667379.jpg"
-  }]
+  }
+]

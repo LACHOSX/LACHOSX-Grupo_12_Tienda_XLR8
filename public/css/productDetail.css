@@ -364,6 +364,13 @@ button, .talle{
     margin-top: 10px;
 }
 
+.button-send{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+}
+
 
 /*::::::::::::::::::::::: HASTA ACA DETALLE DE PRODUCTO :::::::::::::::::::::::*/
 

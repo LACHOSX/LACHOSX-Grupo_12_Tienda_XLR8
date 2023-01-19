@@ -59,14 +59,18 @@
                             <label for="cantidad">Cantidad: </label>
                             <input class="input" type="number" id="cantidad" name="cantidad">
                         </div>
-                        <input type="submit" class="boton-agregar-carrito"> Agregar al carrito
-
-                        <a href="/products/edit/<%= producto.id%>"><button type="submit" class="button-div">Editar
-                                producto</button></a>
-
-                        <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="button-div">Eliminar producto</button>
-                        </form>
+                        <input type="submit" class="boton-agregar-carrito"> 
+                        
+                        <div class="button-send">
+                            <a href="/products/edit/<%= producto.id%>" id="input-editar">
+                                <button type="submit" class="button-div">
+                                    Editar producto</button></a>
+    
+                            <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="button-div">Eliminar producto</button>
+                            </form>
+                        </div>
+                        
                     </div>
 
                 </div>

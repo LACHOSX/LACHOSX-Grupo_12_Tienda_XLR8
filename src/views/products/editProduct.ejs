@@ -3,17 +3,17 @@
 
     
     <main>
-        <form action="/products/edit/<%=update.id%>?_method=PUT" method="POST"> <!-- NO VA /GUARDAR la ruta ? -->
-            <!--enctype="multipart/form-data"-->
-            <section class="form-register">
+        <form action="/products/edit/<%=update.id%>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? --> 
+            
+            <section class="form-register" id="product-div">
                 <div class="logo1">
                     <a href="/">
                         <img src="\images\completo-XLR8-mediano.png">
                     </a>
                 </div>
                 <h4>EDITAR PRODUCTO</h4>
-                <input class="controls" type="text" name="name" id="tituloProducto" value="<%= update.tituloProducto  %>">
-                <textarea id="controls" name="description" rows="10" id="descripcion-area" value="<%= update.descripcion %>"></textarea>
+                <input class="controls" type="text" name="name" id="tituloProducto" value="<%= update.name  %>">
+                <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%" value="<%= update.name %>"></textarea>
                 <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value="<%= update.img1 %>">
                 <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value="<%= update.img2%> ">
                 <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value="<%= update.img2%> ">
@@ -36,33 +36,55 @@
                 </select>
                 <div class="genre">
                     <!-- REVISAR CSS -->
-                    <p>CATEGORIAS </p>
-                    <label>HOMBRE<input type='radio' name='genero' value="hombre"> </label>
-                    </br>
-                    <label>MUJER<input type='radio' name='genero' value="mujer"> </label>
-                    </br>
-                    <label>UNISEX<input type='radio' name='genero' value="unisex"> </label>
-                    </br>
+                    <p style="display: flex;
+                    justify-content: center;
+                    margin: 20px;">CATEGORIAS</p>
+                    <div style="justify-content: space-around;
+                    padding: 15px;
+                    display: flex;">
+                        <label>HOMBRE<input type='radio' name='genero' value="hombre"> </label>
+                        </br>
+                        <label>MUJER<input type='radio' name='genero' value="mujer"> </label>
+                        </br>
+                        <label>UNISEX<input type='radio' name='genero' value="unisex"> </label>
+                        </br>
+                    </div>
+                    
                 </div>
                 <div class="categories">
-                    <p> TIPO DE PRENDA </p>
-                    <label>REMERAS<input type='radio' name='categories' value="remeras"> </label>
-                    </br>
-                    <label>PANTALONES<input type='radio' name='categories' value="pantalones"> </label>
-                    </br>
-                    <label>SHORTS<input type='radio' name='categories' value="short"> </label>
-                    </br>
-                    <label>CALZAS<input type='radio' name='categories' value="calzas"> </label>
-                    </br>
-                    <label>CAMPERAS<input type='radio' name='categories' value="camperas"> </label>
-                    </br>
+                    <p style="    display: flex;
+                    justify-content: center;
+                    margin: 20px;
+                    font-size: 20px;"> TIPO DE PRENDA </p>
+                    <div class="genre" style="padding: 20px;
+                    flex-wrap: wrap;
+                    display: flex;
+                    justify-content: space-between;">
+                        <label>REMERAS<input type='radio' name='categories' value="remeras"> </label>
+                        </br>
+                        <label>PANTALONES<input type='radio' name='categories' value="pantalones"> </label>
+                        </br>
+                        <label>SHORTS<input type='radio' name='categories' value="short"> </label>
+                        </br>
+                        <label>CALZAS<input type='radio' name='categories' value="calzas"> </label>
+                        </br>
+                        <label>CAMPERAS<input type='radio' name='categories' value="camperas"> </label>
+                        </br>
+                        </div>
                 </div>
-                <div class="categories">
-                    <p> NUEVO PRODUCTO </p>
-                    <label>SI<input type='radio' name='new' value="true"> </label>
-                    </br>
-                    <label>NO<input type='radio' name='new' value="false"> </label>
-                    </br>
+                <div class="categories" >
+                    <p style="    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 20px;"> NUEVO PRODUCTO </p>
+                    <div class="genre" style="    padding: 15px;
+                    display: flex;
+                    justify-content: space-evenly;">
+                        <label>SI<input type='radio' name='new' value="true"> </label>
+                        </br>
+                        <label>NO<input type='radio' name='new' value="false"> </label>
+                        </br>
+                        </div>
                 </div>
                 </br>
                 <button class="botons" type="submit"> EDITAR PRODUCTO</button>
