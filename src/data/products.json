@@ -14,48 +14,6 @@
     "img1": "h-remera-01.jpg"
   },
   {
-    "id": 2,
-    "name": "pantalon adidas",
-    "description": "pantalon en venta",
-    "price": 1899,
-    "discount": "5",
-    "sku": "98",
-    "size": "medium",
-    "color": "rosa",
-    "genero": "mujer",
-    "categories": "remera",
-    "new": "true",
-    "img1": "m-short-01.jpg"
-  },
-  {
-    "id": 3,
-    "name": "campera puma",
-    "description": "campera en venta",
-    "price": 4799,
-    "discount": "10",
-    "sku": "42",
-    "size": "medium",
-    "color": "negro",
-    "genero": "hombre",
-    "categories": "campera",
-    "new": "true",
-    "img1": "h-campera-02.jpg"
-  },
-  {
-    "id": 4,
-    "name": "remera puma",
-    "description": "remera en venta",
-    "price": 2299,
-    "discount": "5",
-    "sku": "23",
-    "size": "small",
-    "color": "negro",
-    "genero": "hombre",
-    "categories": "remera",
-    "new": "false",
-    "img1": "h-remera-02.jpg"
-  },
-  {
     "id": 5,
     "name": "buzo adidas",
     "description": "buzo en venta",
@@ -83,5 +41,4 @@
     "new": "true",
     "img1": "m-remera-02.jpg"
   }
-
 ]

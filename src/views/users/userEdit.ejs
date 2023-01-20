@@ -3,7 +3,7 @@
 
 
     <main>
-      <form action="/users/edit/<%= userParaEditar.id %> ?_method=PUT" method="POST">
+      <form action="/users/edit/<%= userParaEditar.id %> ?_method=PUT" method="POST" enctype="multipart/form-data">
         <!-- Se modifica el Method PUT para editar, desde el action usando el method-override instalado en dependencias para editar formularios -->
         <section class="form-register">
           <div class="logo1">
@@ -13,30 +13,30 @@
           </div>
           <h4> EDITANDO MI USUARIO <%= userParaEditar.name %>
           </h4>
-          <input class="controls" type="name" name="name" id="nombres" placeholder="<%= userParaEditar.name %>">
+          <input class="controls" type="name" name="name" id="nombres" value=<%= userParaEditar.name %>>
           <input class="controls" type="apellido" name="lastName" id="apellido"
-            placeholder="<%= userParaEditar.lastName %>">
-          <input class="controls" type="email" name="email" id="correo" placeholder="<%= userParaEditar.email %>">
-          <input class="controls" type="text" name="phone" id="telefono" placeholder="<%= userParaEditar.phone %>"">
+            value=<%= userParaEditar.lastName %>>
+          <input class="controls" type="email" name="email" id="correo" value=<%= userParaEditar.email %>>
+          <input class="controls" type="text" name="phone" id="telefono" value=<%= userParaEditar.phone %>>
                 <input class=" controls" type="password" name="password1" id="password"
-            placeholder="<%= userParaEditar.password1 %>">
+            value=<%= userParaEditar.password1 %>>
           <input class="controls" type="password" name="password2" id="password">
-          <p>Fecha de nacimiento: <input type="date" name="date" placeholder="<%= userParaEditar.date %>"></p>
+          <p>Fecha de nacimiento: <input type="date" name="date" value=<%= userParaEditar.date %>></p>
           </br>
 
           <label>Seleccione su género:</label>
           <div>
-            <input type="radio" id="genero" name="genre" placeholder="<%= userParaEditar.genre %>">
+            <input type="radio" id="genero" name="genre" value="<%= userParaEditar.genre %>">
             <label for="Masculino">Masculino</label>
           </div>
 
           <div>
-            <input type="radio" id="genero" name="genre" placeholder="<%= userParaEditar.genre %>">
+            <input type="radio" id="genero" name="genre" value="<%= userParaEditar.genre %>">
             <label for="Femenino">Femenino</label>
           </div>
 
           <div>
-            <input type="radio" id="genero" name="genre" placeholder="<%= userParaEditar.genre %>">
+            <input type="radio" id="genero" name="genre" value="<%= userParaEditar.genre %>">
             <label for="Sin genero">Sin género</label>
           </div>
 

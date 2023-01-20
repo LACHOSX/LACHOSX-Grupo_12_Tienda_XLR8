@@ -13,13 +13,13 @@
                 </div>
                 <h4>EDITAR PRODUCTO</h4>
                 <input class="controls" type="text" name="name" id="tituloProducto" value="<%= update.name  %>">
-                <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%" value="<%= update.name %>"></textarea>
-                <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value="<%= update.img1 %>">
-                <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value="<%= update.img2%> ">
-                <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value="<%= update.img2%> ">
-                <input class="controls" type="number" name="price" id="price" value="<%= update.price %> " >
-                <input class="controls" type="number" name="discount" id="discount-price" value="<%= update.discount%> ">
-                <input class="controls" type="number" name="sku" id="sku" value="<%= update.sku %> ">
+                <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= update.description %></textarea>
+                <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= <%= update.img1 %>>
+                <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= <%= update.img2%>>
+                <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= <%= update.img2%>>
+                <input class="controls" type="number" name="price" id="price" value= <%= update.price %>>
+                <input class="controls" type="number" name="discount" id="discount-price" value= <%= update.discount%>>
+                <input class="controls" type="number" name="sku" id="sku" value= <%= update.sku %>>
                 <div class="labels-div">
                     <fieldset class="fieldset">
                         <label for="talle">TALLE</label>
