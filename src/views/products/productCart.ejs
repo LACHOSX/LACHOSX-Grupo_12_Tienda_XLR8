@@ -12,11 +12,11 @@
       
                 <div class="cart-Items">
                       <div class="image-box">
-                          <img src="/images/productos/m-short-02.jpg" style="height:120px" />
+                          <img src="/images/products/<%= update.img1%>" style="height:100px; width: 90px;" />
                       </div>
                       <div class="about">
-                          <h1 class="title">SHORT></h1>
-                          <h3 class="subtitle">XS</h3>
+                          <h1 class="title"><%= update.size%> </h1>
+                          <h3 class="subtitle"><%= update.name %> </h3>
                       </div>
                       <div class="counter">
                           <div class="btn">+</div>
@@ -24,12 +24,12 @@
                           <div class="btn">-</div>
                       </div>
                       <div class="prices">
-                          <div class="amount">$500</div>
+                          <div class="amount"> $<%= update.price %> </div>
                           <div class="save"><u>Favoritos</u></div>
                           <div class="remove"><u>Quitar</u></div>
                       </div>
                 </div>
-                <div class="cart-Items">
+                <!-- <div class="cart-Items">
                     <div class="image-box">
                         <img src="/images/productos/m-short-02.jpg" style="height:120px" />
                     </div>
@@ -47,15 +47,15 @@
                         <div class="save"><u>Favoritos</u></div>
                         <div class="remove"><u>Quitar</u></div>
                     </div>
-              </div>                
+              </div>                 -->
       
               <div class="cartCheckout">
                 <div class="total">
                     <div>
                         <div class="Subtotal">Total</div>
-                        <div class="items">2 items</div>
+                        <div class="items">1 items</div>
                     </div>
-                    <div class="total-amount">$1000</div>
+                    <div class="total-amount">$ <%= update.price %> </div>
                 </div>
                 <button class="button">Pagar</button>
             </div>

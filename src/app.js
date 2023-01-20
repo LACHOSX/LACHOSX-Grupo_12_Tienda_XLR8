@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const multer  = require('multer')
 
 // ******** EXPRESS () - (dont touch) ******** //
 const app = express();
@@ -44,6 +45,8 @@ app.use('/users', usersRouters);
 // app.use((req, res, next) => {
 //     res.status(404).render('not-found')
 // })
+
+
 
 
 const port = process.env.PORT || 9558;

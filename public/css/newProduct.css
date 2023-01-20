@@ -8,7 +8,11 @@
 
 body {
     font-family: 'Montserrat';
-    background-color: lightgray;
+    /* background: url(https://previews.123rf.com/images/hchjjl/hchjjl1506/hchjjl150600063/40530506-ropa-deportiva-doodle-de-fondo-sin-fisuras-patr%C3%B3n.jpg) */
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 img {
@@ -156,7 +160,7 @@ ul li {
 
 .form-register {
   width: 90%;
-  max-width: 500px;
+  max-width: 650px;
   background: #1E1E20;
   padding: 30px;
   margin: 0 auto;
@@ -220,16 +224,10 @@ ul li {
 .form-register p {
   height: 40px;
   text-align: left;
-  font-size: 16px;
+  font-size: 23px;
   line-height: 40px;
 }
 
-.form-register p {
-  height: 40px;
-  text-align: left;
-  font-size: 18px;
-  line-height: 40px;
-}
 
 .form-register p:hover {
   text-decoration: underline;

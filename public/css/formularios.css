@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Montserrat';
     background-color: lightgray;
@@ -155,7 +159,8 @@ ul li {
 
 
 .form-register {
-  max-width: 700px;
+  width: 90%;
+  max-width: 750px;
   background: #1E1E20;
   padding: 30px;
   margin: 0 auto;
@@ -219,14 +224,7 @@ ul li {
 .form-register p {
   height: 40px;
   text-align: left;
-  font-size: 16px;
-  line-height: 40px;
-}
-
-.form-register p {
-  height: 40px;
-  text-align: left;
-  font-size: 18px;
+  font-size: 23px;
   line-height: 40px;
 }
 
@@ -278,5 +276,60 @@ ul li {
   text-decoration: underline;
   box-shadow: 10px 10px 15px rgb(100, 100, 100);
   cursor: pointer;
+}
+
+.p-style{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.div-style{
+  justify-content: space-around;
+  padding: 15px;
+  display: flex;
+}
+
+.p-style-1{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.genre{
+  padding: 20px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-style-2{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  font-size: 20px;
+}
+
+.genre-1{
+  padding: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+fieldset{
+  margin: 5px;
+}
+
+.labels-div{
+  display: flex;
+  width: 100%;
+}
+
+.fieldset{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
 }
 

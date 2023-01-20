@@ -54,6 +54,8 @@ const editProduct = (req, res) => {
 
 }
 
+
+
 const updateProduct = (req, res) => {
     
     const productoId = req.params.id;
@@ -75,7 +77,12 @@ const deleteProduct = (req, res) => {
 }
 
 const cart = (req, res) => {
-    res.render('products/productCart')
+    const productoId = req.params.id
+    const update = products.find(producto => producto.id == productoId);
+    // let update = products.find(producto => producto.id == productoId);
+
+    // return res.send(update) 
+    res.render('products/productCart', { update })
 }
 
 const productsList = (req, res) => {
@@ -84,7 +91,9 @@ const productsList = (req, res) => {
 }
 
 
+const productCartNone = (req,res) => {
+    res.render('products/productCartN')
+}
 
 
-
-module.exports = { productsList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart };
+module.exports = { productsList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart, productCartNone };

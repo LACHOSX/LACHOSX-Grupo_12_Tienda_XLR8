@@ -1,0 +1,27 @@
+.carrito{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+}
+
+.vista-home{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 35px;
+    color: inherit;
+    align-items: center;
+    padding: 15px;
+}
+
+.vista-home:hover{
+    color:darkslateblue;
+    transition: all ease-in .2s;
+    text-decoration: underline;
+    
+}
+
+h1{
+    height: 100%;
+}
