@@ -27,9 +27,8 @@
     "phone": "2615667780",
     "password1": "1234567890",
     "date": "16/09/80",
-    "genre":"hombre"
-  }, 
-  
+    "genre": "hombre"
+  },
   {
     "id": 4,
     "name": "Anderson",
@@ -38,6 +37,18 @@
     "phone": "2615633740",
     "password1": "1234567890",
     "date": "15/02/96",
-    "genre":"hombre"
+    "genre": "hombre"
+  },
+  {
+    "id": 5
+  },
+  {
+    "id": 6
+  },
+  {
+    "id": 7
+  },
+  {
+    "id": 8
   }
 ]

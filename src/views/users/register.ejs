@@ -3,7 +3,7 @@
 
 
     <main>
-      <form action="/users/register" method="POST">
+      <form action="/users/register" method="POST" enctype="multipart/form-data">
         <section class="form-register">
           <div class="logo1">
             <a href="/">
@@ -11,6 +11,7 @@
             </a>
           </div>
           <h4>Formulario de Registro</h4>
+          <input type="file" name="avatar">
           <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre">
           <input class="controls" type="text" name="lastName" id="apellido" placeholder="Apellido">
           <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico">
