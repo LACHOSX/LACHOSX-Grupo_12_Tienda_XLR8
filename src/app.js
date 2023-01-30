@@ -5,12 +5,15 @@ const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const multer  = require('multer')
+var logMiddleware = require('./middlewares/logMiddleware');
+
 
 // ******** EXPRESS () - (dont touch) ******** //
 const app = express();
 
 
 // ******** Middlewares - (dont touch) ******** //
+app.use(logMiddleware);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({extended: false})); //por que no se usa {extended: false} ??
 // app.use(logger('dev'));
@@ -40,6 +43,7 @@ app.use(express.json());
 app.use('/', mainRouters);
 app.use('/products', productsRouters);
 app.use('/users', usersRouters);
+
 
 // VISTA ERROR 404
 // app.use((req, res, next) => {
