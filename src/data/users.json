@@ -40,15 +40,23 @@
     "genre": "hombre"
   },
   {
-    "id": 5
+    "id": 6,
+    "name": "Jhon Anderson ",
+    "lastName": "Marin",
+    "email": "samoyedo15@outlook.com",
+    "phone": "371273123183",
+    "password1": "12345678",
+    "date": "2023-01-03",
+    "genre": "Masculino"
   },
   {
-    "id": 6
-  },
-  {
-    "id": 7
-  },
-  {
-    "id": 8
+    "id": 7,
+    "name": "Jeronimo Codina",
+    "lastName": "Marin",
+    "email": "samoyedo15@yahoo.es",
+    "phone": "123461212831",
+    "password1": "12345678",
+    "date": "2022-09-07",
+    "genre": "Sin genero"
   }
 ]

@@ -11,7 +11,9 @@ let logDBMiddleware = require('../middlewares/logDBMiddleware');
 
 router.get('/', userController.userList)
 router.get('/register', userController.register);
-router.post('/register', logDBMiddleware, userController.createUser);
+router.post('/register', upload.single('avatar'), logDBMiddleware, userController.createUser);
+
+//------MULTER-----------------------------
 
 app.post('/register', upload.single('avatar'), function (req, res, next) {
     // req.file es el archivo del `avatar`
@@ -31,6 +33,8 @@ const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'galler
     //
     // req.body contendrá los campos de texto, si los hubiera.
   })
+
+//-------------------------------------------------------------------
 
 // router.get('/perfil', middlewareProtection, multer, controller) 
 // router.get('/agregarProducto', authMiddleware, adminMiddleware, multer, controller)
