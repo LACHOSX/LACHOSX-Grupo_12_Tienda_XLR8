@@ -149,7 +149,7 @@ DROP TABLE IF EXISTS `xrl8`.`products_photos` ;
 
 CREATE TABLE IF NOT EXISTS `xrl8`.`products_photos` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `photo` VARCHAR(100) NOT NULL,
+  `photo` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `products`
     FOREIGN KEY (`id`)
