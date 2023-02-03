@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    const alias = "Customers_categories";
+    const alias = "Users_categories";
     const cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -11,12 +11,11 @@ module.exports = (sequelize, dataTypes) => {
         }
     };
     const config = {
-        tableName: "customers_categories",
+        tableName: "users_categories",
         timestamps: false
-        },
-    }
+    };
 
-    const CustomerCategory = sequelize.define(alias, cols, config);
+    const UserCategory = sequelize.define(alias, cols, config);
 
-    return CustomerCategory;
+    return UserCategory;
 }

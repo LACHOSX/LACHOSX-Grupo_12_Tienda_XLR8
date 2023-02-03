@@ -22,11 +22,11 @@ CREATE SCHEMA IF NOT EXISTS `xrl8` DEFAULT CHARACTER SET utf8mb4 ;
 USE `xrl8` ;
 
 -- -----------------------------------------------------
--- Table `xrl8`.`customers`
+-- Table `xrl8`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `xrl8`.`customers` ;
+DROP TABLE IF EXISTS `xrl8`.`users` ;
 
-CREATE TABLE IF NOT EXISTS `xrl8`.`customers` (
+CREATE TABLE IF NOT EXISTS `xrl8`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `last_name` VARCHAR(100) NOT NULL,
@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`customers` (
   `password` VARCHAR(100) NOT NULL,
   `birthday` DATE NOT NULL,
   `genre` VARCHAR(100) NOT NULL,
-  `id_customers_categories` TINYINT(1) NOT NULL,
+  `id_users_categories` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_customers_customers_categories1_idx` (`id_customers_categories` ASC)  )
+  INDEX `fk_users_users_categories1_idx` (`id_users_categories` ASC)  )
 ENGINE = InnoDB
 AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb4
@@ -45,18 +45,18 @@ COMMENT = 'Base de datos de nuestros clientes	';
 
 
 -- -----------------------------------------------------
--- Table `xrl8`.`customers_categories`
+-- Table `xrl8`.`users_categories`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `xrl8`.`customers_categories` ;
+DROP TABLE IF EXISTS `xrl8`.`users_categories` ;
 
-CREATE TABLE IF NOT EXISTS `xrl8`.`customers_categories` (
+CREATE TABLE IF NOT EXISTS `xrl8`.`users_categories` (
   `id` TINYINT(1) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  ,
-  CONSTRAINT `id_customers_categories`
+  CONSTRAINT `id_users_categories`
     FOREIGN KEY (`id`)
-    REFERENCES `xrl8`.`customers` (`id_customers_categories`)
+    REFERENCES `xrl8`.`users` (`id_users_categories`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -101,12 +101,12 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`purchase_orders` (
   `order_value` INT(11) NOT NULL,
   `order_cart` INT(11) NOT NULL,
   `order_payment` INT(11) NOT NULL,
-  `customers_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`, `customers_id`),
-  INDEX `fk_purchase_orders_customers1_idx` (`customers_id` ASC)  ,
-  CONSTRAINT `fk_purchase_orders_customers1`
-    FOREIGN KEY (`customers_id`)
-    REFERENCES `xrl8`.`customers` (`id`)
+  `users_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`, `users_id`),
+  INDEX `fk_purchase_orders_users1_idx` (`users_id` ASC)  ,
+  CONSTRAINT `fk_purchase_orders_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `xrl8`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

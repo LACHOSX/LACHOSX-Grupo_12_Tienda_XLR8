@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    const alias = "Customers";
+    const alias = "Users";
     const cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -28,25 +28,23 @@ module.exports = (sequelize, dataTypes) => {
         genre: {
             type: dataTypes.STRING
         },        
-        id_customers_categories: {
+        id_users_categories: {
             type: dataTypes.INTEGER,
             foreignKey: true,
         }
     };
     const config = {
-        tableName: "customers",
+        tableName: "users",
         timestamps: false
-        },
-    }
+        };
+    const User = sequelize.define(alias, cols, config);
 
-    const Customer = sequelize.define(alias, cols, config);
-
-    Customer.associate = function(models) {
-        Customer.belongsTo(models.CustomerCategory, {
+    User.associate = function(models) {
+        User.belongsTo(models.UserCategory, {
             as: "categoria",
-            foreignKey: "customer_category_id",            
+            foreignKey: "user_category_id",            
         });
     }
 
-    return Customer;
+    return User;
 }

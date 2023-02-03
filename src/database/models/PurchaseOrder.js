@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
         order_payment: {
             type: dataTypes.INTEGER
         },
-        customers_id: {
+        users_id: {
             type: dataTypes.INTEGER,
             foreignKey: true,
         }
