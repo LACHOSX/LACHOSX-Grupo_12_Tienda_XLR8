@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`customers` (
   `email` VARCHAR(100) NOT NULL,
   `phone` INT(11) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
-  `admission` DATE NOT NULL,
+  `birthday` DATE NOT NULL,
   `genre` VARCHAR(100) NOT NULL,
-  `id_customers_categories` INT(11) NOT NULL,
+  `id_customers_categories` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_customers_customers_categories1_idx` (`id_customers_categories` ASC)  )
 ENGINE = InnoDB
@@ -50,11 +50,8 @@ COMMENT = 'Base de datos de nuestros clientes	';
 DROP TABLE IF EXISTS `xrl8`.`customers_categories` ;
 
 CREATE TABLE IF NOT EXISTS `xrl8`.`customers_categories` (
-  `id` INT(11) NOT NULL,
+  `id` TINYINT(1) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
-  `created` DATE NOT NULL,
-  `updated` DATE NOT NULL,
-  `deleted` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  ,
   CONSTRAINT `id_customers_categories`
@@ -74,14 +71,17 @@ DROP TABLE IF EXISTS `xrl8`.`products` ;
 CREATE TABLE IF NOT EXISTS `xrl8`.`products` (
   `id` INT(11) NOT NULL,
   `title` VARCHAR(100) NOT NULL,
-  `description` VARCHAR(100) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
   `price` INT(11) NOT NULL,
   `price_discount` INT(11) NOT NULL,
   `size` VARCHAR(100) NOT NULL,
   `color` VARCHAR(100) NOT NULL,
-  `category` VARCHAR(100) NOT NULL,
+  `genre_product` VARCHAR(100) NOT NULL,
   `type` VARCHAR(100) NOT NULL,
-  `brand` VARCHAR(100) NOT NULL,
+  `new` TINYINT(1) NOT NULL,
+  `created` DATE NOT NULL,
+  `updated` DATE NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,
   `id_purchase_order` INT(11) NOT NULL,
   `id_product_photo` INT(11) NOT NULL,
   PRIMARY KEY (`id`))
@@ -101,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`purchase_orders` (
   `order_value` INT(11) NOT NULL,
   `order_cart` INT(11) NOT NULL,
   `order_payment` INT(11) NOT NULL,
-  `shipping_payment` INT(11) NOT NULL,
   `customers_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`, `customers_id`),
   INDEX `fk_purchase_orders_customers1_idx` (`customers_id` ASC)  ,
@@ -149,7 +148,9 @@ DROP TABLE IF EXISTS `xrl8`.`products_photos` ;
 
 CREATE TABLE IF NOT EXISTS `xrl8`.`products_photos` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `photo` VARCHAR(255) NOT NULL,
+  `photo1` VARCHAR(255) NOT NULL,
+  `photo2` VARCHAR(255) NOT NULL,
+  `photo3` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `products`
     FOREIGN KEY (`id`)
