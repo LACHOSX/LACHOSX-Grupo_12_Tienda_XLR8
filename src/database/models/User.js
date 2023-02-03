@@ -1,3 +1,5 @@
+const UserCategory = require("./UserCategory");
+
 module.exports = (sequelize, dataTypes) => {
     
     const alias = "Users";
@@ -41,8 +43,12 @@ module.exports = (sequelize, dataTypes) => {
 
     User.associate = function(models) {
         User.belongsTo(models.UserCategory, {
-            as: "categoria",
-            foreignKey: "user_category_id",            
+            as: "usersCategories",
+            foreignKey: "id_users_categories",            
+        }),
+        User.belongsTo(models.PurchaseOrder, {
+            as: "purchaseOrders",
+            foreignKey: "user_id",            
         });
     }
 
