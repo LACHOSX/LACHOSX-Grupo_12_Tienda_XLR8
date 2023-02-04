@@ -2,10 +2,7 @@ module.exports = (sequelize, dataTypes) => {
     
     const alias = "UserCategory";
     const cols = {
-        id: {
-            type: dataTypes.INTEGER,
-            primaryKey: true,
-        },
+        
         name: {
             type: dataTypes.STRING
         }

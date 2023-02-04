@@ -4,11 +4,7 @@ module.exports = (sequelize, dataTypes) => {
     
     const alias = "PurchaseOrder";
     const cols = {
-        id: {
-            type: dataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },        
+                
         order_date: {
             type: dataTypes.DATE
         },        

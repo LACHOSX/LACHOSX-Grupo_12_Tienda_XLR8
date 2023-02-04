@@ -4,10 +4,7 @@ module.exports = (sequelize, dataTypes) => {
     
     const alias = "Product";
     const cols = {
-        id: {
-            type: dataTypes.INTEGER,
-            primaryKey: true,
-        },
+        
         title: {
             type: dataTypes.STRING
         },
@@ -43,30 +40,10 @@ module.exports = (sequelize, dataTypes) => {
         },
         new:{
             type: dataTypes.TINYINT
-        },        
-        createdAt: {
-            type: dataTypes.DATE
-        },
-        updatedAt: {
-            type: dataTypes.DATE
-        },        
-        deletedAt: {
-            type: dataTypes.DATE
         }
     };
     const config = {
-        tableName: "products",
-        timestamps: {
-            createdAt:{
-                type: dataTypes.DATE
-            },
-            updatedAt:{
-                type: dataTypes.DATE
-            },
-            deletedAt: {
-                type: dataTypes.DATE
-            }
-        },
+        tableName: "products"
     }
 
     const Product = sequelize.define(alias, cols, config);

@@ -4,11 +4,7 @@ module.exports = (sequelize, dataTypes) => {
     
     const alias = "OrderProduct";
     const cols = {
-        id: {
-            type: dataTypes.INTEGER,
-            primaryKey: true,
-        },
-        
+                
         id_product: {
             type: dataTypes.INTEGER,
             foreignKey: true,
