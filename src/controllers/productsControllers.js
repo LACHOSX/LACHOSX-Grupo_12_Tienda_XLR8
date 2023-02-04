@@ -7,18 +7,25 @@ let products = JSON.parse(fs.readFileSync(productsFilePath, { encoding: 'utf-8' 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require("../database/models"); 
 
-const createProduct = function (req, res) {
-	db.Producto.findAll()
+const productsList = function (req, res) {
+	db.Product.findAll()
 //pedido asincronico
-	    .then(function(productos) {
-		    return res.render("createProducts", {products:products}); 
+	    .then(function(products) {
+		    return res.render("productsList", {products:products}); 
 		})
     };
 
+const createProduct = function (req, res) {
+    res.render('../views/products/newProduct.ejs');
+}
+
 const storeProduct = function (req, res) {
-    db.Producto.create({
+    db.Product.create({
         id: req.body.id,
         title: req.body.name,
+        photo1: req.body.img1,
+        photo2: req.body.img2,
+        photo3: req.body.img3,
         description: req.body.description,
         price: req.body.price,
         price_discount: req.body.discount,
@@ -32,6 +39,6 @@ const storeProduct = function (req, res) {
 }
 
 
-module.exports = {createProduct, storeProduct};
+module.exports = {productsList, createProduct, storeProduct};
 
-// productsList, productDetail, editProduct, updateProduct, deleteProduct, cart, productCartNone 
+//productDetail, editProduct, updateProduct, deleteProduct, cart, productCartNone 

@@ -71,6 +71,9 @@ DROP TABLE IF EXISTS `xrl8`.`products` ;
 CREATE TABLE IF NOT EXISTS `xrl8`.`products` (
   `id` INT(11) NOT NULL,
   `title` VARCHAR(100) NOT NULL,
+  `photo1` VARCHAR(255) NOT NULL,
+  `photo2` VARCHAR(255) NOT NULL,
+  `photo3` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `price` INT(11) NOT NULL,
   `price_discount` INT(11) NOT NULL,
@@ -81,9 +84,7 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`products` (
   `new` TINYINT(1) NOT NULL,
   `created` DATE NOT NULL,
   `updated` DATE NOT NULL,
-  `deleted` TINYINT(1) NOT NULL,
-  `id_purchase_order` INT(11) NOT NULL,
-  `id_product_photo` INT(11) NOT NULL,
+  `deleted` TINYINT(1) NOT NULL,  
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -139,29 +140,6 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`orders_products` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-
-
--- -----------------------------------------------------
--- Table `xrl8`.`products_photos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `xrl8`.`products_photos` ;
-
-CREATE TABLE IF NOT EXISTS `xrl8`.`products_photos` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `photo1` VARCHAR(255) NOT NULL,
-  `photo2` VARCHAR(255) NOT NULL,
-  `photo3` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `products`
-    FOREIGN KEY (`id`)
-    REFERENCES `xrl8`.`products` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8mb4
-COMMENT = 'Base de datos de fotos de nuestros productos';
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

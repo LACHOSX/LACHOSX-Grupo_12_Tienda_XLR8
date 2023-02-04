@@ -9,6 +9,15 @@ module.exports = (sequelize, dataTypes) => {
         title: {
             type: dataTypes.STRING
         },
+        photo1: {
+            type: dataTypes.STRING,
+        },
+        photo2: {
+            type: dataTypes.STRING,
+        },
+        photo3: {
+            type: dataTypes.STRING,
+        },
         description: {
             type: dataTypes.STRING
         },
@@ -33,35 +42,27 @@ module.exports = (sequelize, dataTypes) => {
         new:{
             type: dataTypes.TINYINT
         },        
-        created: {
-            type: dataTypes.DATE
+        createdAt: {
+            type: dataTypes.DATENOW
         },
-        updated: {
-            type: dataTypes.DATE
+        updatedAt: {
+            type: dataTypes.DATENOW
         },        
-        deleted: {
-            type: dataTypes.DATE
-        },
-        id_purchase_order: {
-            type: dataTypes.INTEGER,
-            foreignKey: true,
-        },
-        id_product_photo: {
-            type: dataTypes.INTEGER,
-            foreignKey: true,
+        deletedAt: {
+            type: dataTypes.DATENOW
         }
     };
     const config = {
         tableName: "products",
         timestamps: {
             createdAt:{
-                type: dataTypes.DATE
+                type: dataTypes.DATENOW
             },
             updatedAt:{
-                type: dataTypes.DATE
+                type: dataTypes.DATENOW
             },
             deletedAt: {
-                type: dataTypes.DATE
+                type: dataTypes.DATENOW
             }
         },
     }

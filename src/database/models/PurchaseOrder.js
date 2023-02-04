@@ -32,11 +32,11 @@ module.exports = (sequelize, dataTypes) => {
     const PurchaseOrder = sequelize.define(alias, cols, config);
 
     PurchaseOrder.associate = function(models) {
-        PurchaseOrder.hasMany(models.Users, {
+        PurchaseOrder.belongsTo(models.Users, {
             as: "users",
             foreignKey: "user_id",            
         })
-        PurchaseOrder.belongsTo(models.OrderProducts, {
+        PurchaseOrder.hasMany(models.OrderProducts, {
             as: "orderProducts",
             foreignKey: "id_purchase_orders",            
         });

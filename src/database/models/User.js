@@ -46,7 +46,7 @@ module.exports = (sequelize, dataTypes) => {
             as: "usersCategories",
             foreignKey: "id_users_categories",            
         }),
-        User.belongsTo(models.PurchaseOrder, {
+        User.hasMany(models.PurchaseOrder, {
             as: "purchaseOrders",
             foreignKey: "user_id",            
         });
