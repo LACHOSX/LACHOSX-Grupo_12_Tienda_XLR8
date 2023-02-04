@@ -55,13 +55,13 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "products",
         timestamps: {
             createdAt:{
-                type: DataTypes.DATE
+                type: dataTypes.DATE
             },
             updatedAt:{
-                type: DataTypes.DATE
+                type: dataTypes.DATE
             },
             deletedAt: {
-                type: DataTypes.DATE
+                type: dataTypes.DATE
             }
         },
     }
