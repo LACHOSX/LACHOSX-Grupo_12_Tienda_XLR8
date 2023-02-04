@@ -1,3 +1,4 @@
+const { sequelize, DataTypes } = require("sequelize");
 const UserCategory = require("./UserCategory");
 
 module.exports = (sequelize, dataTypes) => {

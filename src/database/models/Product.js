@@ -1,3 +1,5 @@
+const { sequelize, DataTypes } = require("sequelize");
+
 module.exports = (sequelize, dataTypes) => {
     
     const alias = "Product";
@@ -43,26 +45,26 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.TINYINT
         },        
         createdAt: {
-            type: dataTypes.DATENOW
+            type: dataTypes.DATE
         },
         updatedAt: {
-            type: dataTypes.DATENOW
+            type: dataTypes.DATE
         },        
         deletedAt: {
-            type: dataTypes.DATENOW
+            type: dataTypes.DATE
         }
     };
     const config = {
         tableName: "products",
         timestamps: {
             createdAt:{
-                type: dataTypes.DATENOW
+                type: dataTypes.DATE
             },
             updatedAt:{
-                type: dataTypes.DATENOW
+                type: dataTypes.DATE
             },
             deletedAt: {
-                type: dataTypes.DATENOW
+                type: dataTypes.DATE
             }
         },
     }
@@ -70,14 +72,10 @@ module.exports = (sequelize, dataTypes) => {
     const Product = sequelize.define(alias, cols, config);
 
     Product.associate = function(models) {        
-        Product.belongsTo(models.OrderProducts, {
+        Product.belongsTo(models.OrderProduct, {
             as: "orderProducts",
             foreignKey: "id_product",            
-        }),
-        Product.belongsTo(models.ProductPhoto, {
-            as: "productPhotos",
-            foreignKey: "id_product_photo",            
-        });
+        })
     }
 
     return Product;

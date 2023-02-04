@@ -1,3 +1,5 @@
+const { sequelize, DataTypes } = require("sequelize");
+
 module.exports = (sequelize, dataTypes) => {
     
     const alias = "OrderProduct";
@@ -26,11 +28,11 @@ module.exports = (sequelize, dataTypes) => {
     const OrderProduct = sequelize.define(alias, cols, config);
 
     OrderProduct.associate = function(models) {
-        OrderProduct.hasMany(models.PurchaseOrders, {
+        OrderProduct.hasMany(models.PurchaseOrder, {
             as: "purchaseOrders",
             foreignKey: "id_purchase_orders",            
         }),
-        OrderProduct.hasMany(models.Products, {
+        OrderProduct.hasMany(models.Product, {
             as: "products",
             foreignKey: "id_product",            
         });
