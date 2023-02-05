@@ -22,7 +22,7 @@ const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'galler
   app.post('/cool-profile', cpUpload, function (req, res, next) {
 })
 
-router.get('/', userController.userList)
+//router.get('/', userController.userList)
 
 router.get('/register', userController.register);
 router.post('/register', upload.single('avatar'), logDBMiddleware, userController.createUser);
@@ -32,11 +32,11 @@ router.post('/register', upload.single('avatar'), logDBMiddleware, userControlle
 
 // router.get('/search', userController.searchUser);
 
-router.get('/detail/:id', userController.detail)
+//router.get('/detail/:id', userController.detail)
 
-router.get('/edit/:id', userController.userEdit);
+//router.get('/edit/:id', userController.userEdit);
 // router.put('/edit/:id', userController.userUpdate);
 
-router.delete('/delete/:id', userController.deleteUser);
+//router.delete('/delete/:id', userController.deleteUser);
 
 module.exports = router;

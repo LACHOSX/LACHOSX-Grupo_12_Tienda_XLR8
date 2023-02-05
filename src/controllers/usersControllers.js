@@ -18,7 +18,7 @@ const createUser = async function (req, res) {
             email: req.body.email,
             phone: req.body.phone,
             password: req.body.password1,
-            password: req.body.password2,
+            //password: req.body.password2,
             birthday: req.body.birthday,
             genre: req.body.genre
         });        
