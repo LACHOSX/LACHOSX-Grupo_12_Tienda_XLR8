@@ -3,7 +3,7 @@
 
     
     <main>
-        <form action="/products/edit/<%=update.id%>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? --> 
+        <form action="/products/edit/<%=product.id%>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? --> 
             
             <section class="form-register" id="product-div">
                 <div class="logo1">
@@ -12,14 +12,13 @@
                     </a>
                 </div>
                 <h4>EDITAR PRODUCTO</h4>
-                <input class="controls" type="text" name="name" id="tituloProducto" value="<%= update.name  %>">
-                <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= update.description %></textarea>
-                <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= <%= update.img1 %>>
-                <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= <%= update.img2%>>
-                <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= <%= update.img2%>>
-                <input class="controls" type="number" name="price" id="price" value= <%= update.price %>>
-                <input class="controls" type="number" name="discount" id="discount-price" value= <%= update.discount%>>
-                <input class="controls" type="number" name="sku" id="sku" value= <%= update.sku %>>
+                <input class="controls" type="text" name="title" id="tituloProducto" value="<%= product.title  %>">
+                <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= <%= product.img1%>>
+                <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= <%= product.img2%>>
+                <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= <%= product.img2%>>
+                <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= product.description %></textarea>
+                <input class="controls" type="number" name="price" id="price" value= <%= product.price %>>
+                <input class="controls" type="number" name="discount" id="discount-price" value= <%= product.discount%>>
                 <div class="labels-div">
                     <fieldset class="fieldset">
                         <label for="talle">TALLE</label>
@@ -62,10 +61,6 @@
                             <label>PANTALONES<input type='radio' name='categories' value="pantalones"> </label>
                             </br>
                             <label>SHORTS<input type='radio' name='categories' value="short"> </label>
-                            </br>
-                            <label>CALZAS<input type='radio' name='categories' value="calzas"> </label>
-                            </br>
-                            <label>CAMPERAS<input type='radio' name='categories' value="camperas"> </label>
                             </br>
                             </div>
                     </div>
