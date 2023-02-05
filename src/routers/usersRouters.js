@@ -1,26 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const multer = require('multer');
+const path = require('path');
+
+const db = require('../database/models/');
+
+const bcrypt = require('bcryptjs');
+const fs = require('fs');
 
 const app = express()
+
+//Requiero el paquete express-validator
+const {
+  check,
+  validationResult,
+  body
+} = require('express-validator');
 
 const userController = require('../controllers/usersControllers');
 let logDBMiddleware = require('../middlewares/logDBMiddleware');
 
 //------MULTER-----------------------------
 
-app.post('/register', upload.single('avatar'), function (req, res, next) {
-    // req.file es el archivo del `avatar`
-    // req.body contendrá los campos de texto, si los hubiera.
-  })
-app.post('/public/upload', upload.array('photos', 12), function (req, res, next) {
-    // req.files es el arreglo (array) de archivos `photos`
-    // req.body contendrá los campos de texto, si los hubiera.
-  })
-const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
-  app.post('/cool-profile', cpUpload, function (req, res, next) {
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.resolve(__dirname, '../../public/images/usuarios'));   
+  },
+  filename: function (req, file, cb) {
+    cb(null, 'avatar' + '-' + Date.now()+ path.extname(file.originalname));      
+  }
 })
+ 
+const upload = multer({ storage })
+
+//--------------------------------------------
 
 //router.get('/', userController.userList)
 

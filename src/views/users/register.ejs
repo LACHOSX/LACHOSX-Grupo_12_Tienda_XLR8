@@ -3,6 +3,9 @@
 
 
     <main>
+      <form action="/profile" method="post" enctype="multipart/form-data">
+        <input type="file" name="avatar" />
+      </form>
       <form action="/users/register" method="POST" enctype="multipart/form-data">
         <section class="form-register">
           <div class="logo1">
@@ -11,6 +14,13 @@
             </a>
           </div>
           <h4>Formulario de Registro</h4>
+<<<<<<< Updated upstream
+=======
+          <fieldset>
+            <legend>Seleccione su foto de perfil:</legend>
+            <input type="file" name="avatar">
+          </fieldset>
+>>>>>>> Stashed changes
           <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre">
           <input class="controls" type="text" name="lastName" id="apellido" placeholder="Apellido">
           <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico">
