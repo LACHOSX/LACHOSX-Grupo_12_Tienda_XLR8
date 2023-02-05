@@ -14,7 +14,7 @@ const createUser = async function (req, res) {
     try {
         await db.User.create({
             name: req.body.name,
-            lastName: req.body.lastName,
+            last_name: req.body.lastName,
             email: req.body.email,
             phone: req.body.phone,
             password: req.body.password1,
@@ -29,6 +29,14 @@ const createUser = async function (req, res) {
 }
 
 //  LOGIN DE USUARIO
+const loginUser = function (req, res) {    
+    res.render('/users/login');
+}
+
+//  LOGIN-IN DE USUARIO
+const login = function (req, res) {    
+    res.render('/users/login');
+}
 
 //  EDICION DE USUARIO
 
@@ -37,6 +45,6 @@ const createUser = async function (req, res) {
 //  BORRADO DE USUARIO
 
 
-module.exports = { register, createUser};
+module.exports = { register, createUser, loginUser, login};
 
-// userList, , login, detail, userEdit, deleteUser
+// userList, detail, userEdit, deleteUser

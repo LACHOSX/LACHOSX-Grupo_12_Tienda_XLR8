@@ -40,8 +40,8 @@ const upload = multer({ storage })
 router.get('/register', userController.register);
 router.post('/register', upload.single('avatar'), logDBMiddleware, userController.createUser);
 
-// router.get('/login', userController.loginUser)
-// router.post('/', verificarUsuario, upload.single('image'), userController.login)
+router.get('/login', userController.loginUser)
+router.post('/', verificarUsuario, upload.single('image'), userController.login)
 
 // router.get('/search', userController.searchUser);
 
