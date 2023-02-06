@@ -44,6 +44,8 @@ const login = function (req, res) {
 
 //  BORRADO DE USUARIO
 
+// LISTA
+
 
 module.exports = { register, createUser, loginUser, login};
 

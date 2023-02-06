@@ -46,9 +46,7 @@ const editProduct = async function(req, res) {
         res.render('products/editProduct', {getProduct: getProduct})
     }   catch (error) {
             console.log("ERROR EDITPRODUCT", error)
-    }   
-
-    
+    }
 }
 
 
