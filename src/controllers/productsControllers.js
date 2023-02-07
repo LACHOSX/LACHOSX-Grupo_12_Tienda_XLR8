@@ -7,12 +7,10 @@ const fs = require('fs');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require("../database/models"); 
 
-
 // CREACION DEL PRODUCTO
 const createProduct = function (req, res) {    
     res.render('../views/products/newProduct.ejs');
 }
-
 
 //GUARDADO DEL PRODUCTO
 const storeProduct = async function (req, res) {
@@ -39,17 +37,17 @@ const storeProduct = async function (req, res) {
 }
 
 // LOGICA DE EDITAR PRODUCTO
-const editProduct = async function(req, res) {
-	try{
-	    let getProduct = await db.Product.findByPk(req.params.id)
-
-        res.render('products/editProduct', {getProduct: getProduct})
-    }   catch (error) {
-            console.log("ERROR EDITPRODUCT", error)
+const editProduct = async function (req, res) {
+    try {
+        let getProduct = await db.Product.findByPk(req.params.id)
+        console.log(getProduct);
+        res.render('products/editProduct', { getProduct: getProduct })
+    } catch (error) {
+        console.log("ERROR EDITPRODUCT", error)
     }
 }
 
-
+//, { include: { all: true } }
 //ACTUALIZACION DEL PRODUCTO 
 const updateProduct = async function(req, res) {
     try {

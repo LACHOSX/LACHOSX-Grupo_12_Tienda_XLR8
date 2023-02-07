@@ -1,17 +1,16 @@
 const { sequelize, DataTypes } = require("sequelize");
+const Product = require('./Product');
 
-module.exports = (sequelize, dataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     
     const alias = "OrderProduct";
-    const cols = {
-                
+    const cols = {                
         id_product: {
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             foreignKey: true,
         },
-
         id_purchase_orders: {
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             foreignKey: true,
         }
     };
@@ -19,20 +18,9 @@ module.exports = (sequelize, dataTypes) => {
         tableName: "orders_products",
         timestamps: false
         }
-    
-
     const OrderProduct = sequelize.define(alias, cols, config);
 
-    OrderProduct.associate = function(models) {
-        OrderProduct.hasMany(models.PurchaseOrder, {
-            as: "purchaseOrders",
-            foreignKey: "id_purchase_orders",            
-        }),
-        OrderProduct.hasMany(models.Product, {
-            as: "products",
-            foreignKey: "id_product",            
-        });
-    }
+    
 
     return OrderProduct;
 }

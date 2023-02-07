@@ -1,19 +1,19 @@
 const { sequelize, DataTypes } = require("sequelize");
 
 module.exports = (sequelize, dataTypes) => {
-    
+
     const alias = "PurchaseOrder";
     const cols = {
-                
+
         order_date: {
             type: dataTypes.DATE
-        },        
+        },
         order_value: {
             type: dataTypes.INTEGER
         },
         order_cart: {
             type: dataTypes.INTEGER
-        },        
+        },
         order_payment: {
             type: dataTypes.INTEGER
         },
@@ -29,14 +29,14 @@ module.exports = (sequelize, dataTypes) => {
 
     const PurchaseOrder = sequelize.define(alias, cols, config);
 
-    PurchaseOrder.associate = function(models) {
+    PurchaseOrder.associate = function (models) {
         PurchaseOrder.belongsTo(models.User, {
             as: "users",
-            foreignKey: "user_id",            
+            foreignKey: "user_id",
         })
-        PurchaseOrder.hasMany(models.OrderProduct, {
-            as: "orderProducts",
-            foreignKey: "id_purchase_orders",            
+        PurchaseOrder.belongsToMany(models.Product, {
+            as: "purchaseOrders",
+            through: "OrderProduct",
         });
     }
 

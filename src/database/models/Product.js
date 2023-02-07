@@ -1,57 +1,52 @@
 const { sequelize, DataTypes } = require("sequelize");
 
-module.exports = (sequelize, dataTypes) => {
-    
-    const alias = "Product";
-    const cols = {
-        
+module.exports = (sequelize, DataTypes) => {
+    const Product = sequelize.define('Product', {
         title: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
         photo1: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
         },
         photo2: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
         },
         photo3: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
         },
         description: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
         price: {
-            type: dataTypes.INTEGER
+            type: DataTypes.INTEGER
         },
         price_discount: {
-            type: dataTypes.INTEGER
+            type: DataTypes.INTEGER
         },
         size: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
         color: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
         genre_product: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
         type: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
-        new:{
-            type: dataTypes.TINYINT
-        }
-    };
-    const config = {
-        tableName: "products"
-    }
+        new: {
+            type: DataTypes.TINYINT
+        },
 
-    const Product = sequelize.define(alias, cols, config);
-
-    Product.associate = function(models) {        
-        Product.belongsTo(models.OrderProduct, {
-            as: "orderProducts",
-            foreignKey: "id_product",            
+    }, {
+        tableName: "products", //nombre de la tabla (es opcional si tienen los mismos nombres)        
+    });
+    
+    Product.associate = function (models) {
+        Product.belongsToMany(models.PurchaseOrder, {
+            as: "purchaseOrders",
+            through: "OrderProduct"
         })
     }
 

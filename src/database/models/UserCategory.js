@@ -1,10 +1,12 @@
-module.exports = (sequelize, dataTypes) => {
+const { sequelize, DataTypes } = require("sequelize");
+
+module.exports = (sequelize, DataTypes) => {
     
     const alias = "UserCategory";
     const cols = {
         
         name: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         }
     };
     const config = {

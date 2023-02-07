@@ -1,34 +1,35 @@
 const { sequelize, DataTypes } = require("sequelize");
+
 const UserCategory = require("./UserCategory");
 
-module.exports = (sequelize, dataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     
     const alias = "User";
     const cols = {
                 
         name: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },        
         last_name: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },
         email: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },        
         phone: {
-            type: dataTypes.INTEGER
+            type: DataTypes.INTEGER
         },        
         password: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },        
         birthday: {
-            type: dataTypes.DATE
+            type: DataTypes.DATE
         },        
         genre: {
-            type: dataTypes.STRING
+            type: DataTypes.STRING
         },        
         id_users_categories: {
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             foreignKey: true,
         }
     };
