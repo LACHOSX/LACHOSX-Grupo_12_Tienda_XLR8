@@ -36,6 +36,17 @@ const storeProduct = async function (req, res) {
     res.render('products/newProduct');
 }
 
+const productDetail = async function (req, res) {
+    try {
+        let getDetailProduct = await db.Product.findByPk(req.params.id)
+        console.log(getDetailProduct);
+        res.render('products/productDetail', {getDetailProduct, toThousand});
+    } catch (error) {
+        console.log("ERROR DETAIL PRODUCT", error)
+    }
+    
+}
+
 // LOGICA DE EDITAR PRODUCTO
 const editProduct = async function (req, res) {
     try {
@@ -43,7 +54,7 @@ const editProduct = async function (req, res) {
         console.log(getProduct);
         res.render('products/editProduct', { getProduct: getProduct })
     } catch (error) {
-        console.log("ERROR EDITPRODUCT", error)
+        console.log("ERROR EDIT PRODUCT", error)
     }
 }
 
@@ -71,11 +82,13 @@ const updateProduct = async function(req, res) {
         }); 
                
     } catch (error) {
-        console.log("ERROR CONTROLLER", error)
+        console.log("ERROR UPDATE PRODUCT", error)
     }
-    res.redirect('/productDetail/:id') //redirecciona a ruta de productos
+    res.render('products/productDetail/:id') //redirecciona a ruta de productos
 }
 
-module.exports = {createProduct, storeProduct, editProduct, updateProduct};
+//  BORRADO DE PRODUCTO
 
-//productsList, productDetail, editProduct, updateProduct, deleteProduct, cart, productCartNone 
+module.exports = {createProduct, storeProduct, productDetail, editProduct, updateProduct};
+
+//productsList, deleteProduct, cart, productCartNone

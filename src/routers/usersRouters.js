@@ -40,15 +40,15 @@ const upload = multer({ storage })
 router.get('/register', userController.register);
 router.post('/register', upload.single('avatar'), logDBMiddleware, userController.createUser);
 
-//router.get('/login', userController.loginUser)
-//router.post('/', verificarUsuario, upload.single('image'), userController.login)
+router.get('/login', userController.loginUser)
+router.post('/', verificarUsuario, upload.single('image'), userController.login)
 
 // router.get('/search', userController.searchUser);
 
 // router.get('/detail/:id', userController.detail)
 
-// router.get('/edit/:id', userController.userEdit);
-// router.put('/edit/:id', userController.userUpdate);
+ router.get('/edit/:id', userController.userEdit);
+ router.put('/edit/:id', userController.userUpdate);
 
 // router.delete('/delete/:id', userController.deleteUser);
 
