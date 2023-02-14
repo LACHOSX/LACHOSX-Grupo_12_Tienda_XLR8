@@ -1,3 +1,13 @@
+const authMiddleware = (req, res, next) => {
+	if (req.session.userLogOk != undefined) {
+		next();
+	} else {
+		res.send('Esta pagina es solo para usuarios');
+	}
+}
+module.exports = authMiddleware;
+
+
 // const authenticatedValidation = (req, res, next) => { 
 //     // express continue en el flujo
 //     // verificar si el usuario esta autenticado

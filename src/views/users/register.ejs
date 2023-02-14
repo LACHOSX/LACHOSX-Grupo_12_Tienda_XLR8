@@ -3,6 +3,16 @@
 
 
     <main>
+      <% if (typeof errors != 'undefined') { %>
+        <p style="color:red"> ERROR ADASFSDFSD </p>
+        <ul>
+          <% for (let i = 0; i < errors.length; i++) { %>
+            <li>
+              <% errors[i].msg %>
+            </li>
+          <% } %>
+        </ul>
+      <% } %>
       <form action="/profile" method="post" enctype="multipart/form-data">
         <input type="file" name="avatar" />
       </form>
@@ -14,13 +24,10 @@
             </a>
           </div>
           <h4>Formulario de Registro</h4>
-<<<<<<< Updated upstream
-=======
           <fieldset>
             <legend>Seleccione su foto de perfil:</legend>
             <input type="file" name="avatar">
           </fieldset>
->>>>>>> Stashed changes
           <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre">
           <input class="controls" type="text" name="last_name" id="apellido" placeholder="Apellido">
           <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico">
@@ -53,7 +60,7 @@
           </br>
           <h5>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></h5>
           <button class="botons" type="submit"> REGISTRARME </button>
-          <h6><a href="/ingresar">¿Ya tienes una Cuenta?</a></h6>
+          <h6><a href="/login">¿Ya tienes una Cuenta?</a></h6>
         </section>
       </form>
     </main>

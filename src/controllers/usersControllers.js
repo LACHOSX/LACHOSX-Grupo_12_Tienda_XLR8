@@ -3,6 +3,8 @@ const path = require('path');
 const model = require("../database/models/User");
 const { Op } = require("sequelize");
 const db = require("../database/models"); 
+const {validationResult} = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 // CREACION DE USUARIO
 const register = function (req, res) {    
@@ -17,7 +19,7 @@ const createUser = async function (req, res) {
             last_name: req.body.last_name,
             email: req.body.email,
             phone: req.body.phone,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria = Messi
             //password: req.body.password2,
             birthday: req.body.birthday,
             genre: req.body.genre
@@ -25,21 +27,45 @@ const createUser = async function (req, res) {
     } catch (error) {
         console.log("ERROR CREANDO USUARIO", error)
     }    
-    res.render('/');
+    return res.redirect('/');
 }
 
 //  LOGIN DE USUARIO
-const loginUser = function (req, res) {    
-    res.render('/users/login');
+const login = function (req, res) {    
+    res.render('users/login');
 }
 
 //  LOGIN-IN DE USUARIO
-const login = function (req, res) {    
-    res.render('/users/login');
+const processLogin = async function (req, res) {
+	let errors = validationResult(req);
+	let userToLog = [];
+
+	if (errors.isEmpty()) {
+		let userDb = await db.User.findAll(req.params.email)
+
+		if( userDb == "") {
+			userToLog = [];
+		} else {
+			userToLog = db.User;
+		}
+		
+		for (let i = 0; i < userDb.length; i ++) {
+			if (userDb[i].email == req.body.email) {
+				if (bcrypt.compareSync(req.body.password, userDb[i].password)) {
+					userToLog = userDb[i];
+					break;
+				}
+			}
+		}
+        res.redirect('/')
+        		
+	} else {
+        console.log(errors)
+        res.render('users/login', {errors: errors.errors}) // 
+    }
 }
 
 //  EDICION DE USUARIO
-
 const userEdit = async function (req, res) {
     try {
         let getUser = await db.User.findByPk(req.params.id)
@@ -74,10 +100,27 @@ const userUpdate = async function(req, res) {
     res.redirect('/') //redirecciona a ruta home
 }
 //  BORRADO DE USUARIO
+const deleteUser = async function (req, res) {
+    try {
+         let getUser = await db.User.destroy(req.params.id)
+            
+         console.log(getUser),
+         {
+            where: {
+                id: req.params.id
+            }
+        };
+        console.log(getUser);
+        res.redirect('./users') 
+    } catch (error) {
+        console.log("ERROR DELETE USER", error)
+    }
+}
 
 // LISTA
 
 
-module.exports = { register, createUser, loginUser, login, userEdit, userUpdate};
+module.exports = { register, createUser, login, processLogin, userEdit, userUpdate, deleteUser};
 
-// userList, detail, userEdit, deleteUser
+
+//userList, detail, userEdit

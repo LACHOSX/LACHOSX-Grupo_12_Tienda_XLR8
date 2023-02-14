@@ -78,7 +78,9 @@
                 </fieldset>
                 </br>
                 <button class="botons" type="submit"> EDITAR PRODUCTO</button>
-                <button class="botons" type="submit"> ELIMINAR PRODUCTO </button>
+                <form action="/products/delete/<%= getProduct.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
+                </form>
                  
           </section>
           </form>

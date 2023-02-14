@@ -2,6 +2,10 @@
 const path = require('path');
 //requiero el file system para poder convertir el json
 const fs = require('fs');
+
+const db = require('../database/models/');
+
+
 //creo una constante para poder unir el path con la ruta del json 
 const productsFilePath = path.join(__dirname, '../data/products.json');
 //creo una constante para guardar en ella el json convertido y que javascript lo pueda entender

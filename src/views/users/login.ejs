@@ -1,8 +1,18 @@
 <%- include('../partials/metadata') %>
     <%- include('../partials/header') %>
 
-        <main>
-            <form>
+        <main>    
+            <% if (typeof errors != 'undefined') { %>
+                <p style="color:red"> ERROR ARRARYYRYRYRYR </p>
+                <ul>
+                  <% errors.forEach(error => { %>
+                    <li>
+                      <% errors.msg %>
+                    </li>
+                  <% }) %>
+                </ul>
+              <% } %>        
+            <form action="/users/login" method="POST">
                 <section class="form-register">
                     <div class="logo1">
                         <a href="/">
@@ -11,17 +21,16 @@
                     </div>
                     <h4>Ingresar a tu cuenta</h4>
                     <input class="controls" type="email" name="email" id="email" placeholder="Ingrese su Correo">
-                    <input class="controls" type="password" name="password1" id="password"
-                        placeholder="Ingrese su Contraseña">
+                    <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña">
 
+                    <p>
+                        <input type="checkbox" name="remember"> Deseo mantener abierta mi sesión <br>    
+                    </p>
                     <input class="botons" type="submit" value="Ingresar">
                     </br>
                     </br>
-                    <h6><a href="#">¿Olvidaste tu Contraseña?</a></h6>
-                    <p>
-                        <input type="checkbox" name="peliculas"> Deseo mantener abierta mi sesión<br>
-
-                    </p>
+                    <h6><a href="/register">¿Olvidaste tu Contraseña? Lolamento!</a></h6>
+                    
                     </br>
                 </section>
             </form>

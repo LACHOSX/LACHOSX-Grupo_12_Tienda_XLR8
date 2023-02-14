@@ -88,7 +88,23 @@ const updateProduct = async function(req, res) {
 }
 
 //  BORRADO DE PRODUCTO
+const deleteProduct = async function (req, res) {
+    try {
+         let getProduct = await db.Product.destroy(req.params.id)
+            
+         console.log(getProduct),
+         {
+            where: {
+                id: req.params.id
+            }
+        };
+        console.log(getProduct);
+        res.redirect('./products') 
+    } catch (error) {
+        console.log("ERROR DELETE PRODUCT", error)
+    }
+}
 
-module.exports = {createProduct, storeProduct, productDetail, editProduct, updateProduct};
+module.exports = {createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct};
 
-//productsList, deleteProduct, cart, productCartNone
+//productsList, cart, productCartNone

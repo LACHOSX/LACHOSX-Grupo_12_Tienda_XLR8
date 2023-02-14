@@ -3,16 +3,17 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-const db = require('../database/models/');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
+const validateCreateForm = require('../middlewares/validateCreateForm');
+const validateLogin = require('../middlewares/validateLogin');
 
-const bcrypt = require('bcryptjs');
-const fs = require('fs');
+const db = require('../database/models/');
 
 const app = express()
 
 //Requiero el paquete express-validator
 const {
-  check,
   validationResult,
   body
 } = require('express-validator');
@@ -33,15 +34,14 @@ const storage = multer.diskStorage({
  
 const upload = multer({ storage })
 
-//--------------------------------------------
+//--------ROUTERS---------------------------
 
 //router.get('/', userController.userList)
+router.get('/register', guestMiddleware, userController.register);
+router.post('/register', validateCreateForm, upload.single('avatar'), logDBMiddleware, userController.createUser);
 
-router.get('/register', userController.register);
-router.post('/register', upload.single('avatar'), logDBMiddleware, userController.createUser);
-
-router.get('/login', userController.loginUser)
-// router.post('/', verificarUsuario, upload.single('image'), userController.login)
+router.get('/login', userController.login)
+router.post('/login', validateLogin, userController.processLogin)
 
 // router.get('/search', userController.searchUser);
 
@@ -50,6 +50,6 @@ router.get('/login', userController.loginUser)
  router.get('/edit/:id', userController.userEdit);
  router.put('/edit/:id', userController.userUpdate);
 
-// router.delete('/delete/:id', userController.deleteUser);
+router.delete('/delete/:id', userController.deleteUser);
 
 module.exports = router;
