@@ -4,18 +4,20 @@ const fs = require('fs');
 // Guarda en una variable la transformacion de JSON en array de objetos.
 // let products = JSON.parse(fs.readFileSync(productsFilePath, { encoding: 'utf-8' }));
 // sirve para limitar los 0 detras de la coma y que no quede feo a la vista o con muchos decimales
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const toThousand = n => n.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require("../database/models"); 
 
 //LISTADO DE TODOS LOS PRODUCTOS:
 const productList = async function (req, res){
-    let getProductList = await db.Product.findAll(req.params.id)
+    //let getProductList = await db.Product.findAll
     try {
+        let getProductList = await db.Product.findAll()
         console.log(getProductList);
-        } catch (error) {
-        console.log("ERROR LIST", error)
+        res.render('products/productList', {getProductList, toThousand});   
     }
-    res.render('/', {getProductList, toThousand});
+        catch (error) {
+        console.log("ERROR LIST", error)}
+    
 }
 
 // CREACION DEL PRODUCTO

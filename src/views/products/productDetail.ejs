@@ -21,15 +21,15 @@
                         </h1>
                     </div>
                     <div class="price">
-                        <% if (getDetailProduct.discount==0) { %>
+                        <% if (getDetailProduct.price_discount==0) { %>
                             <p class="precio-producto">
                                 $<%= toThousand(getDetailProduct.price) %>
                             </p>
                             <% } else { %>
                                 <p class="precio-producto">$<%= toThousand(getDetailProduct.price-(getDetailProduct.price *
-                                        getDetailProduct.discount /100))%> &nbsp
+                                        getDetailProduct.price_discount /100))%> &nbsp
                                         <FONT SIZE=5 style="color:#009900" ;>
-                                            <%= getDetailProduct.discount %>% Off
+                                            <%= getDetailProduct.price_discount %>% Off
                                         </font>
                                 </p>
                                 <% } %>
@@ -37,10 +37,10 @@
                     </div>
                     <div class="cuotas">
                         <p class="price"> 3 cuotas sin interés de
-                            <% if (getDetailProduct.discount==0) { %>
+                            <% if (getDetailProduct.price_discount==0) { %>
                                 $<%= toThousand(getDetailProduct.price/3) %>
                                     <% } else { %>
-                                        $<%= toThousand((getDetailProduct.price-(getDetailProduct.price * getDetailProduct.discount
+                                        $<%= toThousand((getDetailProduct.price-(getDetailProduct.price * getDetailProduct.price_discount
                                             /100))/3) %>
                                             <% } %>
                         </p>
@@ -67,7 +67,7 @@
                             <button type="submit" class="button-div">
                                 Editar producto</button></a>
 
-                        <form action="/products/delete/<%= getProduct.id %>?_method=DELETE" method="POST">
+                        <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
                             <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
                         </form>
                         <div class="agregar-carrito">
