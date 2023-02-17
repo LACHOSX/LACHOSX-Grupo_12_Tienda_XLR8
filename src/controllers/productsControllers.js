@@ -7,13 +7,24 @@ const fs = require('fs');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require("../database/models"); 
 
+//LISTADO DE TODOS LOS PRODUCTOS:
+const productList = async function (req, res){
+    let getProductList = await db.Product.findAll(req.params.id)
+    try {
+        console.log(getProductList);
+        } catch (error) {
+        console.log("ERROR LIST", error)
+    }
+    res.render('/', {getProductList, toThousand});
+}
+
 // CREACION DEL PRODUCTO
 const createProduct = function (req, res) {    
     res.render('../views/products/newProduct.ejs');
 }
 
 //GUARDADO DEL PRODUCTO
-const storeProduct = async function (req, res) {
+const storeProduct = async function (req, res, next) {
     try {
         await db.Product.create({
             title: req.body.title,
@@ -36,6 +47,7 @@ const storeProduct = async function (req, res) {
     res.render('products/newProduct');
 }
 
+//DETALLE DEL PRODUCTO
 const productDetail = async function (req, res) {
     try {
         let getDetailProduct = await db.Product.findByPk(req.params.id)
@@ -52,7 +64,7 @@ const editProduct = async function (req, res) {
     try {
         let getProduct = await db.Product.findByPk(req.params.id)
         console.log(getProduct);
-        res.render('products/editProduct', { getProduct: getProduct })
+        res.render('../products/editProduct', { getProduct: getProduct })
     } catch (error) {
         console.log("ERROR EDIT PRODUCT", error)
     }
@@ -105,6 +117,6 @@ const deleteProduct = async function (req, res) {
     }
 }
 
-module.exports = {createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct};
+module.exports = {productList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct};
 
-//productsList, cart, productCartNone
+//cart, productCartNone

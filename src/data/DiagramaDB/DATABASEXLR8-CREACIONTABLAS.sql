@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`products` (
   `new` INT(11) NOT NULL,
   `createdAt` DATE NOT NULL,
   `updatedAt` DATE NOT NULL,
-  `deletedAt` INT(11) NOT NULL,
+  `deletedAt` DATE,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 4

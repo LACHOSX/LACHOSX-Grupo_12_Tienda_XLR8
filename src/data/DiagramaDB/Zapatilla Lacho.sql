@@ -1,0 +1,1 @@
+SELECT * FROM xrl8.products;

@@ -14,6 +14,9 @@ let storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
+//RUTA LISTA DE PRODUCTOS
+router.get('/', productsController.productList) //ésta ruta es correcta?
+
 router.get('/create', productsController.createProduct)
 router.post('/create', upload.single('img1'), productsController.storeProduct)
 
