@@ -5,11 +5,20 @@
             <div class="container">
                 <div class="div-foto">
                     <div class="div-contenedor">
-                        <img class="img-grande" src="<%= getDetailProduct.img1 %>" alt="">
+                        <% if (getDetailProduct.photo1.includes('https')) { %>
+                            <img class="img-grande" src="<%= getDetailProduct.photo1%>" alt="">
+                        <% } else {%>
+                            <img class="img-grande" src="/images/products/<%= getDetailProduct.photo1%>" alt="">
+                         <% } %>
                     </div>
                     <div class="div-contenedor-img-principal">
-                        <img class="img-chica " src="<%= getDetailProduct.img2 %>" alt="">
-                        <img class="img-chica " src="<%= getDetailProduct.img3 %>" alt="">
+                        <% if (getDetailProduct.photo1.includes('https')) { %>
+                            <img class="img-chica " src="<%= getDetailProduct.photo1%>" alt="">
+                            <img class="img-chica " src="<%= getDetailProduct.photo1%>" alt="">
+                        <% } else {%>
+                            <img class="img-chica " src="/images/products/<%= getDetailProduct.photo1%>" alt="">
+                            <img class="img-chica " src="/images/products/<%= getDetailProduct.photo1%>" alt="">
+                         <% } %>
                     </div>
                 </div>
             </div>

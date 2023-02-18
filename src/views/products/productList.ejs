@@ -19,7 +19,11 @@
                                     <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
                                     <% } %>
                                         <a href="/products/detail/<%= getProductList.id %>">
-                                            <img src="/images/products/<%= getProductList.img1%>">
+                                           <% if (getProductList.photo1.includes('https')) { %>
+                                            <img src="<%= getProductList.photo1%>">
+                                           <% } else {%>
+                                            <img src="/images/products/<%= getProductList.photo1%>">
+                                            <% } %>
                                         </div>
                                         <h1 class="titulo-producto">
                                             <%= getProductList.title -%>

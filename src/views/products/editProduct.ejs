@@ -2,98 +2,120 @@
 <%- include('../partials/header')  %> 
 
     
-    <main>
-        <form action="/products/edit/<%=getProduct.id%>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? --> 
-            
-            <section class="form-register" id="product-div">
-                <div class="logo1">
-                    <a href="/">
-                        <img src="\images\completo-XLR8-mediano.png">
-                    </a>
-                </div>
-                <h4>EDITAR PRODUCTO</h4>
-                <input class="controls" type="text" name="title" id="tituloProducto" value="<%= getProduct.title %>">
-                <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= <%= getProduct.img1%>>
-                <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= <%= getProduct.img2%>>
-                <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= <%= getProduct.img2%>>
-                <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getProduct.description %></textarea>
-                <input class="controls" type="number" name="price" id="price" value= <%= getProduct.price %>>
-                <input class="controls" type="number" name="discount" id="discount-price" value= <%= getProduct.price_discount%>>
-                <div class="labels-div">
-                    <fieldset class="fieldset">
-                        <label for="talle">TALLE</label>
+<main>
+        
+    <section class="form-register" id="product-div">
+        <div class="logo1">
+            <a href="/">
+                <img src="/images/completo-XLR8-mediano.png">
+            </a>
+        </div>
+        <h4>EDITAR PRODUCTO</h4>
+        <form action="/products/edit/<%= getProduct.id %>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? -->  
+        <input class="controls" type="text" name="title" id="tituloProducto" value="<%= getProduct.title %>">
+        <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img1%>">
+        <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">
+        <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">
+        <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getProduct.description %></textarea>
+        <input class="controls" type="number" name="price" id="price" value= "<%= getProduct.price %>">
+        <input class="controls" type="number" name="price_discount" id="discount-price" value= "<%= getProduct.price_discount%>">
+        <div class="labels-div">
+            <fieldset class="fieldset">
+                <label for="talle">TALLE</label>
+        <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
+        <% let oldSize; %>
+        <% if (!locals.old || !old.size) { %>
+            <% oldSize = getProduct.size %>
+        <% } else { %>
+            <% oldSize = old.size %>
+        <% } %>
 
-                <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
-                <% let oldSize; %>
-                <% if (!locals.old || !old.size) { %>
-                    <% oldSize = getProduct.size %>
+        <select id="talle" name="size">
+            <option value="" disabled>Elige una opción</option>
+            <option value="small" <%= oldSize == 'small' ? 'selected' : null %>>SMALL</option>
+            <option value="medium" <%= oldSize == 'medium' ? 'selected' : null %>>MEDIUM</option>
+            <option value="large" <%= oldSize == 'large' ? 'selected' : null %>>LARGE</option>
+            <option value="xl" <%= oldSize == 'xl' ? 'selected' : null %>>XL</option>
+        </select>
+        
+        
+        <label for="color">COLOR</label>
+        <% let oldColor; %>
+        <% if (!locals.old || !old.color) { %>
+            <% oldColor = getProduct.color %>
+        <% } else { %>
+            <% oldColor = old.color %>
+        <% } %>
+        <select id="color" name="color">
+            <option value="negro" <%= oldColor == 'negro' ? 'selected' : null %>>NEGRO</option>
+            <option value="gris" <%= oldColor == 'gris' ? 'selected' : null %>>GRIS</option>
+            <option value="blanco" <%= oldColor == 'blanco' ? 'selected' : null %>>BLANCO</option>
+            <option value="color" <%= oldColor == 'color' ? 'selected' : null %>>COLOR</option>
+        </select>
+            </fieldset>
+        </div>
+        <fieldset>
+            <div class="genre-0">
+                <!-- REVISAR CSS -->
+                <p class="p-style">CATEGORIAS</p>
+                <% let oldGenre; %>
+                <% if (!locals.old || !old.genre) { %>
+                    <% oldGenre = getProduct.genre %>
                 <% } else { %>
-                    <% oldSize = old.size %>
+                  <% oldGenre = old.genre %>
                 <% } %>
-
-                <select id="talle" name="size">
-                    <option value="" disabled>Elige una opción</option>
-                    <option value="small" <%= oldSize == 'small' ? 'selected' : null %>>SMALL</option>
-                    <option value="medium" <%= oldSize == 'medium' ? 'selected' : null %>>MEDIUM</option>
-                    <option value="large" <%= oldSize == 'large' ? 'selected' : null %>>LARGE</option>
-                    <option value="xl" <%= oldSize == 'xl' ? 'selected' : null %>>XL</option>
-                </select>
-                <label for="color">COLOR</label>
-                <select id="color" name="color">
-                    <option value="negro">NEGRO</option>
-                    <option value="gris">GRIS</option>
-                    <option value="blanco">BLANCO</option>
-                    <option value="color">COLOR</option>
-                </select>
-                    </fieldset>
+                <div class="div-style">
+                    <label>HOMBRE<input type='radio' name='genre_product' value="hombre" <%= oldGenre == 'hombre' ? 'selected' : null %>> </label>
+                    </br>
+                    <label>MUJER<input type='radio' name='genre_product' value="mujer" <%= oldGenre == 'mujer' ? 'selected' : null %>> </label>
+                    </br>
+                    <label>UNISEX<input type='radio' name='genre_product' value="unisex" <%= oldGenre == 'unisex' ? 'selected' : null %>> </label>
+                    </br>
                 </div>
-                <fieldset>
-                    <div class="genre-0">
-                        <!-- REVISAR CSS -->
-                        <p class="p-style">CATEGORIAS</p>
-                        <div class="div-style">
-                            <label>HOMBRE<input type='radio' name='genero' value="hombre"> </label>
-                            </br>
-                            <label>MUJER<input type='radio' name='genero' value="mujer"> </label>
-                            </br>
-                            <label>UNISEX<input type='radio' name='genero' value="unisex"> </label>
-                            </br>
-                        </div>
-                        
+                
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="categories">
+                <p class="p-style-1"> TIPO DE PRENDA </p>
+                <% let oldType; %>
+                <% if (!locals.old || !old.type) { %>
+                    <% oldType = getProduct.type %>
+                <% } else { %>
+                  <% oldType = old.type %>
+                <% } %>
+                <div class="genre">
+                    <label>REMERAS<input type='radio' name='type' value="remeras" <%= oldType == 'remeras' ? 'selected' : null %>> </label>
+                    </br>
+                    <label>PANTALONES<input type='radio' name='type' value="pantalones" <%= oldType == 'pantalones' ? 'selected' : null %>> </label>
+                    </br>
+                    <label>SHORTS<input type='radio' name='type' value="short" <%= oldType == 'short' ? 'selected' : null %>> </label>
+                    </br>
                     </div>
-                </fieldset>
-                <fieldset>
-                    <div class="categories">
-                        <p class="p-style-1"> TIPO DE PRENDA </p>
-                        <div class="genre">
-                            <label>REMERAS<input type='radio' name='categories' value="remeras"> </label>
-                            </br>
-                            <label>PANTALONES<input type='radio' name='categories' value="pantalones"> </label>
-                            </br>
-                            <label>SHORTS<input type='radio' name='categories' value="short"> </label>
-                            </br>
-                            </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="categories" >
+                <p class="p-style-2"> NUEVO PRODUCTO </p>
+                <div class="genre-1">
+                    <label>SI<input type='radio' name='new' value="0"> </label>
+                    </br>
+                    <label>NO<input type='radio' name='new' value="1"> </label>
+                    </br>
                     </div>
-                </fieldset>
-                <fieldset>
-                    <div class="categories" >
-                        <p class="p-style-2"> NUEVO PRODUCTO </p>
-                        <div class="genre-1">
-                            <label>SI<input type='radio' name='new' value="true"> </label>
-                            </br>
-                            <label>NO<input type='radio' name='new' value="false"> </label>
-                            </br>
-                            </div>
-                    </div>
-                </fieldset>
-                </br>
-                <button class="botons" type="submit"> EDITAR PRODUCTO</button>
-                <form action="/products/delete/<%= getProduct.id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
-                </form>
-                 
-          </section>
-          </form>
-    </main>
+            </div>
+        </fieldset>
+        </br>
+        <button type="submit" class="botons"> EDITAR PRODUCTO</button>
+        
+        </br>
+        <form action="/products/delete/<%= getProduct.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
+        </form>
+
+  </section>
+  
+  </form>
+</main>
 
     <%- include('../partials/footer')  %>   

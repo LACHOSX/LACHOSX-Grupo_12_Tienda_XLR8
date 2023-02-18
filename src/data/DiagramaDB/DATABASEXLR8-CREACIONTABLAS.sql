@@ -39,10 +39,7 @@ CREATE TABLE IF NOT EXISTS `xrl8`.`products` (
   `color` VARCHAR(100) NOT NULL,
   `genre_product` VARCHAR(100) NOT NULL,
   `type` VARCHAR(100) NOT NULL,
-  `new` INT(11) NOT NULL,
-  `createdAt` DATE NOT NULL,
-  `updatedAt` DATE NOT NULL,
-  `deletedAt` DATE,
+  `new` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 4

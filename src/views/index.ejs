@@ -38,42 +38,37 @@
                     <% offers.forEach( product=> { %>
                         <article>
                             <div class="fotoProducto">
-                                <% if (product.discount !=0) { %>
-                                    <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
-                                    <% } %>
-                                        <a href="/products/detail/<%= product.id %>">
-                                            <img src="/images/products/<%= product.img1%>">
-                                        </a>
+                                <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
+                                    <a href="/products/detail/<%=  product.id %>">
+                                        <% if (product.photo1.includes('https')) { %>
+                                            <img src="<%= product.photo1%>">
+                                           <% } else {%>
+                                            <img src="/images/products/<%= product.photo1%>">
+                                            <% } %>
+                                    </a>
                             </div>
                             <h1 class="titulo-producto">
-                                <%= product.name %>
+                                <%=  product.name %>
                             </h1>
                             <div class="descripcion-producto">
                                 <div class="precio-producto">
-                                    <% if (product.discount==0) { %>
-                                        <p class="precio">
-                                            $<%= product.price %>
-                                        </p>
-                                        <% } else { %>
-                                            <p class="precio">
-                                                $<%= toThousand(product.price-(product.price * product.discount /100))%>
-                                            </p>
-                                            <p class="descuento">
-                                                <%= product.discount %>% OFF
-                                            </p>
-                                            <% } %>
+                                    <p class="precio">
+                                        $<%= toThousand( product.price-( product.price *  product.price_discount /100))%>
+                                    </p>
+                                    <p class="descuento">
+                                        <%=  product.price_discount %>% OFF
+                                    </p>
                                 </div>
                                 <div class="etiquetas-categorias">
-
                                 </div>
                             </div>
                             <div class="etiquetas">
                                 <div>
-                                    <p> Genero: <%= product.genre %>
+                                    <p> Genero: <%=  product.genre %>
                                     </p>
-                                    <p> Talle: <%= product.size %>
+                                    <p> Talle: <%=  product.size %>
                                     </p>
-                                    <p> Color: <%= product.color %>
+                                    <p> Color: <%=  product.color %>
                                     </p>
                                 </div>
                                 <button class="boton-de-compra"
@@ -112,28 +107,32 @@
                     <% newProducts.forEach( product=> { %>
                         <article>
                             <div class="fotoProducto">
-                                <% if (product.discount !=0) { %>
+                                <% if (product.price_discount !=0) { %>
                                     <img src="/images/discount-label-for-commerce.png" class="icono-oferta"></i>
                                     <% } %>
                                         <a href="/products/detail/<%= product.id %>">
-                                            <img src="/images/products/<%= product.img1%>">
+                                            <% if (product.photo1.includes('https')) { %>
+                                                <img src="<%= product.photo1%>">
+                                               <% } else {%>
+                                                <img src="/images/products/<%= product.photo1%>">
+                                                <% } %>                      
                                         </a>
                             </div>
                             <h1 class="titulo-producto">
-                                <%= product.name %>
+                                <%= product.title %>
                             </h1>
                             <div class="descripcion-producto">
                                 <div class="precio-producto">
-                                    <% if (product.discount==0) { %>
+                                    <% if (product.price_discount==0) { %>
                                         <p class="precio">
                                             $<%= product.price %>
                                         </p>
                                         <% } else { %>
                                             <p class="precio">
-                                                $<%= toThousand(product.price-(product.price * product.discount /100))%>
+                                                $<%= toThousand(product.price-(product.price * product.price_discount /100))%>
                                             </p>
                                             <p class="descuento">
-                                                <%= product.discount %>% OFF
+                                                <%= product.price_discount %>% OFF
                                             </p>
                                             <% } %>
                                 </div>

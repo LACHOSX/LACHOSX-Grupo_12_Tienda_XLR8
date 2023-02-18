@@ -11,12 +11,11 @@ const db = require("../database/models");
 const productList = async function (req, res){
     //let getProductList = await db.Product.findAll
     try {
-        let getProductList = await db.Product.findAll()
-        console.log(getProductList);
+        let getProductList = await db.Product.findAll();
         res.render('products/productList', {getProductList, toThousand});   
+    } catch (error) {
+        console.log("ERROR LIST", error)
     }
-        catch (error) {
-        console.log("ERROR LIST", error)}
     
 }
 
@@ -29,18 +28,8 @@ const createProduct = function (req, res) {
 const storeProduct = async function (req, res, next) {
     try {
         await db.Product.create({
-            title: req.body.title,
-            photo1: req.body.img1,
-            photo2: req.body.img2,
-            photo3: req.body.img3,
-            description: req.body.description,
-            price: req.body.price,
-            price_discount: req.body.price_discount,
-            size: req.body.size,
-            color: req.body.color,
-            genre_product: req.body.genero,
-            type: req.body.categories,
-            new: req.body.new
+            ...req.body,
+            photo1: req.file.filename,
         });        
     } catch (error) {
         console.log("ERROR CREATE", error)
@@ -53,71 +42,70 @@ const storeProduct = async function (req, res, next) {
 const productDetail = async function (req, res) {
     try {
         let getDetailProduct = await db.Product.findByPk(req.params.id)
-        console.log(getDetailProduct);
         res.render('products/productDetail', {getDetailProduct, toThousand});
     } catch (error) {
         console.log("ERROR DETAIL PRODUCT", error)
-    }
-    
+    }  
 }
-
 // LOGICA DE EDITAR PRODUCTO
 const editProduct = async function (req, res) {
     try {
         let getProduct = await db.Product.findByPk(req.params.id)
-        console.log(getProduct);
-        res.render('products/editProduct', { getProduct: getProduct })
+        res.render('products/editProduct', { getProduct })
     } catch (error) {
         console.log("ERROR EDIT PRODUCT", error)
     }
 }
 
-//, { include: { all: true } }
 //ACTUALIZACION DEL PRODUCTO 
 const updateProduct = async function(req, res, next) {
-    let getProductToEdit = await db.Product.findByPk(req.params.id)
-    console.log(req.body)
+    let idProduct = req.params.id;
+    let getProduct;
+    try{
+        getProduct = await  db.Product.findByPk(idProduct);
+    } catch(error){
+        console.log(error);
+    }
     try {
-        if (req.body.image == undefined) {
+        if (req.file == undefined) {
             //si viene indefinido el campo de imagen, almacena la misma imagen que ya tenia
-            await getProductToEdit.update({
+            await getProduct.update({
                 ...req.body,
-                photo1: productDetail.img1,
-                photo2: productDetail.img2,
-                photo3: productDetail.img3
-            })
-            
-            res.redirect('/')                    
+                photo1: getProduct.img1,
+                photo2: getProduct.img2,
+                photo3: getProduct.img3,                
+            })  
+            getProduct = await  db.Product.findByPk(idProduct);
+            res.render('products/editProduct', { getProduct })
+                
         } else {
             //si viene una nueva imagen en la edicion, se almacena la nueva imagen
-            await getProductToEdit.update({
+            console.log("entro a la imagen que llega por req.file");
+            await getProduct.update({  
                 ...req.body,
-                photo1: req.file.img1,
-                photo2: req.file.img2,
-                photo3: req.file.img3
+                photo1: req.file.filename,
+                photo2: getProduct.img2,
+                photo3: getProduct.img3,
             })
-            res.redirect('/')
+            getProduct = await  db.Product.findByPk(idProduct);
+            res.render('products/editProduct', { getProduct })
+          
         } 
     } catch (error) {
         console.log("ERROR UPDATE PRODUCT", error)
     }
-
-    //redirecciona a ruta de productos (hacer redireccion a detalle del producto editado. Primero hacer logica find by pk con el id que viene por req.params.id y guardarlo en variable similar a detalle y mandarlo a la vista la info del producto una vez editado.)
 }
-
-//  BORRADO DE PRODUCTO
+//  BORRADO DE PRODUCTO METODO HARD DELETE
 const deleteProduct = async function (req, res) {
     try {
-         let getProduct = await db.Product.destroy(req.params.id)
-            
-         console.log(getProduct),
-         {
-            where: {
-                id: req.params.id
-            }
-        };
-        console.log(getProduct);
-        res.redirect('./products') 
+         let getProduct = await db.Product.findByPk(req.params.id) 
+         
+         console.log(getProduct)
+         
+         await getProduct.destroy()
+         
+         
+        res.redirect('/products') 
     } catch (error) {
         console.log("ERROR DELETE PRODUCT", error)
     }
