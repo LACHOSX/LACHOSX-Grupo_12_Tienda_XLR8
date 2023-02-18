@@ -35,7 +35,7 @@ const storeProduct = async function (req, res, next) {
             photo3: req.body.img3,
             description: req.body.description,
             price: req.body.price,
-            price_discount: req.body.discount,
+            price_discount: req.body.price_discount,
             size: req.body.size,
             color: req.body.color,
             genre_product: req.body.genero,
@@ -66,7 +66,7 @@ const editProduct = async function (req, res) {
     try {
         let getProduct = await db.Product.findByPk(req.params.id)
         console.log(getProduct);
-        res.render('../products/editProduct', { getProduct: getProduct })
+        res.render('products/editProduct', { getProduct: getProduct })
     } catch (error) {
         console.log("ERROR EDIT PRODUCT", error)
     }
@@ -74,31 +74,35 @@ const editProduct = async function (req, res) {
 
 //, { include: { all: true } }
 //ACTUALIZACION DEL PRODUCTO 
-const updateProduct = async function(req, res) {
+const updateProduct = async function(req, res, next) {
+    let getProductToEdit = await db.Product.findByPk(req.params.id)
+    console.log(req.body)
     try {
-        await db.Product.update({
-            title: req.body.title,
-            photo1: req.body.img1,
-            photo2: req.body.img2,
-            photo3: req.body.img3,
-            description: req.body.description,
-            price: req.body.price,
-            price_discount: req.body.discount,
-            size: req.body.size,
-            color: req.body.color,
-            genre_product: req.body.genero,
-            type: req.body.categories,
-            new: req.body.new
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }); 
-               
+        if (req.body.image == undefined) {
+            //si viene indefinido el campo de imagen, almacena la misma imagen que ya tenia
+            await getProductToEdit.update({
+                ...req.body,
+                photo1: productDetail.img1,
+                photo2: productDetail.img2,
+                photo3: productDetail.img3
+            })
+            
+            res.redirect('/')                    
+        } else {
+            //si viene una nueva imagen en la edicion, se almacena la nueva imagen
+            await getProductToEdit.update({
+                ...req.body,
+                photo1: req.file.img1,
+                photo2: req.file.img2,
+                photo3: req.file.img3
+            })
+            res.redirect('/')
+        } 
     } catch (error) {
         console.log("ERROR UPDATE PRODUCT", error)
     }
-    res.render('products/productDetail/:id') //redirecciona a ruta de productos
+
+    //redirecciona a ruta de productos (hacer redireccion a detalle del producto editado. Primero hacer logica find by pk con el id que viene por req.params.id y guardarlo en variable similar a detalle y mandarlo a la vista la info del producto una vez editado.)
 }
 
 //  BORRADO DE PRODUCTO

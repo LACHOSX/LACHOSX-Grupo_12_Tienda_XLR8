@@ -20,42 +20,43 @@
                                     <% } %>
                                         <a href="/products/detail/<%= getProductList.id %>">
                                             <img src="/images/products/<%= getProductList.img1%>">
+                                        </div>
+                                        <h1 class="titulo-producto">
+                                            <%= getProductList.title -%>
+                                        </h1>
+                                        <div class="descripcion-producto">
+                                            <div class="precio-producto">
+                                                <% if (getProductList.price_discount==0) { %>
+                                                    <p class="precio">
+                                                        $<%= getProductList.price %>
+                                                    </p>
+                                                    <% } else { %>
+                                                        <p class="precio">
+                                                            $<%= toThousand(getProductList.price-(getProductList.price * getProductList.price_discount /100))%>
+                                                        </p>
+                                                        <p class="descuento">
+                                                            <%= getProductList.price_discount %>% OFF
+                                                        </p>
+                                                        <% } %>
+                                            </div>
+                                            <div class="etiquetas-categorias">
+            
+                                            </div>
+                                        </div>
+                                        <div class="etiquetas">
+                                            <div>
+                                                <p> Genero: <%= getProductList.genre %>
+                                                </p>
+                                                <p> Talle: <%= getProductList.size %>
+                                                </p>
+                                                <p> Color: <%= getProductList.color %>
+                                                </p>
+                                            </div>
+                                            <button class="boton-de-compra"
+                                                href="/products/detail/<%=getProductList.id %> ">COMPRAR</button>
+                                        </div>
                                         </a>
-                            </div>
-                            <h1 class="titulo-producto">
-                                <%= getProductList.title -%>
-                            </h1>
-                            <div class="descripcion-producto">
-                                <div class="precio-producto">
-                                    <% if (getProductList.price_discount==0) { %>
-                                        <p class="precio">
-                                            $<%= getProductList.price %>
-                                        </p>
-                                        <% } else { %>
-                                            <p class="precio">
-                                                $<%= toThousand(getProductList.price-(getProductList.price * getProductList.price_discount /100))%>
-                                            </p>
-                                            <p class="descuento">
-                                                <%= getProductList.price_discount %>% OFF
-                                            </p>
-                                            <% } %>
-                                </div>
-                                <div class="etiquetas-categorias">
-
-                                </div>
-                            </div>
-                            <div class="etiquetas">
-                                <div>
-                                    <p> Genero: <%= getProductList.genre %>
-                                    </p>
-                                    <p> Talle: <%= getProductList.size %>
-                                    </p>
-                                    <p> Color: <%= getProductList.color %>
-                                    </p>
-                                </div>
-                                <button class="boton-de-compra"
-                                    href="/products/detail/<%=getProductList.id %> ">COMPRAR</button>
-                            </div>
+                            
                         </article>
                         <% }) %>
                 </div>

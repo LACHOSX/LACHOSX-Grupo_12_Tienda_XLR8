@@ -41,6 +41,8 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
         tableName: "products", //nombre de la tabla (es opcional si tienen los mismos nombres)        
+        timestamps: false /*Opciones si no ponemos created_at y updated_at nos va a tratar de llenar esa columna por eso le ponemos el timestamps*/,
+
     });
     
     Product.associate = function (models) {
