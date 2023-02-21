@@ -14,8 +14,8 @@
         <form action="/products/edit/<%= getProduct.id %>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? -->  
         <input class="controls" type="text" name="title" id="tituloProducto" value="<%= getProduct.title %>">
         <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img1%>">
-        <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">
-        <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">
+        <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">
+        <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
         <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getProduct.description %></textarea>
         <input class="controls" type="number" name="price" id="price" value= "<%= getProduct.price %>">
         <input class="controls" type="number" name="price_discount" id="discount-price" value= "<%= getProduct.price_discount%>">

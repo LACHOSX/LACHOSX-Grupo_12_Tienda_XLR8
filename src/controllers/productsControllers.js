@@ -83,8 +83,8 @@ const updateProduct = async function(req, res, next) {
             await getProduct.update({
                 ...req.body,
                 photo1: getProduct.img1,
-                photo2: getProduct.img2,
-                photo3: getProduct.img3,                
+                //photo2: getProduct.img2,
+                //photo3: getProduct.img3,                
             })  
             getProduct = await  db.Product.findByPk(idProduct);
             res.render('products/editProduct', { getProduct })
@@ -95,8 +95,8 @@ const updateProduct = async function(req, res, next) {
             await getProduct.update({  
                 ...req.body,
                 photo1: req.file.filename,
-                photo2: getProduct.img2,
-                photo3: getProduct.img3,
+                //photo2: getProduct.img2,
+                //photo3: getProduct.img3,
             })
             getProduct = await  db.Product.findByPk(idProduct);
             res.render('products/editProduct', { getProduct })
