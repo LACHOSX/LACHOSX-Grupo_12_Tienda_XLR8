@@ -2,16 +2,11 @@
     <%- include('../partials/header') %>
 
         <main>    
-            <% if (typeof errors != 'undefined') { %>
-                <p style="color:red"> ERROR ARRARYYRYRYRYR </p>
-                <ul>
-                  <% errors.forEach(error => { %>
-                    <li>
-                      <% errors.msg %>
-                    </li>
-                  <% }) %>
-                </ul>
-              <% } %>        
+          <% if (locals && locals.errorMsg) { %>
+            <% for (let error in errorMsg ) { %>
+              <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
+            <% } %>
+          <% } %>         
             <form action="/users/login" method="POST">
                 <section class="form-register">
                     <div class="logo1">

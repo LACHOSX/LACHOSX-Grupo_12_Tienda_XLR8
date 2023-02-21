@@ -13,23 +13,32 @@ const register = function (req, res) {
 
 //  GUARDADO DE USUARIO
 const createUser = async function (req, res) {
-    try {
-        await db.User.create({
-            name: req.body.name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            phone: req.body.phone,
-            password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria = Messi
-            //password: req.body.password2,
-            birthday: req.body.birthday,
-            genre: req.body.genre
-        });        
-    } catch (error) {
-        console.log("ERROR CREANDO USUARIO", error)
+    let errors = validationResult(req);
+    if (errors.isEmpty()) {
+        try {
+            await db.User.create({
+                name: req.body.name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                phone: req.body.phone,
+                password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria = Messi
+                //password: req.body.password2,
+                birthday: req.body.birthday,
+                genre: req.body.genre
+            });        
+        } catch (error) {
+            console.log("ERROR CREANDO USUARIO", error)
+        }    
+        return res.redirect('/');               
+    } else {
+        console.log(errors)
+        return res.render ('users/register', {
+            errorMsg: errors.errors,
+            old: req.body
+        })
     }    
-    return res.redirect('/');
 }
-
+   
 //  LOGIN DE USUARIO
 const login = function (req, res) {    
     res.render('users/login');
@@ -61,7 +70,10 @@ const processLogin = async function (req, res) {
         		
 	} else {
         console.log(errors)
-        res.render('users/login', {errors: errors.errors}) // 
+        res.render('users/login', {
+            errors: errors.errors,
+            old: req.body
+         })
     }
 }
 

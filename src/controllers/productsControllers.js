@@ -7,6 +7,9 @@ const fs = require('fs');
 const toThousand = n => n.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require("../database/models"); 
 
+// Funcion que nos retornara el resultado de dicha validacion que efectuamos previamente
+const { validationResult } = require('express-validator');
+
 //LISTADO DE TODOS LOS PRODUCTOS:
 const productList = async function (req, res){
     //let getProductList = await db.Product.findAll
@@ -26,16 +29,24 @@ const createProduct = function (req, res) {
 
 //GUARDADO DEL PRODUCTO
 const storeProduct = async function (req, res, next) {
-    try {
-        await db.Product.create({
-            ...req.body,
-            photo1: req.file.filename,
-        });        
-    } catch (error) {
-        console.log("ERROR CREATE", error)
-    }
-    
-    res.render('products/newProduct');
+    let errors = validationResult(req);
+    if (errors.isEmpty()) {
+        try {
+            await db.Product.create({
+                ...req.body,
+                photo1: req.file.filename,
+            });        
+        } catch (error) {
+            console.log("ERROR CREATE", error)
+        }        
+        res.render('products/newProduct');                
+    } else {
+        console.log(errors)
+        return res.render ('products/newProduct', {
+            errorMsg: errors.errors,
+            old: req.body
+        })
+    }    
 }
 
 //DETALLE DEL PRODUCTO

@@ -556,6 +556,12 @@ article .fotoProducto img #foto {
     }
 }
 
+.errors-form {
+    color: palevioletred;
+    font-size: 12px;
+    text-align: left;
+    text-decoration: none;
+  }
 
 /*:::::::::::::::::::::::FOOTER:::::::::::::::::::::::*/
 

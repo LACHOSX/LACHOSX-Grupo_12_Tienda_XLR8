@@ -3,16 +3,12 @@
 
 
     <main>
-      <% if (typeof errors != 'undefined') { %>
-        <p style="color:red"> ERROR ADASFSDFSD </p>
-        <ul>
-          <% for (let i = 0; i < errors.length; i++) { %>
-            <li>
-              <% errors[i].msg %>
-            </li>
-          <% } %>
-        </ul>
-      <% } %>
+      <% if (locals && locals.errorMsg) { %>
+        <% for (let error in errorMsg ) { %>
+          <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
+        <% } %>
+      <% } %> 
+      
       <form action="/profile" method="post" enctype="multipart/form-data">
         <input type="file" name="avatar" />
       </form>
@@ -28,10 +24,10 @@
             <legend>Seleccione su foto de perfil:</legend>
             <input type="file" name="avatar">
           </fieldset>
-          <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre">
-          <input class="controls" type="text" name="last_name" id="apellido" placeholder="Apellido">
-          <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico">
-          <input class="controls" type="text" name="phone" id="telefono" placeholder="Teléfono">
+          <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre" value="<%= locals.old && old.name ? old.name : ''%>">
+          <input class="controls" type="text" name="last_name" id="apellido" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
+          <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
+          <input class="controls" type="text" name="phone" id="telefono" placeholder="Teléfono" value="<%= locals.old && old.phone ? old.phone : ''%>">
           <input class="controls" type="password" name="password" id="password"
             placeholder="Ingrese su Contraseña (Mínimo 8 caracteres)" minlength="8">
           <input class="controls" type="password" name="password2" id="password" placeholder="Reescriba su Contraseña"
@@ -43,17 +39,17 @@
           <fieldset>
             <legend>Seleccione su género:</legend>
             <div>
-              <input type="radio" id="genero" name="genre" value="Masculino">
+              <input type="radio" id="genero" name="genre" value="Masculino" <%= locals.old && old.genre === 'Masculino' ? 'selected' : '' %>>
               <label for="Masculino">Masculino</label>
             </div>
 
             <div>
-              <input type="radio" id="genero" name="genre" value="Femenino">
+              <input type="radio" id="genero" name="genre" value="Femenino" <%= locals.old && old.genre === 'Femenino' ? 'selected' : '' %>>
               <label for="Femenino">Femenino</label>
             </div>
 
             <div>
-              <input type="radio" id="genero" name="genre" value="Sin genero">
+              <input type="radio" id="genero" name="genre" value="Sin genero" <%= locals.old && old.genre === 'Sin genero' ? 'selected' : '' %>>
               <label for="Sin genero">Sin género</label>
             </div>
           </fieldset>
