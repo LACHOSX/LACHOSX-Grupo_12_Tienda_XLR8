@@ -41,4 +41,6 @@ router.put('/edit/:id', validateNewProduct, upload.single('img1'), productsContr
 
 router.delete('/delete/:id', productsController.deleteProduct)
 
+router.get('/cart', productsController.cart)
+
 module.exports = router;

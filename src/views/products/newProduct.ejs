@@ -14,28 +14,25 @@
                     </div>                                  
                     
                     <h4>NUEVO PRODUCTO</h4>
-                    <fieldset>
+                    <div class="errors-form">
                         <% if (locals && locals.errorMsg) { %>
                           <% for (let error in errorMsg ) { %>
                             <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
                           <% } %>
-                        <% } %> 
-                    </fieldset> 
+                        <% } %>
+                    </div>  
                     <input class="controls" type="text" name="title" id="tituloProducto" placeholder="tituloProducto" value="<%= locals.old && old.title ? old.title : ''%>">
                     <br>
-                    <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg"
-                        placeholder="Agregar Foto Frente">
+                    <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" placeholder="Agregar Foto Frente">
                     
                     <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg"
                         placeholder="Agregar Foto Frente">
                     <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg"
                         placeholder="Agregar Foto Frente">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
                     <br>
-                    <textarea id="controls" name="description" rows="10" id="descripcion-area"
-                        placeholder="description" value="<%= locals.old && old.description ? old.description : ''%>"> </textarea>
+                    <textarea id="controls" name="description" rows="10" id="descripcion-area" placeholder="description" value="<%= locals.old && old.description ? old.description : ''%>"> </textarea>
                     <input class="controls" type="number" name="price" id="password" placeholder="Precio" value="<%= locals.old && old.price ? old.price : ''%>">
-                    <input class="controls" type="number" name="price_discount" id="precio-promo"
-                        placeholder="Precio Promocional" value="<%= locals.old && old.price_discount ? old.price_discount : ''%>">
+                    <input class="controls" type="number" name="price_discount" id="precio-promo" placeholder="Precio Promocional" value="<%= locals.old && old.price_discount ? old.price_discount : ''%>">
                     <label for="talle">TALLE</label>
                     <select id="talle" name="size">
                         <option value="small" <%= locals.old && old.size === 'small' ? 'selected' : '' %>>SMALL</option>

@@ -1,8 +1,7 @@
 <%- include('../partials/metadata') %>
     <%- include('../partials/header') %>
 
-        <main>    
-                
+        <main>
             <form action="/users/login" method="POST">
                 <section class="form-register">
                     <div class="logo1">
@@ -11,13 +10,13 @@
                         </a>
                     </div>
                     <h4>Ingresar a tu cuenta</h4>
-                    <fieldset>
+                    <div class="errors-form">
                         <% if (locals && locals.errorMsg) { %>
                           <% for (let error in errorMsg ) { %>
                             <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
                           <% } %>
-                        <% } %> 
-                    </fieldset>     
+                        <% } %>
+                    </div>    
                     <input class="controls" type="email" name="email" id="email" placeholder="Ingrese su Correo">
                     <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña">
 

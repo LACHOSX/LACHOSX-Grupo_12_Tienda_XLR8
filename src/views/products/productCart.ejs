@@ -12,11 +12,16 @@
       
                 <div class="cart-Items">
                       <div class="image-box">
-                          <img src="/images/products/<%= update.img1%>" style="height:100px; width: 90px;" />
+                        <% if (getCartProduct.photo1.includes('https')) { %>
+                            <img class="img-grande" src="<%= getCartProduct.photo1%>" alt="" style="height:100px; width: 90px;" />
+                        <% } else {%>
+                            <img class="img-grande" src="/images/products/<%= getCartProduct.photo1%>" alt="" style="height:100px; width: 90px;" />
+                         <% } %>                         
+                        
                       </div>
                       <div class="about">
-                          <h1 class="title"><%= update.size%> </h1>
-                          <h3 class="subtitle"><%= update.name %> </h3>
+                          <h1 class="title"><%= getCartProduct.size%> </h1>
+                          <h3 class="subtitle"><%= getCartProduct.name %> </h3>
                       </div>
                       <div class="counter">
                           <div class="btn">+</div>
@@ -24,7 +29,7 @@
                           <div class="btn">-</div>
                       </div>
                       <div class="prices">
-                          <div class="amount"> $<%= update.price %> </div>
+                          <div class="amount"> $<%= getCartProduct.price %> </div>
                           <div class="save"><u>Favoritos</u></div>
                           <div class="remove"><u>Quitar</u></div>
                       </div>
@@ -55,7 +60,7 @@
                         <div class="Subtotal">Total</div>
                         <div class="items">1 items</div>
                     </div>
-                    <div class="total-amount">$ <%= update.price %> </div>
+                    <div class="total-amount">$ <%= getCartProduct.price %> </div>
                 </div>
                 <button class="button">Pagar</button>
             </div>

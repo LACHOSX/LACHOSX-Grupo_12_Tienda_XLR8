@@ -120,6 +120,12 @@ const deleteProduct = async function (req, res) {
     }
 }
 
-module.exports = {productList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct};
+// CREACION DEL PRODUCTO
+const cart = function (req, res) {    
+    let getCartProduct = db.Product.findByPk(req.params.id)
+    res.render('products/productCart', {getCartProduct});
+}
 
-//cart, productCartNone
+module.exports = {productList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart};
+
+//productCartNone

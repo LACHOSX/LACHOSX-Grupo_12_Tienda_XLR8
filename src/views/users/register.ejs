@@ -11,24 +11,23 @@
             </a>
           </div>
           <h4>Formulario de Registro</h4>
-          <fieldset>
+          <div class="errors-form">
             <% if (locals && locals.errorMsg) { %>
               <% for (let error in errorMsg ) { %>
                 <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
               <% } %>
-            <% } %> 
-          </fieldset>          
+            <% } %>
+          </div>             
+                    
             <legend>Seleccione su foto de perfil:</legend>
             <input type="file" name="avatar">
           </fieldset>
-          <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre" value="<%= locals.old && old.name ? old.name : ''%>">
+          <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre" value="<%= locals.old && old.name ? old.name : ''%>">  
           <input class="controls" type="text" name="last_name" id="apellido" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
           <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
-          <input class="controls" type="text" name="phone" id="telefono" placeholder="Teléfono" value="<%= locals.old && old.phone ? old.phone : ''%>">
-          <input class="controls" type="password" name="password" id="password"
-            placeholder="Ingrese su Contraseña (Mínimo 8 caracteres)" minlength="8">
-          <input class="controls" type="password" name="password2" id="password" placeholder="Reescriba su Contraseña"
-            minlength="8">
+          <input class="controls" type="number" name="phone" id="telefono" placeholder="Teléfono" value="<%= locals.old && old.phone ? old.phone : ''%>">
+          <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña (Mínimo 8 caracteres)" minlength="8">
+          <input class="controls" type="password" name="password2" id="password" placeholder="Reescriba su Contraseña" minlength="8">
           <fieldset>
             <p>Fecha de nacimiento: <input type="date" name="birthday" value="Fecha de nacimiento"></p>
           </fieldset>
