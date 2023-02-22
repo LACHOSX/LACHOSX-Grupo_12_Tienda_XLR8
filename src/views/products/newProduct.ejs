@@ -11,21 +11,26 @@
                         <a href="/">
                             <img src="\images\completo-XLR8-mediano.png">
                         </a>
-                    </div>
-                    <% if (locals && locals.errorMsg) { %>
-                        <% for (let error in errorMsg ) { %>                            
-                                <p class="errors-form"> <%= errorMsg[error].msg %> </p>                            
-                        <% } %>
-                    <% } %>                     
+                    </div>                                  
                     
                     <h4>NUEVO PRODUCTO</h4>
+                    <fieldset>
+                        <% if (locals && locals.errorMsg) { %>
+                          <% for (let error in errorMsg ) { %>
+                            <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
+                          <% } %>
+                        <% } %> 
+                    </fieldset> 
                     <input class="controls" type="text" name="title" id="tituloProducto" placeholder="tituloProducto" value="<%= locals.old && old.title ? old.title : ''%>">
+                    <br>
                     <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg"
                         placeholder="Agregar Foto Frente">
+                    
                     <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg"
                         placeholder="Agregar Foto Frente">
                     <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg"
                         placeholder="Agregar Foto Frente">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
+                    <br>
                     <textarea id="controls" name="description" rows="10" id="descripcion-area"
                         placeholder="description" value="<%= locals.old && old.description ? old.description : ''%>"> </textarea>
                     <input class="controls" type="number" name="price" id="password" placeholder="Precio" value="<%= locals.old && old.price ? old.price : ''%>">

@@ -37,7 +37,7 @@ router.post('/create', validateNewProduct, upload.single('img1'), productsContro
 router.get('/detail/:id',  productsController.productDetail)
 
 router.get('/edit/:id', productsController.editProduct)
-router.put('/edit/:id', upload.single('img1'), productsController.updateProduct)
+router.put('/edit/:id', validateNewProduct, upload.single('img1'), productsController.updateProduct)
 
 router.delete('/delete/:id', productsController.deleteProduct)
 

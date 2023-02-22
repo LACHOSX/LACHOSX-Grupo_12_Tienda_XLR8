@@ -82,9 +82,7 @@ const updateProduct = async function(req, res, next) {
             //si viene indefinido el campo de imagen, almacena la misma imagen que ya tenia
             await getProduct.update({
                 ...req.body,
-                photo1: getProduct.img1,
-                //photo2: getProduct.img2,
-                //photo3: getProduct.img3,                
+                photo1: getProduct.img1                
             })  
             getProduct = await  db.Product.findByPk(idProduct);
             res.render('products/editProduct', { getProduct })
