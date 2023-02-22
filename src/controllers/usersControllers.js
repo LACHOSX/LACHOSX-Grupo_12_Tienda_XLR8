@@ -6,6 +6,19 @@ const db = require("../database/models");
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
+//LISTADO USUARIOS:
+
+const userList = async function (req, res){
+
+    try {
+        let getUserList = await db.User.findAll();
+        return res.render('users/usertList', {getUserList});   
+    } catch (error) {
+        console.log("ERROR USER LIST", error)
+    }
+    
+}
+
 // CREACION DE USUARIO
 const register = function (req, res) {    
     res.render('users/register');
@@ -129,10 +142,9 @@ const deleteUser = async function (req, res) {
     }
 }
 
-// LISTA
 
 
-module.exports = { register, createUser, login, processLogin, userEdit, userUpdate, deleteUser};
+module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser};
 
 
-//userList, detail, userEdit
+//detail

@@ -3,16 +3,16 @@
         <main>
             <h1 class="lista-usuarios-titulo"> LISTA DE USUARIOS </h1>
             <ul>
-                <% users.forEach(user=> { %>
+                <% getUserList.forEach( getUserList=> { %>                
                     <li>
-                        <a href="users/detail/<%= user.id %>">
-                            <%= user.name %>
+                        <a href="<%= getUserList.id %>">
+                            <%= getUserList.name %>
                         </a>
 
-                        <a href="/users/edit/<%= user.id %> "><button class="botons" type="submit"> EDITAR </button></a>
+                        <a href="/users/edit/<%= getUserList.id %> "><button class="botons" type="submit"> EDITAR </button></a>
                         <!-- BOTON FORMULARIO PUT PARA EDITAR EL USUARIO -->
 
-                        <form action="/users/delete/<%= user.id %>?_method=DELETE" method="POST">
+                        <form action="/users/delete/<%= getUserList.id %>?_method=DELETE" method="POST">
                             <button class="botons" type="submit"> BORRAR </button>
                         </form>
                         <!-- BOTON FORMULARIO DELETE PARA BORRAR EL USUARIO -->
@@ -20,12 +20,7 @@
                     </li>
                     <% }) %>
 
-            </ul>
-            <h2> BUSCAR USUARUO </h2>
-            <form action="/users/searchUser" method="GET">
-                <input type="text" name="search">
-                <input type="submit" value="Buscar">
-            </form>
+            </ul>          
 
         </main>
 

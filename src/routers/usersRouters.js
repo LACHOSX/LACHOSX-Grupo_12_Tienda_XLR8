@@ -36,7 +36,7 @@ const upload = multer({ storage })
 
 //--------ROUTERS---------------------------
 
-//router.get('/', userController.userList)
+router.get('/', userController.userList)
 router.get('/register', guestMiddleware, userController.register);
 router.post('/register', validateCreateForm, upload.single('avatar'), logDBMiddleware, userController.createUser);
 

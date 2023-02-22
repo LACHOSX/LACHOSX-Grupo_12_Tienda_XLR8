@@ -120,10 +120,14 @@ const deleteProduct = async function (req, res) {
     }
 }
 
-// CREACION DEL PRODUCTO
-const cart = function (req, res) {    
-    let getCartProduct = db.Product.findByPk(req.params.id)
-    res.render('products/productCart', {getCartProduct});
+// CARRITO PRODUCTO
+const cart = async function (req, res) {   
+    try{
+        let getCartProduct =  db.Product.findByPk(req.params.id)
+        res.render('products/productCart',{getCartProduct});
+    } catch (error) {
+        console.log("ERROR CART PRODUCT", error)
+    }  
 }
 
 module.exports = {productList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart};
