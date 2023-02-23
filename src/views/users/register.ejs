@@ -17,11 +17,7 @@
                 <p class="errors-form"> <%= errorMsg[error].msg %> </p>          
               <% } %>
             <% } %>
-          </div>             
-                    
-            <legend>Seleccione su foto de perfil:</legend>
-            <input type="file" name="avatar">
-          </fieldset>
+          </div>                                
           <input class="controls" type="text" name="name" id="nombres" placeholder="Nombre" value="<%= locals.old && old.name ? old.name : ''%>">  
           <input class="controls" type="text" name="last_name" id="apellido" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
           <input class="controls" type="email" name="email" id="correo" placeholder="Correo Electrónico" value="<%= locals.old && old.email ? old.email : ''%>">

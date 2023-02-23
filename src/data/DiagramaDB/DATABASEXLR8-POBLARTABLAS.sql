@@ -15,9 +15,16 @@ UNLOCK TABLES;
 LOCK TABLES `products` WRITE;
 INSERT INTO `products` VALUES 
 -- (id, title, photo1, description, price, price_discount, size, color, genre_product, type, new, createdAt, updatedAt, deletedAt)
-(1, 'Remera Lisa', 'https://sporting.vtexassets.com/arquivos/ids/465219-800-800?v=637795848123000000&width=800&height=800&aspect=true', 'Remera Basica. Mangas Cortas. 100%algodon. Cuello redondo. Corte Regular', 2250, 10, 'small', 'negro', 'unisex', 'remera', 1),
-(2, 'Short Sport', 'https://sporting.vtexassets.com/arquivos/ids/690277-800-800?v=638084471961900000&width=800&height=800&aspect=true', 'Short Deportivo. Bolsillos frontales. 100%algodon. Dry Fit. Corte Regular', 7299, 10, 'medium', 'azul', 'hombre', 'short', 1),
-(3, 'Pantalon Jogger', 'https://sporting.vtexassets.com/arquivos/ids/701558-800-800?v=638097504057570000&width=800&height=800&aspect=true', 'Pantalon Joggin. Bolsillos frontales. 100%algodon. Ultra comodo. Corte Chupin', 9999, 5, 'large', 'negro', 'mujer', 'pantalon', 0);
+(1, 'Remera Lisa', 'https://bit.ly/3xKfEG3', 'Remera Basica. Mangas Cortas. 100%algodon. Cuello redondo. Corte Regular', 2250, 10, 'small', 'negro', 'unisex', 'remera', 1),
+(2, 'Short Sport', 'https://bit.ly/3XOzI4M', 'Short Deportivo. Bolsillos frontales. 100%algodon. Dry Fit. Corte Regular', 7299, 10, 'medium', 'azul', 'hombre', 'short', 1),
+(3, 'Pantalon Jogger', 'https://bit.ly/3Evy6Ge', 'Pantalon Joggin. Bolsillos frontales. 100%algodon. Ultra comodo. Corte Chupin', 9999, 5, 'large', 'negro', 'mujer', 'pantalon', 0),
+(4, 'Remera Dryfit', 'https://bit.ly/3xKfEG3', 'Remera Basica. Mangas Cortas. 100%algodon. Cuello redondo. Corte Regular', 2250, 10, 'small', 'negro', 'unisex', 'remera', 1),
+(5, 'Short con calza', 'https://bit.ly/3XOzI4M', 'Short Deportivo. Bolsillos frontales. 100%algodon. Dry Fit. Corte Regular', 7299, 10, 'medium', 'azul', 'hombre', 'short', 1),
+(6, 'Pantalon Sport', 'https://bit.ly/3Evy6Ge', 'Pantalon Joggin. Bolsillos frontales. 100%algodon. Ultra comodo. Corte Chupin', 9999, 5, 'large', 'negro', 'mujer', 'pantalon', 0),
+(7, 'Remera Chomba', 'https://bit.ly/3xKfEG3', 'Remera Basica. Mangas Cortas. 100%algodon. Cuello redondo. Corte Regular', 2250, 10, 'small', 'negro', 'unisex', 'remera', 1),
+(8, 'Short Jogger', 'https://bit.ly/3XOzI4M', 'Short Deportivo. Bolsillos frontales. 100%algodon. Dry Fit. Corte Regular', 7299, 10, 'medium', 'azul', 'hombre', 'short', 1),
+(9, 'Pantalon Chupin Sport', 'https://bit.ly/3XOzI4M', 'Short Deportivo. Bolsillos frontales. 100%algodon. Dry Fit. Corte Regular', 7299, 10, 'medium', 'azul', 'hombre', 'short', 1),
+(10, 'Remera Lady', 'https://bit.ly/3Evy6Ge', 'Pantalon Joggin. Bolsillos frontales. 100%algodon. Ultra comodo. Corte Chupin', 9999, 5, 'large', 'negro', 'mujer', 'pantalon', 0);
 UNLOCK TABLES;
 LOCK TABLES `purchase_orders` WRITE;
 INSERT INTO `purchase_orders` VALUES 

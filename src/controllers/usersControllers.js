@@ -25,8 +25,8 @@ const register = function (req, res) {
 }
 
 //  GUARDADO DE USUARIO
-const createUser = async function (req, res) {
-    let errors = validationResult(req);
+const createUser = async function (req, res, next) {
+    let errors = validationResult(req);    
     if (errors.isEmpty()) {
         try {
             await db.User.create({

@@ -12,27 +12,29 @@
       
                 <div class="cart-Items">
                       <div class="image-box">
-                        
-                            <img class="img-grande" src="<%= getCartProduct.photo1%>" alt="" style="height:100px; width: 90px;" />
-                                                
-                        
+                        <% if (getCartProduct.photo1.includes('https')) { %>
+                            <img class="img-grande" src="<%= getCartProduct.photo1%>" alt="">
+                        <% } else {%>
+                            <img class="img-grande" src="/images/products/<%= getCartProduct.photo1%>" alt="">
+                         <% } %>
+                                        
                       </div>
                       <div class="about">
                           <h1 class="title"><%= getCartProduct.size%> </h1>
                           <h3 class="subtitle"><%= getCartProduct.title %> </h3>
                       </div>
                       <div class="counter">
-                          <div class="btn">+</div>
-                          <div class="count">1</div>
                           <div class="btn">-</div>
+                          <div class="count">1</div>
+                          <div class="btn">+</div>
                       </div>
                       <div class="prices">
                           <div class="amount"> $<%= getCartProduct.price %> </div>
-                          <div class="save"><u>Favoritos</u></div>
+                          <div class="save">Precio unitario $</div>
                           <div class="remove"><u>Quitar</u></div>
                       </div>
                 </div>
-                <!-- <div class="cart-Items">
+                <div class="cart-Items">
                     <div class="image-box">
                         <img src="/images/productos/m-short-02.jpg" style="height:120px" />
                     </div>
@@ -41,16 +43,16 @@
                         <h3 class="subtitle">XS</h3>
                     </div>
                     <div class="counter">
-                        <div class="btn">+</div>
-                        <div class="count">1</div>
                         <div class="btn">-</div>
+                        <div class="count">2</div>
+                        <div class="btn">+</div>
                     </div>
                     <div class="prices">
-                        <div class="amount">$500</div>
-                        <div class="save"><u>Favoritos</u></div>
+                        <div class="amount">$1.000</div>
+                        <div class="save">Precio unitario $500</div>
                         <div class="remove"><u>Quitar</u></div>
                     </div>
-              </div>                 -->
+              </div>           
       
               <div class="cartCheckout">
                 <div class="total">
