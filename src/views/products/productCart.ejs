@@ -1,95 +1,119 @@
-<%- include('../partials/metadata')  %> 
-<%- include('../partials/header')  %> 
+<%- include('../partials/metadata') %>
+    <%- include('../partials/header') %>
 
 
-    <main>
-        <div id="cart">
-            <div class="cartContainer">
-                <div class="cartHeader">
-                    <h3 class="cartHeading">Carrito de Compra</h3>
-                    <h5 class="cartAction">Quitar todo</h5>
+        <main>
+            <div id="cart">
+                <div class="cartContainer">
+                    <div class="cartHeader">
+                        <h3 class="cartHeading">Carrito de Compra</h3>
+                        <h5 class="cartAction">Quitar todo</h5>
+                    </div>
+
+                    <div class="cart-Items">
+                        <div class="image-box">
+                            <img class="img-grande" src="/images/products/01-remera-lisa.jpg" style="height:120px; width: 100px">
+
+                        </div>
+                        <div class="about">
+                            <h1 class="title">Remera Lisa</h1>
+                            <h3 class="subtitle">Talle: Small</h3>
+                            <h3 class="subtitle">Color: Negro</h3>
+                            <h3 class="subtitle">Unisex</h3>
+                        </div>
+                        <div class="counter">
+                            <div class="btn">-</div>
+                            <div class="count">2</div>
+                            <div class="btn">+</div>
+                        </div>
+                        <div class="prices">
+                            <div class="amount">$4.050</div>
+                            <div class="save">Descuento 10%</div>
+                            <div class="amount">$2.250</div>
+                            <div class="remove"><u>Quitar</u></div>
+                        </div>
+                    </div>
+                    <div class="cart-Items">
+                        <div class="image-box">
+                            <img src="/images/products/02-short-sport.jpg" style="height:120px" />
+                        </div>
+                        <div class="about">
+                            <h1 class="title">Short Sport</h1>
+                            <h3 class="subtitle">Talle: Medium</h3>
+                            <h3 class="subtitle">Color: Azul</h3>
+                            <h3 class="subtitle">Hombre</h3>
+                        </div>
+                        <div class="counter">
+                            <div class="btn">-</div>
+                            <div class="count">1</div>
+                            <div class="btn">+</div>
+                        </div>
+                        <div class="prices">
+                            <div class="amount">$6.569</div>
+                            <div class="save">Descuento 10%</div>
+                            <div class="amount">$7.299</div>
+                            <div class="remove"><u>Quitar</u></div>
+                        </div>
+                    </div>
+                    <div class="cart-Items">
+                        <div class="image-box">
+                            <img class="img-grande" src="/images/products/06-pantalon-sport.jpg" style="height:120px; width: 100px">
+
+                        </div>
+                        <div class="about">
+                            <h1 class="title">Pantalon Sport</h1>
+                            <h3 class="subtitle">Talle: Large</h3>
+                            <h3 class="subtitle">Color: Color</h3>
+                            <h3 class="subtitle">Hombre</h3>
+                        </div>
+                        <div class="counter">
+                            <div class="btn">-</div>
+                            <div class="count">1</div>
+                            <div class="btn">+</div>
+                        </div>
+                        <div class="prices">
+                            <div class="amount">$15.199</div>
+                            <div class="save">Descuento 20%</div>
+                            <div class="amount">$18.999</div>
+                            <div class="remove"><u>Quitar</u></div>
+                        </div>
+                    </div>
+
+                    <div class="cartCheckout">
+                        <div class="total">
+                            <div>
+                                <div class="Subtotal">Total</div>
+                                <div class="items">1 items</div>
+                            </div>
+                            <div class="total-amount"> $25.818 </div>
+                        </div>
+                        <button class="button">Pagar</button>
+                    </div>
                 </div>
-      
-                <div class="cart-Items">
-                      <div class="image-box">
-                        <% if (getCartProduct.photo1.includes('https')) { %>
-                            <img class="img-grande" src="<%= getCartProduct.photo1%>" alt="">
-                        <% } else {%>
-                            <img class="img-grande" src="/images/products/<%= getCartProduct.photo1%>" alt="">
-                         <% } %>
-                                        
-                      </div>
-                      <div class="about">
-                          <h1 class="title"><%= getCartProduct.size%> </h1>
-                          <h3 class="subtitle"><%= getCartProduct.title %> </h3>
-                      </div>
-                      <div class="counter">
-                          <div class="btn">-</div>
-                          <div class="count">1</div>
-                          <div class="btn">+</div>
-                      </div>
-                      <div class="prices">
-                          <div class="amount"> $<%= getCartProduct.price %> </div>
-                          <div class="save">Precio unitario $</div>
-                          <div class="remove"><u>Quitar</u></div>
-                      </div>
-                </div>
-                <div class="cart-Items">
-                    <div class="image-box">
-                        <img src="/images/productos/m-short-02.jpg" style="height:120px" />
-                    </div>
-                    <div class="about">
-                        <h1 class="title">SHORT></h1>
-                        <h3 class="subtitle">XS</h3>
-                    </div>
-                    <div class="counter">
-                        <div class="btn">-</div>
-                        <div class="count">2</div>
-                        <div class="btn">+</div>
-                    </div>
-                    <div class="prices">
-                        <div class="amount">$1.000</div>
-                        <div class="save">Precio unitario $500</div>
-                        <div class="remove"><u>Quitar</u></div>
-                    </div>
-              </div>           
-      
-              <div class="cartCheckout">
-                <div class="total">
-                    <div>
-                        <div class="Subtotal">Total</div>
-                        <div class="items">1 items</div>
-                    </div>
-                    <div class="total-amount">$ <%= getCartProduct.price %> </div>
-                </div>
-                <button class="button">Pagar</button>
             </div>
-        </div>
-     </div>
-     <div class="footer-flex">
-        <div class="footflexcontain">
-            <i class="fas fa-credit-card"></i>
-            <p class="footer-p1">Pagá como vos prefieras</p>
-            <p class="footer-p2">Tenes todas las opciones de pago, Efectivo, Transferencia Bancaria o Deposito,
-                Mercadopago, Todo Pago, y Tarjeta de Debito y Credito con hasta 48 Cuotas Fijas. ¡Y siempre es
-                seguro!</p>
-        </div>
-        <div class="footflexcontain">
-            <i class="fas fa-gift"></i>
-            <p class="footer-p1">Envío gratis desde $ 5.000 </p>
-            <p class="footer-p2">Registrate en nuestra tienda y obtené envíos gratis con tus compras superiores
-                a $5.000. Ademas registrandote, sabrás de las novedades y lanzamientos de XLR8</p>
-        </div>
-        <div class="footflexcontain">
-            <i class="fas fa-user-shield"></i>
-            <p class="footer-p1">Seguridad, de principio a fin</p>
-            <p class="footer-p2">¿No te gusta? ¿No es tu talle? ¡Escribinos! XLR8 tiene productos comodos, si
-                ese no era el tuyo, te lo cambiamos.</p>
-        </div>
-    </div>
-    <hr>
-        
-    </main>
+            <div class="footer-flex">
+                <div class="footflexcontain">
+                    <i class="fas fa-credit-card"></i>
+                    <p class="footer-p1">Pagá como vos prefieras</p>
+                    <p class="footer-p2">Tenes todas las opciones de pago, Efectivo, Transferencia Bancaria o Deposito,
+                        Mercadopago, Todo Pago, y Tarjeta de Debito y Credito con hasta 48 Cuotas Fijas. ¡Y siempre es
+                        seguro!</p>
+                </div>
+                <div class="footflexcontain">
+                    <i class="fas fa-gift"></i>
+                    <p class="footer-p1">Envío gratis desde $ 5.000 </p>
+                    <p class="footer-p2">Registrate en nuestra tienda y obtené envíos gratis con tus compras superiores
+                        a $5.000. Ademas registrandote, sabrás de las novedades y lanzamientos de XLR8</p>
+                </div>
+                <div class="footflexcontain">
+                    <i class="fas fa-user-shield"></i>
+                    <p class="footer-p1">Seguridad, de principio a fin</p>
+                    <p class="footer-p2">¿No te gusta? ¿No es tu talle? ¡Escribinos! XLR8 tiene productos comodos, si
+                        ese no era el tuyo, te lo cambiamos.</p>
+                </div>
+            </div>
+            <hr>
 
-    <%- include('../partials/footer')  %>     
+        </main>
 
+        <%- include('../partials/footer') %>

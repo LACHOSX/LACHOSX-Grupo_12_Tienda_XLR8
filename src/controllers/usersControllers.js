@@ -142,9 +142,19 @@ const deleteUser = async function (req, res) {
     }
 }
 
+// PERFIL DE USUARIO
+const profile = async function (req, res) {
+    try {
+        let getUserProfile = await db.User.findByPk(req.params.id)
+        res.render('users/profile', {getUserProfile});
+    } catch (error) {
+        console.log("ERROR PROFILE USER", error)
+    }  
+}
 
 
-module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser};
+
+module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile};
 
 
 //detail

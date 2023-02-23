@@ -48,4 +48,9 @@ const terms = (req, res) => {
     res.render('./terminos')
 }
 
-module.exports = { renderHome, contact, terms };
+//Error 404
+const error = (req, res) => {
+    res.render("./not-found");
+}
+
+module.exports = { renderHome, contact, terms, error };

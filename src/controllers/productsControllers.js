@@ -58,6 +58,7 @@ const productDetail = async function (req, res) {
         console.log("ERROR DETAIL PRODUCT", error)
     }  
 }
+
 // LOGICA DE EDITAR PRODUCTO
 const editProduct = async function (req, res) {
     try {
@@ -121,14 +122,10 @@ const deleteProduct = async function (req, res) {
 }
 
 // CARRITO PRODUCTO
-const cart = async function (req, res) {   
-    try{
-        let getCartProduct =  db.Product.findByPk(req.params.id)
-        res.render('products/productCart',{getCartProduct});
-    } catch (error) {
-        console.log("ERROR CART PRODUCT", error)
-    }  
+const cart = function (req, res) {   
+    res.render('products/productCart');
 }
+
 
 module.exports = {productList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart};
 

@@ -187,7 +187,6 @@ main {
     width: 100%;    
 }
 
-
 .slider-carrusel {
     position: relative;
     width: 100%;
@@ -324,9 +323,7 @@ input[id="1"]:checked ~ .sistema-slider .sistema-slider-item[for="3"] {
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-    
+    justify-content: center;       
 }
 
 .cajatxt-banner i{    
@@ -409,6 +406,8 @@ main section .banner-info i{
     transform: translate (-50%, -50%);
     text-shadow: 0, 0, 8px rgba(0, 0, 0, 0.5);
 }
+
+
 
 @media (min-width: 768px) {
     .banner-foto .texto-banner {        
@@ -556,12 +555,6 @@ article .fotoProducto img #foto {
     }
 }
 
-.errors-form {
-    color: palevioletred;
-    font-size: 12px;
-    text-align: left;
-    text-decoration: none;
-  }
 
 /*:::::::::::::::::::::::FOOTER:::::::::::::::::::::::*/
 
@@ -803,4 +796,28 @@ footer .menu-contacto {
         
     }
     
+}
+
+/*:::::::::::::::::::::::ERROR 404:::::::::::::::::::::::*/
+
+
+.error404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#dinoerror {
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.errors-form {
+    color: palevioletred;
+    font-size: 12px;
+    text-align: left;
+    text-decoration: none;
 }

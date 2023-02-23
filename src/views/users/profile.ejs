@@ -1,0 +1,24 @@
+<%- include('../partials/metadata')  %> 
+<%- include('../partials/header')  %> 
+
+    
+    <main>
+        <h1 class="lista-usuarios-titulo"> LISTA DE USUARIOS </h1>
+        <ul>
+            <h2> <%= getUserProfile.name  %> </h2> <h2> <%= getUserProfile.last_name  %> </h2>
+            <h2> <%= getUserProfile.email  %> </h2>
+            <h3> <%= getUserProfile.phone  %> </h3>
+            <h3> <%= getUserProfile.birthday  %> </h3>
+            <h3> <%= getUserProfile.genre  %> </h3>            
+        </ul>
+        <h2> EDITAR USUARIO </h2>
+        <form action="/users/edit/<%= getUserProfile.id %>" method="GET">   
+            <input type="submit" value="EDITAR">
+        </form>
+        <form action="/users/delete/<%= getUserProfile.id %>?_method=DELETE" method="POST">   
+            <input type="submit" value="BORRAR">
+        </form>       
+
+    </main>
+
+<%- include('../partials/footer')  %>  

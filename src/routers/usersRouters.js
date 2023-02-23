@@ -15,6 +15,7 @@ let logDBMiddleware = require('../middlewares/logDBMiddleware');
 //--------ROUTERS---------------------------
 
 router.get('/', userController.userList)
+
 router.get('/register', guestMiddleware, userController.register);
 router.post('/register', logDBMiddleware, validateCreateForm, userController.createUser);
 
@@ -23,7 +24,7 @@ router.post('/login', validateLogin, userController.processLogin)
 
 // router.get('/search', userController.searchUser);
 
-// router.get('/detail/:id', userController.detail)
+router.get('/profile/:id', logDBMiddleware, userController.profile)
 
  router.get('/edit/:id', userController.userEdit);
  router.put('/edit/:id', userController.userUpdate);
