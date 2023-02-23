@@ -1,4 +1,4 @@
-const {User} = require('../database/models');
+/* const {User} = require('../database/models');
 const {body} = require ('express-validator');
 const bcrypt = require('bcryptjs');
 
@@ -30,3 +30,4 @@ const validateCreateForm = [
   ];
 
   module.exports = validateCreateForm;
+ */
