@@ -3,22 +3,35 @@
 
     
     <main>
-        <h1 class="lista-usuarios-titulo"> LISTA DE USUARIOS </h1>
-        <ul>
-            <h2> <%= getUserProfile.name  %> </h2> <h2> <%= getUserProfile.last_name  %> </h2>
-            <h2> <%= getUserProfile.email  %> </h2>
-            <h3> <%= getUserProfile.phone  %> </h3>
-            <h3> <%= getUserProfile.birthday  %> </h3>
-            <h3> <%= getUserProfile.genre  %> </h3>            
-        </ul>
-        <h2> EDITAR USUARIO </h2>
-        <form action="/users/edit/<%= getUserProfile.id %>" method="GET">   
-            <input type="submit" value="EDITAR">
-        </form>
-        <form action="/users/delete/<%= getUserProfile.id %>?_method=DELETE" method="POST">   
-            <input type="submit" value="BORRAR">
-        </form>       
-
+        
+        <div>
+            <h1 class="lista-usuarios-titulo"> Perfil de Usuario de <%= getUserProfile.name  %> <%= getUserProfile.last_name  %></h1>
+            <div>
+                <fieldset class="profile">
+                    <ul>
+                        <li>
+                            <h4> Nombre: <%= getUserProfile.name  %> </h4>
+                            <h4> Apellido: <%= getUserProfile.last_name  %> </h4>
+                            <h4> E-Mail: <%= getUserProfile.email  %> </h4>
+                            <h4> Celular: <%= getUserProfile.phone  %> </h4>
+                            <h4> Fecha de Nacimiento: <%= getUserProfile.birthday  %> </h4>
+                            <h4> Genero: <%= getUserProfile.genre  %> </h4> 
+            
+                        </li>                                   
+                    </ul>
+                    <div>                    
+                        <div>                        
+                            <form action="/users/edit/<%= getUserProfile.id %>" method="GET">   
+                                <input type="submit" value="EDITAR USUARIO">
+                            </form>                                                
+                            <form action="/users/delete/<%= getUserProfile.id %>?_method=DELETE" method="POST">   
+                                <input type="submit" value="BORRAR USUARIO">
+                            </form>
+                        </div>                     
+                    </div> 
+                </fieldset>    
+            </div>
+        </div>
     </main>
 
 <%- include('../partials/footer')  %>  
