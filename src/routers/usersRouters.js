@@ -22,12 +22,10 @@ router.post('/register', logDBMiddleware, validateCreateForm, userController.cre
 router.get('/login', userController.login)
 router.post('/login', validateLogin, userController.processLogin)
 
-// router.get('/search', userController.searchUser);
-
 router.get('/profile/:id', logDBMiddleware, userController.profile)
 
- router.get('/edit/:id', userController.userEdit);
- router.put('/edit/:id', userController.userUpdate);
+router.get('/edit/:id', userController.userEdit);
+router.put('/edit/:id', userController.userUpdate);
 
 router.delete('/delete/:id', userController.deleteUser);
 

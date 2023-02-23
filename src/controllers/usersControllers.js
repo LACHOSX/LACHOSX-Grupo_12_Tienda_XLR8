@@ -124,6 +124,7 @@ const userUpdate = async function(req, res) {
     }
     res.redirect('/') //redirecciona a ruta home
 }
+
 //  BORRADO DE USUARIO
 const deleteUser = async function (req, res) {
     try {
@@ -155,6 +156,3 @@ const profile = async function (req, res) {
 
 
 module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile};
-
-
-//detail

@@ -821,3 +821,10 @@ footer .menu-contacto {
     text-align: left;
     text-decoration: none;
 }
+
+.terminos {
+    margin: 40px;
+    padding: 20px;
+    text-align: justify;
+    line-height: 110%;
+}
