@@ -106,16 +106,16 @@ const updateProduct = async function(req, res, next) {
     }
 }
 //  BORRADO DE PRODUCTO METODO HARD DELETE
-const deleteProduct = async function (req, res) {
+const deleteProduct = async function (req, res) {    
     try {
-         let getProduct = await db.Product.findByPk(req.params.id) 
-         
-         console.log(getProduct)
-         
-         await getProduct.destroy()
-         
-         
-        res.redirect('/products') 
+        let deleteIdProduct = req.params.id;
+        await db.Product.destroy(
+            {
+                where: {
+                    id: deleteIdProduct
+            }
+    });
+       return res.redirect('/');
     } catch (error) {
         console.log("ERROR DELETE PRODUCT", error)
     }

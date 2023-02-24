@@ -12,7 +12,7 @@
             <section class="productos-novedades">
                 <h2 class="titulo-seccion"> TODOS LOS PRODUCTOS</h2>
                 <div class="catalogo-productos">
-                    <% getProductList.forEach( getProductList=> { %>
+                    <% getProductList.forEach( getProductList.genre_product == 'hombre' => { %>
                         <article>
                             <div class="fotoProducto">
                                 <% if (getProductList.price_discount !=0) { %>

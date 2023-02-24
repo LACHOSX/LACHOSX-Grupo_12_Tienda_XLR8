@@ -13,8 +13,8 @@
         <h4> EDITANDO MI USUARIO <%= getUser.name %>
         </h4>
         <input class="controls" type="name" name="name" id="nombres" value=<%= getUser.name %>>
-        <input class="controls" type="apellido" name="las_name" id="apellido"
-          value=<%= getUser.las_name %>>
+        <input class="controls" type="apellido" name="last_name" id="apellido"
+          value=<%= getUser.last_name %>>
         <input class="controls" type="email" name="email" id="correo" value=<%= getUser.email %>>
         <input class="controls" type="text" name="phone" id="telefono" value=<%= getUser.phone %>>
               <input class=" controls" type="password" name="password" id="password"
@@ -41,6 +41,9 @@
 
         <h5>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></h5>
         <button class="botons" type="submit"> EDITAR </button>
+        <form action="/users/delete/<%= getUser.id %>?_method=DELETE" method="POST">
+          <button type="submit" class="button-div">ELIMINAR USUARIO</button>
+      </form>
 
 
       </section>

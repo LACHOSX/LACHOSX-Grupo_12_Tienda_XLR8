@@ -128,16 +128,13 @@ const userUpdate = async function(req, res) {
 //  BORRADO DE USUARIO
 const deleteUser = async function (req, res) {
     try {
-         let getUser = await db.User.destroy(req.params.id)
-            
-         console.log(getUser),
-         {
-            where: {
-                id: req.params.id
+        await db.User.destroy(
+            {
+                where: {
+                    id: req.params.id
             }
-        };
-        console.log(getUser);
-        res.redirect('./users') 
+    });
+       return res.redirect('/');                
     } catch (error) {
         console.log("ERROR DELETE USER", error)
     }
