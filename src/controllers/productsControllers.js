@@ -1,9 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-// const productsFilePath = path.join(__dirname, '../data/products.json');
-// Guarda en una variable la transformacion de JSON en array de objetos.
-// let products = JSON.parse(fs.readFileSync(productsFilePath, { encoding: 'utf-8' }));
-// sirve para limitar los 0 detras de la coma y que no quede feo a la vista o con muchos decimales
 const toThousand = n => n.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require("../database/models"); 
 
@@ -18,8 +14,7 @@ const productList = async function (req, res){
         res.render('products/productList', {getProductList, toThousand});   
     } catch (error) {
         console.log("ERROR LIST", error)
-    }
-    
+    }    
 }
 
 // CREACION DEL PRODUCTO
@@ -105,6 +100,7 @@ const updateProduct = async function(req, res, next) {
         console.log("ERROR UPDATE PRODUCT", error)
     }
 }
+
 //  BORRADO DE PRODUCTO METODO HARD DELETE
 const deleteProduct = async function (req, res) {    
     try {
@@ -125,7 +121,6 @@ const deleteProduct = async function (req, res) {
 const cart = function (req, res) {   
     res.render('products/productCart');
 }
-
 
 module.exports = {productList, createProduct, storeProduct, productDetail, editProduct, updateProduct, deleteProduct, cart};
 

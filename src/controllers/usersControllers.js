@@ -7,16 +7,13 @@ const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 //LISTADO USUARIOS:
-
-const userList = async function (req, res){
-
+const userList = async function (req, res, next){
     try {
         let getUserList = await db.User.findAll();
-        return res.render('users/usertList', {getUserList});   
+        return res.render('users/userList', {getUserList});   
     } catch (error) {
         console.log("ERROR USER LIST", error)
-    }
-    
+    }    
 }
 
 // CREACION DE USUARIO
