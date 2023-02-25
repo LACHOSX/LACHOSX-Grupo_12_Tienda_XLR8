@@ -11,23 +11,23 @@
             </a>
         </div>
         <h4>EDITAR PRODUCTO</h4>
-        <form action="/products/edit/<%= getProduct.id %>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? -->  
-        <input class="controls" type="text" name="title" id="tituloProducto" value="<%= getProduct.title %>">
+        <form action="/products/edit/<%= getDetailProduct.id %>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? -->  
+        <input class="controls" type="text" name="title" id="tituloProducto" value="<%= getDetailProduct.title %>">
         <br>
-        <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img1%>">
-        <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">
-        <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getProduct.img2%>">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
+        <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img1%>">
+        <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img2%>">
+        <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img2%>">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
         <br>
-        <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getProduct.description %></textarea>
-        <input class="controls" type="number" name="price" id="price" value= "<%= getProduct.price %>">
-        <input class="controls" type="number" name="price_discount" id="discount-price" value= "<%= getProduct.price_discount%>">
+        <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getDetailProduct.description %></textarea>
+        <input class="controls" type="number" name="price" id="price" value= "<%= getDetailProduct.price %>">
+        <input class="controls" type="number" name="price_discount" id="discount-price" value= "<%= getDetailProduct.price_discount%>">
         <div class="labels-div">
             <fieldset class="fieldset">
                 <label for="talle">TALLE</label>
         <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
         <% let oldSize; %>
         <% if (!locals.old || !old.size) { %>
-            <% oldSize = getProduct.size %>
+            <% oldSize = getDetailProduct.size %>
         <% } else { %>
             <% oldSize = old.size %>
         <% } %>
@@ -44,7 +44,7 @@
         <label for="color">COLOR</label>
         <% let oldColor; %>
         <% if (!locals.old || !old.color) { %>
-            <% oldColor = getProduct.color %>
+            <% oldColor = getDetailProduct.color %>
         <% } else { %>
             <% oldColor = old.color %>
         <% } %>
@@ -62,7 +62,7 @@
                 <p class="p-style">CATEGORIAS</p>
                 <% let oldGenre; %>
                 <% if (!locals.old || !old.genre) { %>
-                    <% oldGenre = getProduct.genre %>
+                    <% oldGenre = getDetailProduct.genre %>
                 <% } else { %>
                   <% oldGenre = old.genre %>
                 <% } %>
@@ -82,7 +82,7 @@
                 <p class="p-style-1"> TIPO DE PRENDA </p>
                 <% let oldType; %>
                 <% if (!locals.old || !old.type) { %>
-                    <% oldType = getProduct.type %>
+                    <% oldType = getDetailProduct.type %>
                 <% } else { %>
                   <% oldType = old.type %>
                 <% } %>
@@ -110,14 +110,15 @@
         </br>
         <button type="submit" class="botons"> EDITAR PRODUCTO</button>
         
-        </br>
-        <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
-        </form>
+        
 
   </section>
   
   </form>
+</br>
+<form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
+    <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
+</form>
 </main>
 
     <%- include('../partials/footer')  %>   

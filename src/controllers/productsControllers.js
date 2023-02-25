@@ -57,8 +57,8 @@ const productDetail = async function (req, res) {
 // LOGICA DE EDITAR PRODUCTO
 const editProduct = async function (req, res) {
     try {
-        let getProduct = await db.Product.findByPk(req.params.id)
-        res.render('products/editProduct', { getProduct })
+        let getDetailProduct = await db.Product.findByPk(req.params.id)
+        res.render('products/editProduct', { getDetailProduct })
     } catch (error) {
         console.log("ERROR EDIT PRODUCT", error)
     }
@@ -67,33 +67,33 @@ const editProduct = async function (req, res) {
 //ACTUALIZACION DEL PRODUCTO 
 const updateProduct = async function(req, res, next) {
     let idProduct = req.params.id;
-    let getProduct;
+    let getDetailProduct;
     try{
-        getProduct = await  db.Product.findByPk(idProduct);
+        getDetailProduct = await  db.Product.findByPk(idProduct);
     } catch(error){
         console.log(error);
     }
     try {
         if (req.file == undefined) {
             //si viene indefinido el campo de imagen, almacena la misma imagen que ya tenia
-            await getProduct.update({
+            await getDetailProduct.update({
                 ...req.body,
-                photo1: getProduct.img1                
+                photo1: getDetailProduct.img1                
             })  
-            getProduct = await  db.Product.findByPk(idProduct);
-            res.render('products/editProduct', { getProduct })
+            getDetailProduct = await  db.Product.findByPk(idProduct);
+            res.render('products/editProduct', { getDetailProduct })
                 
         } else {
             //si viene una nueva imagen en la edicion, se almacena la nueva imagen
             console.log("entro a la imagen que llega por req.file");
-            await getProduct.update({  
+            await getDetailProduct.update({  
                 ...req.body,
                 photo1: req.file.filename,
-                //photo2: getProduct.img2,
-                //photo3: getProduct.img3,
+                //photo2: getDetailProduct.img2,
+                //photo3: getDetailProduct.img3,
             })
-            getProduct = await  db.Product.findByPk(idProduct);
-            res.render('products/editProduct', { getProduct })
+            getDetailProduct = await  db.Product.findByPk(idProduct);
+            res.render('products/editProduct', { getDetailProduct })
           
         } 
     } catch (error) {
