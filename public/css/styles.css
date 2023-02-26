@@ -824,14 +824,14 @@ footer .menu-contacto {
 
 #errors {
     color: red;
-    font-size: 8px;
+    font-size: 20px;
     text-align: justify;
     text-decoration: none;
   }
 
 #warnings {
     color: red;
-    font-size: 10px;
+    font-size: 20px;
     text-align: center;
     text-decoration: none;
   }

@@ -19,39 +19,39 @@ const procesarFormulario = (event) => {
     const campoNew = formulario.new;
 
     if (campoTitle.value == ''){
-        divErrors.innerHTML += '<p> Debes ponerle título al producto.</p></br>'
+        divErrors.innerHTML += '<p> Debes ponerle título al producto.</p>'
     }
 
     if (campoDescription.value == ''){
-        divErrors.innerHTML += '<p> Escribe una descripcion de tu producto.</p></br>'
+        divErrors.innerHTML += '<p> Escribe una descripcion de tu producto.</p>'
     }
    
     if (campoPrice.value == ''){
-        divErrors.innerHTML += '<p>Escribe el valor del precio de la prenda.</p></br>'
+        divErrors.innerHTML += '<p>Escribe el valor del precio de la prenda.</p>'
     }
  
     if (campoPrice_discount.value == ''){
-        divErrors.innerHTML += '<p> Recuerda poner el descuento en el precio.</p></br>'
+        divErrors.innerHTML += '<p> Recuerda poner el descuento en el precio.</p>'
     }
 
     if (campoSize.value == ''){
-        divErrors.innerHTML += '<p> Que talle es esta prenda?</p></br>'
+        divErrors.innerHTML += '<p> Que talle es esta prenda?</p>'
     }
 
     if (campoColor.value == ''){
-        divErrors.innerHTML += '<p> Elige color de tu articulo.</p></br>'
+        divErrors.innerHTML += '<p> Elige color de tu articulo.</p>'
     }
 
     if (campoGenre_product.value == ''){
-        divErrors.innerHTML += '<p> Debes seleccionar el género.</p></br>'
+        divErrors.innerHTML += '<p> Debes seleccionar el género.</p>'
     }
 
     if (campoType.value == ''){
-        divErrors.innerHTML += '<p> Debes marcar que tipo de producto es.</p></br>'
+        divErrors.innerHTML += '<p> Debes marcar que tipo de producto es.</p>'
     }
 
     if (campoNew.value == ''){
-        divErrors.innerHTML += '<p> Marcar si es nuevo o ya existia.</p></br>'
+        divErrors.innerHTML += '<p> Marcar si es nuevo o ya existia.</p>'
     }
 
 
