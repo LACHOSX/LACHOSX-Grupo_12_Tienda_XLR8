@@ -2,7 +2,7 @@ const title = document.getElementById('title')
 const description = document.getElementById('description')
 const price = document.getElementById('price')
 const price_discount = document.getElementById('price_discount')
-const form = document.getElementById('newproduct-form')
+const form = document.getElementById('form-div')
 const parrafo = document.getElementById('warnings')
 
 form.addEventListener("submit", e => {
@@ -48,38 +48,15 @@ form.addEventListener("submit", e => {
 
 })
 
-document.getElementById("newproduct-form").addEventListener("submit", function(event){
+document.getElementById("form-div").addEventListener("submit", function(event){
     let hasError = false;
-    campoTalle = document.getElementById('size').value;
-    campoColor = document.getElementById('color').value;
-    campoGenero = document.getElementById('genre_product').value;
-    campoType = document.getElementById('type').value;
-    campoNew = document.getElementById('new').value;
-
-   
-if(!document.querySelector('input[name="size"]:checked')) {
-      alert('Que talle es esta prenda?');
-      hasError = true;
-      }
     
-if(!document.querySelector('input[name="color"]:checked')) {
-      alert('No te olvides elegir el color de tu articulo.');
-      hasError = true;
-      }
+    campoGenero = document.getElementById('genre_product').value;
+  
 
 if(!document.querySelector('input[name="genre_product"]:checked')) {
       alert('Debes seleccionar a que genero pertenece esta prenda.');
       hasError = true;
       }
 
-if(!document.querySelector('input[name="type"]:checked')) {
-        alert('Debes marcar que tipo de producto es.');
-        hasError = true;
-        }
-
-if(!document.querySelector('input[name="new"]:checked')) {
-            alert('Debes marcar si el producto es Nuevo o ya existia.');
-            hasError = true;
-            }
-      
 });

@@ -21,7 +21,7 @@ const validateLogin = [
                 } else {
                     return Promise.reject();
                 }
-            }).withMessage('La contrase;a NO es correcta pa.')
+            }).withMessage('La contraseña no es correcta')
   ];
 
   module.exports = validateLogin;

@@ -15,7 +15,7 @@ form.addEventListener("submit", e => {
         entrar= true
     }
 
-    if (password.value.length < 8){
+    if (password.value.length == ''){
         warnings += 'La contraseña no es válida <br>'
         entrar= true
     }

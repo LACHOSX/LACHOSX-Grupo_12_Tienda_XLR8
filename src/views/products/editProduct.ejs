@@ -10,17 +10,21 @@
                 <img src="/images/completo-XLR8-mediano.png">
             </a>
         </div>
+    </div>
+    <div id="warnings">
+    </div>
+</br>
         <h4>EDITAR PRODUCTO</h4>
         <form action="/products/edit/<%= getDetailProduct.id %>?_method=PUT" method="POST" id="form-div" enctype="multipart/form-data"> <!-- NO VA /GUARDAR la ruta ? -->  
-        <input class="controls" type="text" name="title" id="tituloProducto" value="<%= getDetailProduct.title %>">
+        <input class="controls" type="text" name="title" id="title" value="<%= getDetailProduct.title %>">
         <br>
         <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img1%>">
         <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img2%>">
         <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img2%>">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
         <br>
-        <textarea id="controls" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getDetailProduct.description %></textarea>
+        <textarea id="description" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getDetailProduct.description %></textarea>
         <input class="controls" type="number" name="price" id="price" value= "<%= getDetailProduct.price %>">
-        <input class="controls" type="number" name="price_discount" id="discount-price" value= "<%= getDetailProduct.price_discount%>">
+        <input class="controls" type="number" name="price_discount" id="price_discount" value= "<%= getDetailProduct.price_discount%>">
         <div class="labels-div">
             <fieldset class="fieldset">
                 <label for="talle">TALLE</label>
@@ -66,12 +70,12 @@
                 <% } else { %>
                   <% oldGenre = old.genre %>
                 <% } %>
-                <div class="div-style">
-                    <label>HOMBRE<input type='radio' name='genre_product' value="hombre" <%= oldGenre == 'hombre' ? 'selected' : null %>> </label>
+                <div class="div-style" name="genre_product">
+                    <label>HOMBRE<input id="genre_product" type='checkbox' name='genre_product' value="hombre" <%= oldGenre == 'hombre' ? 'selected' : null %>> </label>
                     </br>
-                    <label>MUJER<input type='radio' name='genre_product' value="mujer" <%= oldGenre == 'mujer' ? 'selected' : null %>> </label>
+                    <label>MUJER<input id="genre_product" type='checkbox' name='genre_product' value="mujer" <%= oldGenre == 'mujer' ? 'selected' : null %>> </label>
                     </br>
-                    <label>UNISEX<input type='radio' name='genre_product' value="unisex" <%= oldGenre == 'unisex' ? 'selected' : null %>> </label>
+                    <label>UNISEX<input id="genre_product" type='checkbox' name='genre_product' value="unisex" <%= oldGenre == 'unisex' ? 'selected' : null %>> </label>
                     </br>
                 </div>
                 
@@ -86,23 +90,23 @@
                 <% } else { %>
                   <% oldType = old.type %>
                 <% } %>
-                <div class="genre">
-                    <label>REMERAS<input type='radio' name='type' value="remeras" <%= oldType == 'remeras' ? 'selected' : null %>> </label>
+                <div class="genre" name="type">
+                    <label>REMERAS<input type='checkbox' name='type' value="remeras" <%= oldType == 'remeras' ? 'selected' : null %>> </label>
                     </br>
-                    <label>PANTALONES<input type='radio' name='type' value="pantalones" <%= oldType == 'pantalones' ? 'selected' : null %>> </label>
+                    <label>PANTALONES<input type='checkbox' name='type' value="pantalones" <%= oldType == 'pantalones' ? 'selected' : null %>> </label>
                     </br>
-                    <label>SHORTS<input type='radio' name='type' value="short" <%= oldType == 'short' ? 'selected' : null %>> </label>
+                    <label>SHORTS<input type='checkbox' name='type' value="short" <%= oldType == 'short' ? 'selected' : null %>> </label>
                     </br>
                     </div>
             </div>
         </fieldset>
         <fieldset>
-            <div class="categories" >
+            <div class="categories" name="new" >
                 <p class="p-style-2"> NUEVO PRODUCTO </p>
                 <div class="genre-1">
-                    <label>SI<input type='radio' name='new' value="0"> </label>
+                    <label>SI<input type='checkbox' name='new' value="0"> </label>
                     </br>
-                    <label>NO<input type='radio' name='new' value="1"> </label>
+                    <label>NO<input type='checkbox' name='new' value="1"> </label>
                     </br>
                     </div>
             </div>
@@ -119,6 +123,7 @@
 <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
     <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
 </form>
+<script src="/Javascript/ValidationEditProduct.js"></script>
 </main>
 
     <%- include('../partials/footer')  %>   

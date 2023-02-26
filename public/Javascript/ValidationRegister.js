@@ -2,9 +2,7 @@ const nombre = document.getElementById('name')
 const apellido = document.getElementById('last_name')
 const email = document.getElementById('email')
 const phone = document.getElementById('phone')
-const birthday = document.getElementById('birthday')
 const password = document.getElementById('password')
-const genre = document.getElementById('genre')
 const form = document.getElementById('register-form')
 const parrafo = document.getElementById('warnings')
 
@@ -42,11 +40,6 @@ form.addEventListener("submit", e => {
         entrar= true
     }
 
-    if (genre.value.length == ''){
-        warnings += 'Introduce tu género</br>'
-        entrar= true
-    }
-
     if (password.value.length == ''){
         warnings += 'Debes completar el campo contraseña</br>'
         entrar= true
@@ -64,3 +57,14 @@ form.addEventListener("submit", e => {
         parrafo.innerHTML = "Enviado"
     }
 })
+
+document.getElementById("register-form").addEventListener("submit", function(event){
+    let hasError = false;
+    campoTalle = document.getElementById('genre').value;
+
+    if(!document.querySelector('input[name="genre"]:checked')) {
+        alert('Por favor elige tu género');
+        hasError = true;
+        }
+
+    });
