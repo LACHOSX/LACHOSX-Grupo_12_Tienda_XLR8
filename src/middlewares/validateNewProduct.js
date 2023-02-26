@@ -3,7 +3,7 @@ const {body} = require ('express-validator');
 
 const validateNewProduct = [
     body('title').notEmpty().isLength({min: 8, max:20}).withMessage('No te olvides ponerle un titulo a tu producto.'),
-    body('description').notEmpty().isLength({min: 5, max:123}).withMessage('Escribe una descricion de tu producto.'),
+    body('description').notEmpty().isLength({min: 5, max:123}).withMessage('Escribe una descripcion de tu producto.'),
     body('price').notEmpty().isNumeric().withMessage('El precio es muy importante, asi sabran el valor de tu prenda.'),
     body('price_discount').notEmpty().isNumeric().withMessage('Recuerda poner el descuento en el precio, entre 0 y 100.'),
     body('size').notEmpty().withMessage('Que talle es esta prenda?'),

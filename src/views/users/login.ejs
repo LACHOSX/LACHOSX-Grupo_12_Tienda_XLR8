@@ -2,13 +2,17 @@
     <%- include('../partials/header') %>
 
         <main>
-            <form action="/users/login" method="POST">
+            <form id= "login-form" action="/users/login" method="POST">
                 <section class="form-register">
                     <div class="logo1">
                         <a href="/">
                             <img src="\images\completo-XLR8-mediano.png">
                         </a>
                     </div>
+                </div>
+                <div id="warnings">
+                </div>
+            </br>
                     <h4>Ingresar a tu cuenta</h4>
                     <div class="errors-form">
                         <% if (locals && locals.errorMsg) { %>
@@ -31,6 +35,7 @@
                     </br>
                 </section>
             </form>
+            <script src="/Javascript/ValidationLogin.js"></script>
         </main>
 
         <%- include('../partials/footer') %>

@@ -278,3 +278,10 @@ ul li {
   box-shadow: 10px 10px 15px rgb(100, 100, 100);
   cursor: pointer;
 }
+
+#errors {
+  color: red;
+  font-size: 8px;
+  text-align: justify;
+  text-decoration: none;
+}

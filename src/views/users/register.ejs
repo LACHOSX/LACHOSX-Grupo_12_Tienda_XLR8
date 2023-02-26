@@ -12,6 +12,10 @@
           </div>
           <div id="errors">
           </div>
+        </div>
+        <div id="warnings">
+        </div>
+      </br>
           <h4>Formulario de Registro</h4>
           <div class="errors-form">
             <% if (locals && locals.errorMsg) { %>
@@ -25,8 +29,8 @@
           <input class="controls" type="text" name="last_name" id="last_name" placeholder="Apellido" value="<%= locals.old && old.last_name ? old.last_name : ''%>">
           <input id="email" class="controls" type="email" name="email" placeholder="Correo Electrónico" value="<%= locals.old && old.email ? old.email : ''%>">
           <input class="controls" type="number" name="phone" id="phone" placeholder="Teléfono" value="<%= locals.old && old.phone ? old.phone : ''%>">
-          <input id="password" class="controls" type="password" name="password"  placeholder="Ingrese su Contraseña (Mínimo 8 caracteres)" minlength="8">
-          <input class="controls" type="password" name="password2" id="password2" placeholder="Reescriba su Contraseña" minlength="8">
+          <input id="password" class="controls" type="password" name="password"  placeholder="Ingrese su Contraseña (Mínimo 8 caracteres)">
+          <input class="controls" type="password" name="password2" id="password2" placeholder="Reescriba su Contraseña">
           <fieldset>
             <p>Fecha de nacimiento: <input type="date" name="birthday" value="Fecha de nacimiento"></p>
           </fieldset>
@@ -54,7 +58,7 @@
           <h6><a href="/login">¿Ya tienes una Cuenta?</a></h6>
         </section>
       </form>
-      <script src="/Javascript/register.js"></script>
+      <script src="/Javascript/ValidationRegister.js"></script>
     </main>
 
     <%- include('../partials/footer') %>
