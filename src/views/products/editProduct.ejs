@@ -19,8 +19,7 @@
         <input class="controls" type="text" name="title" id="title" value="<%= getDetailProduct.title %>">
         <br>
         <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img1%>">
-        <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img2%>">
-        <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg" value= "<%= getDetailProduct.img2%>">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
+        
         <br>
         <textarea id="description" name="description" rows="10" id="descripcion-area" style="width: 100%"><%= getDetailProduct.description %></textarea>
         <input class="controls" type="number" name="price" id="price" value= "<%= getDetailProduct.price %>">
@@ -71,11 +70,11 @@
                   <% oldGenre = old.genre %>
                 <% } %>
                 <div class="div-style" name="genre_product">
-                    <label>HOMBRE<input id="genre_product" type='checkbox' name='genre_product' value="hombre" <%= oldGenre == 'hombre' ? 'selected' : null %>> </label>
+                    <label>HOMBRE<input id="genre_product" type='radio' name='genre_product' value="hombre" <%= oldGenre == 'hombre' ? 'selected' : null %>> </label>
                     </br>
-                    <label>MUJER<input id="genre_product" type='checkbox' name='genre_product' value="mujer" <%= oldGenre == 'mujer' ? 'selected' : null %>> </label>
+                    <label>MUJER<input id="genre_product" type='radio' name='genre_product' value="mujer" <%= oldGenre == 'mujer' ? 'selected' : null %>> </label>
                     </br>
-                    <label>UNISEX<input id="genre_product" type='checkbox' name='genre_product' value="unisex" <%= oldGenre == 'unisex' ? 'selected' : null %>> </label>
+                    <label>UNISEX<input id="genre_product" type='radio' name='genre_product' value="unisex" <%= oldGenre == 'unisex' ? 'selected' : null %>> </label>
                     </br>
                 </div>
                 
@@ -91,11 +90,11 @@
                   <% oldType = old.type %>
                 <% } %>
                 <div class="genre" name="type">
-                    <label>REMERAS<input type='checkbox' name='type' value="remeras" <%= oldType == 'remeras' ? 'selected' : null %>> </label>
+                    <label>REMERAS<input type='radio' name='type' value="remeras" <%= oldType == 'remeras' ? 'selected' : null %>> </label>
                     </br>
-                    <label>PANTALONES<input type='checkbox' name='type' value="pantalones" <%= oldType == 'pantalones' ? 'selected' : null %>> </label>
+                    <label>PANTALONES<input type='radio' name='type' value="pantalones" <%= oldType == 'pantalones' ? 'selected' : null %>> </label>
                     </br>
-                    <label>SHORTS<input type='checkbox' name='type' value="short" <%= oldType == 'short' ? 'selected' : null %>> </label>
+                    <label>SHORTS<input type='radio' name='type' value="short" <%= oldType == 'short' ? 'selected' : null %>> </label>
                     </br>
                     </div>
             </div>
@@ -104,9 +103,9 @@
             <div class="categories" name="new" >
                 <p class="p-style-2"> NUEVO PRODUCTO </p>
                 <div class="genre-1">
-                    <label>SI<input type='checkbox' name='new' value="0"> </label>
+                    <label>SI<input type='radio' name='new' value="0"> </label>
                     </br>
-                    <label>NO<input type='checkbox' name='new' value="1"> </label>
+                    <label>NO<input type='radio' name='new' value="1"> </label>
                     </br>
                     </div>
             </div>

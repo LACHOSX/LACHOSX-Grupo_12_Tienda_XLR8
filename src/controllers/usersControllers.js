@@ -31,8 +31,8 @@ const createUser = async function (req, res, next) {
                 last_name: req.body.last_name,
                 email: req.body.email,
                 phone: req.body.phone,
-                password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria = Messi
-                //password: req.body.password2,
+                //password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria
+                password: req.body.password,
                 birthday: req.body.birthday,
                 genre: req.body.genre
             });        
@@ -107,7 +107,6 @@ const userUpdate = async function(req, res) {
             email: req.body.email,
             phone: req.body.phone,
             password: req.body.password,
-            //password: req.body.password2,
             birthday: req.body.birthday,
             genre: req.body.genre
         }, {
@@ -125,10 +124,11 @@ const userUpdate = async function(req, res) {
 //  BORRADO DE USUARIO
 const deleteUser = async function (req, res) {
     try {
+        let deleteIdUser = req.params.id;
         await db.User.destroy(
             {
                 where: {
-                    id: req.params.id
+                    id: deleteIdUser
             }
     });
        return res.redirect('/');                

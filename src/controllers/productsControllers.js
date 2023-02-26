@@ -89,8 +89,6 @@ const updateProduct = async function(req, res, next) {
             await getDetailProduct.update({  
                 ...req.body,
                 photo1: req.file.filename,
-                //photo2: getDetailProduct.img2,
-                //photo3: getDetailProduct.img3,
             })
             getDetailProduct = await  db.Product.findByPk(idProduct);
             res.render('products/editProduct', { getDetailProduct })

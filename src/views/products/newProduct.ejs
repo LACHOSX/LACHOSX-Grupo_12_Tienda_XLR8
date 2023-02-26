@@ -4,8 +4,7 @@
 
         <main>
             <form id="newproduct-form" action="/products/create" method="POST" enctype="multipart/form-data" >
-                <!-- NO VA /GUARDAR la ruta ? -->
-                <!--enctype="multipart/form-data"-->
+
                 <section class="form-register" >
                     <div class="logo1">
                         <a href="/">
@@ -28,10 +27,6 @@
                     <br>
                     <input class="agregar-foto" type="file" name="img1" accept=".jpg, .png, .jpeg" placeholder="Agregar Foto Frente">
                     
-                    <!-- <input class="agregar-foto" type="file" name="img2" accept=".jpg, .png, .jpeg"
-                        placeholder="Agregar Foto Frente">
-                    <input class="agregar-foto" type="file" name="img3" accept=".jpg, .png, .jpeg"
-                        placeholder="Agregar Foto Frente">  ESTO VA COMENTADO, POR EL MOMENTO SOLO 1 FOTO POR PRODUCTO PARA EVITAR CONFLICTO DE MULTER Y VALIDACIONES.-->
                     </br>
                     </br>
                     <textarea id="description" name="description" rows="10" placeholder="Descripcion del producto" style="width: 100%" value="<%= locals.old && old.description ? old.description : ''%>"> </textarea>
@@ -41,48 +36,47 @@
                     <input id="price_discount"  class="controls" type="number" name="price_discount" placeholder="Precio Promocional" value="<%= locals.old && old.price_discount ? old.price_discount : ''%>">
                     <div id="size" for="talle">
                         <p>TALLE</p>
-                        <label>Small <input id="size" type='checkbox' name="size" value="small" <%= locals.old && old.size === 'small' ? 'selected' : '' %>></label>
-                        <label>Medium <input id="size" type='checkbox' value="medium" <%= locals.old && old.size === 'medium' ? 'selected' : '' %>></label>
-                        <label> Large <input id="size" type='checkbox' value="large" <%= locals.old && old.size === 'large' ? 'selected' : '' %>></label>
-                        <label> XL <input id="size" type='checkbox' value="xl" <%= locals.old && old.size === 'xl' ? 'selected' : '' %>></label>
+                        <label>Small <input id="size" type='radio' name="size" value="small" <%= locals.old && old.size === 'small' ? 'selected' : '' %>></label>
+                        <label>Medium <input id="size" type='radio' value="medium" <%= locals.old && old.size === 'medium' ? 'selected' : '' %>></label>
+                        <label> Large <input id="size" type='radio' value="large" <%= locals.old && old.size === 'large' ? 'selected' : '' %>></label>
+                        <label> XL <input id="size" type='radio' value="xl" <%= locals.old && old.size === 'xl' ? 'selected' : '' %>></label>
                     </select>
                     <div id="color" for="color">
                         <p>COLOR</p>
-                        <label>NEGRO <input id="color" type='checkbox' name= "color" value="negro" <%= locals.old && old.color === 'negro' ? 'selected' : '' %>></label>
-                        <label>GRIS <input id="color" type='checkbox' value="gris" <%= locals.old && old.color === 'gris' ? 'selected' : '' %>></label>
-                        <label>BLANCO <input id="color" type='checkbox' value="blanco" <%= locals.old && old.color === 'blanco' ? 'selected' : '' %>></label>
-                        <label>COLOR <input  id="color" type='checkbox' value="color" <%= locals.old && old.color === 'color' ? 'selected' : '' %>></label>
+                        <label>NEGRO <input id="color" type='radio' name= "color" value="negro" <%= locals.old && old.color === 'negro' ? 'selected' : '' %>></label>
+                        <label>GRIS <input id="color" type='radio' value="gris" <%= locals.old && old.color === 'gris' ? 'selected' : '' %>></label>
+                        <label>BLANCO <input id="color" type='radio' value="blanco" <%= locals.old && old.color === 'blanco' ? 'selected' : '' %>></label>
+                        <label>COLOR <input  id="color" type='radio' value="color" <%= locals.old && old.color === 'color' ? 'selected' : '' %>></label>
                     </div>
                     <div id="genre_product" class="genre_product">
                         <!-- REVISAR CSS -->
                         <p>CATEGORIAS </p>
-                        <label>HOMBRE<input id="genre_product" type='checkbox' name='genre_product' value="hombre" <%= locals.old && old.genre_product === 'hombre' ? 'selected' : '' %>> </label>
+                        <label>HOMBRE<input id="genre_product" type='radio' name='genre_product' value="hombre" <%= locals.old && old.genre_product === 'hombre' ? 'selected' : '' %>> </label>
                         </br>
-                        <label>MUJER<input id="genre_product" type='checkbox' name='genre_product' value="mujer" <%= locals.old && old.genre_product === 'mujer' ? 'selected' : '' %>> </label>
+                        <label>MUJER<input id="genre_product" type='radio' name='genre_product' value="mujer" <%= locals.old && old.genre_product === 'mujer' ? 'selected' : '' %>> </label>
                         </br>
-                        <label>UNISEX<input id="genre_product" type='checkbox' name='genre_product' value="unisex" <%= locals.old && old.genre_product === 'unisex' ? 'selected' : '' %>> </label>
+                        <label>UNISEX<input id="genre_product" type='radio' name='genre_product' value="unisex" <%= locals.old && old.genre_product === 'unisex' ? 'selected' : '' %>> </label>
                         </br>
                     </div>
                     <div id="type" class="categories">
                         <p> TIPO DE PRENDA </p>
-                        <label>REMERAS<input id="type" type='checkbox' name='type' value="remeras" <%= locals.old && old.type === 'remeras' ? 'selected' : '' %>> </label>
+                        <label>REMERAS<input id="type" type='radio' name='type' value="remeras" <%= locals.old && old.type === 'remeras' ? 'selected' : '' %>> </label>
                         </br>
-                        <label>PANTALONES<input id="type" type='checkbox' name='type' value="pantalones" <%= locals.old && old.type === 'pantalones' ? 'selected' : '' %>> </label>
+                        <label>PANTALONES<input id="type" type='radio' name='type' value="pantalones" <%= locals.old && old.type === 'pantalones' ? 'selected' : '' %>> </label>
                         </br>
-                        <label>SHORTS<input id="type" type='checkbox' name='type' value="short" <%= locals.old && old.type === 'short' ? 'selected' : '' %>> </label>
+                        <label>SHORTS<input id="type" type='radio' name='type' value="short" <%= locals.old && old.type === 'short' ? 'selected' : '' %>> </label>
                         </br>
                         
                     </div>
                     <div id="new" class="categories">
                         <p> NUEVO PRODUCTO </p>
-                        <label>SI<input id="new" type='checkbox' name='new' value="0" <%= locals.old && old.new === '0' ? 'selected' : '' %>> </label>
+                        <label>SI<input id="new" type='radio' name='new' value="0" <%= locals.old && old.new === '0' ? 'selected' : '' %>> </label>
                         </br>
-                        <label>NO<input id="new" type='checkbox' name='new' value="1" <%= locals.old && old.new === '1' ? 'selected' : '' %>> </label>
+                        <label>NO<input id="new" type='radio' name='new' value="1" <%= locals.old && old.new === '1' ? 'selected' : '' %>> </label>
                         </br>
                     </div>
                     <button class="botons" type="submit"> AGREGAR PRODUCTO</button>
-                    <!-- <button class="botons" type="submit"> EDITAR PRODUCTO</button>
-                    <button class="botons" type="submit"> ELIMINAR PRODUCTO </button> --> 
+                    
 
                 </section>
             </form>
