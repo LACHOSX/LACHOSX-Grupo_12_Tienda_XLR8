@@ -149,16 +149,18 @@ const profile = async function (req, res) {
 }
 
 //LOGOUT
-//const logout = async function (req, res) {
-//      try {
-//            res.clearCookie('email');
-//            req.session.destroy();
-//            return res.redirect('/');
-//        } catch (error) {
-//        console.log("ERROR LOG OUT USER", error)
-//} 
+const logout = async function (req, res) {
+    try {
+        res.clearCookie('email');
+        req.session.destroy();
+        console.log(req.session);
+        return res.redirect('/');
+    } catch (error) {
+        console.log("ERROR LOG OUT USER", error)
+    } 
+}
 
 
-module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile};
+module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile, logout};
 
 //logout

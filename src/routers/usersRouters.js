@@ -29,7 +29,7 @@ router.put('/edit/:id', userController.userUpdate);
 
 router.delete('/delete/:id', userController.deleteUser);
 
-// Logout
+// LOGOUT
 //router.get('/logout', usersController.logout);
 
 module.exports = router;

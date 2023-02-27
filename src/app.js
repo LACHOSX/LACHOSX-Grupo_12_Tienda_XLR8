@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const multer  = require('multer')
 const logMiddleware = require('./middlewares/logMiddleware');
+//const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 //const adminMiddleware = require('./middlewares/adminMiddleware');
 //const rememberMiddleware = require('./middlewares/rememberMiddleware');
 const cookieParser = require('cookie-parser')
@@ -16,7 +17,8 @@ const app = express();
 
 // ******** Middlewares - (dont touch) ******** //
 app.use(logMiddleware);
-//app.use(adminMiddleware)
+//app.use(userLoggedMiddleware);
+//app.use(adminMiddleware);
 //app.use(rememberMiddleware);
 
 app.use(express.static(path.join(__dirname, '../public')));
