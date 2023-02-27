@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const multer  = require('multer')
 const logMiddleware = require('./middlewares/logMiddleware');
+//const adminMiddleware = require('./middlewares/adminMiddleware');
 //const rememberMiddleware = require('./middlewares/rememberMiddleware');
 const cookieParser = require('cookie-parser')
 
@@ -15,9 +16,14 @@ const app = express();
 
 // ******** Middlewares - (dont touch) ******** //
 app.use(logMiddleware);
+//app.use(adminMiddleware)
+//app.use(rememberMiddleware);
+
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({extended: false})); //por que no se usa {extended: false} ??
+
 // app.use(logger('dev'));
+
 app.use(cookieParser());
 app.use(methodOverride('_method')); //metodo para SOBRE-ESCRIBIR el metodo original del formulario (PUT o DELETE)
 app.use(session({
@@ -25,7 +31,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }))
-//app.use(rememberMiddleware);
+
 
 // ******** Template Engine - (dont touch) ******** //
 app.set('view engine', 'ejs');
@@ -41,7 +47,6 @@ app.use(express.json());
 app.use('/', mainRouters);
 app.use('/products', productsRouters);
 app.use('/users', usersRouters);
-
 
 
 // VISTA ERROR 404

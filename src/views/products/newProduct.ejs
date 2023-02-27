@@ -37,16 +37,16 @@
                     <div id="size" for="talle">
                         <p>TALLE</p>
                         <label>Small <input id="size" type='radio' name="size" value="small" <%= locals.old && old.size === 'small' ? 'selected' : '' %>></label>
-                        <label>Medium <input id="size" type='radio' value="medium" <%= locals.old && old.size === 'medium' ? 'selected' : '' %>></label>
-                        <label> Large <input id="size" type='radio' value="large" <%= locals.old && old.size === 'large' ? 'selected' : '' %>></label>
-                        <label> XL <input id="size" type='radio' value="xl" <%= locals.old && old.size === 'xl' ? 'selected' : '' %>></label>
+                        <label>Medium <input id="size" type='radio' name="size" value="medium" <%= locals.old && old.size === 'medium' ? 'selected' : '' %>></label>
+                        <label> Large <input id="size" type='radio' name="size" value="large" <%= locals.old && old.size === 'large' ? 'selected' : '' %>></label>
+                        <label> XL <input id="size" type='radio' name="size" value="xl" <%= locals.old && old.size === 'xl' ? 'selected' : '' %>></label>
                     </select>
                     <div id="color" for="color">
                         <p>COLOR</p>
                         <label>NEGRO <input id="color" type='radio' name= "color" value="negro" <%= locals.old && old.color === 'negro' ? 'selected' : '' %>></label>
-                        <label>GRIS <input id="color" type='radio' value="gris" <%= locals.old && old.color === 'gris' ? 'selected' : '' %>></label>
-                        <label>BLANCO <input id="color" type='radio' value="blanco" <%= locals.old && old.color === 'blanco' ? 'selected' : '' %>></label>
-                        <label>COLOR <input  id="color" type='radio' value="color" <%= locals.old && old.color === 'color' ? 'selected' : '' %>></label>
+                        <label>GRIS <input id="color" type='radio' name= "color" value="gris" <%= locals.old && old.color === 'gris' ? 'selected' : '' %>></label>
+                        <label>BLANCO <input id="color" type='radio' name= "color" value="blanco" <%= locals.old && old.color === 'blanco' ? 'selected' : '' %>></label>
+                        <label>COLOR <input  id="color" type='radio' name= "color" value="color" <%= locals.old && old.color === 'color' ? 'selected' : '' %>></label>
                     </div>
                     <div id="genre_product" class="genre_product">
                         <!-- REVISAR CSS -->

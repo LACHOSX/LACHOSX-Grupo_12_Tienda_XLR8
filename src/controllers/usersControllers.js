@@ -136,6 +136,7 @@ const deleteUser = async function (req, res) {
         console.log("ERROR DELETE USER", error)
     }
 }
+// REVISAR COMO SE AGREGA DESTROY DE SESSION Y COOKIES
 
 // PERFIL DE USUARIO
 const profile = async function (req, res) {
@@ -147,6 +148,17 @@ const profile = async function (req, res) {
     }  
 }
 
+//LOGOUT
+//const logout = async function (req, res) {
+//      try {
+//            res.clearCookie('email');
+//            req.session.destroy();
+//            return res.redirect('/');
+//        } catch (error) {
+//        console.log("ERROR LOG OUT USER", error)
+//} 
 
 
 module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile};
+
+//logout

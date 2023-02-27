@@ -4,6 +4,8 @@ const path = require('path');
 const multer = require('multer');
 const { body } = require('express-validator');
 
+const adminMiddleware = require('../middlewares/adminMiddleware');
+
 const validateNewProduct = require('../middlewares/validateNewProduct');
 const productsController = require('../controllers/productsControllers');
 
@@ -33,3 +35,5 @@ router.delete('/delete/:id', productsController.deleteProduct)
 router.get('/cart', productsController.cart)
 
 module.exports = router;
+
+// AGREGAR MIDDLEWARE EN > CREATE - EDIT Y DELETE  adminMiddleware
