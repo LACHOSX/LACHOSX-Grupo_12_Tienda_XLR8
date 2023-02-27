@@ -1,13 +1,13 @@
 const userLoggedMiddleware = (req, res, next) => {
-	let isLogged = false;
-    res.locals.isLogged = false;
+	res.locals.isLogged = false;
+
+	if (req.session.userLogged) {
+		res.locals.isLogged = true;
+
+	}
 
     next();
-    if (req.session.userLogOk != undefined) {
-		next();
-	} else {
-		res.send('Esta pagina es solo para usuarios');
-	}
+    
 }
 module.exports = userLoggedMiddleware;
 

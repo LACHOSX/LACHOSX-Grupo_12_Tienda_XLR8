@@ -40,7 +40,7 @@ const createUser = async function (req, res, next) {
         } catch (error) {
             console.log("ERROR CREANDO USUARIO", error)
         }    
-        return res.redirect('/');               
+        return res.redirect('/users/login');  
     } else {
         console.log(errors)
         return res.render ('users/register', {
@@ -73,11 +73,13 @@ const processLogin = async function (req, res) {
 			if (userDb[i].email == req.body.email) {
 				if (bcrypt.compareSync(req.body.password, userDb[i].password)) {
 					userToLog = userDb[i];
+                    delete userToLog.password;
+                    req.session.userLogged = userToLog;
 					break;
 				}
 			}
 		}
-        res.redirect('/')
+        return res.render('users/profile')
         		
 	} else {
         console.log(errors)
@@ -141,12 +143,15 @@ const deleteUser = async function (req, res) {
 
 // PERFIL DE USUARIO
 const profile = async function (req, res) {
-    try {
-        let getUserProfile = await db.User.findByPk(req.params.id)
-        res.render('users/profile', {getUserProfile});
-    } catch (error) {
-        console.log("ERROR PROFILE USER", error)
-    }  
+    return res.render('users/profile', {
+        user: req.session.userLogged
+    });
+    //try {
+       // let getUserProfile = await db.User.findByPk(req.params.id)
+        
+    //} catch (error) {
+     //   console.log("ERROR PROFILE USER", error)
+    //}  
 }
 
 //LOGOUT
@@ -154,7 +159,6 @@ const logout = async function (req, res) {
     try {
         res.clearCookie('email');
         req.session.destroy();
-        console.log(req.session);
         return res.redirect('/');
     } catch (error) {
         console.log("ERROR LOG OUT USER", error)
