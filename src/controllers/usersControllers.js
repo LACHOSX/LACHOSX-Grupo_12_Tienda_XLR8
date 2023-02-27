@@ -23,6 +23,7 @@ const register = function (req, res) {
 
 //  GUARDADO DE USUARIO
 const createUser = async function (req, res, next) {
+    console.log(req.body);
     let errors = validationResult(req);    
     if (errors.isEmpty()) {
         try {
@@ -31,8 +32,8 @@ const createUser = async function (req, res, next) {
                 last_name: req.body.last_name,
                 email: req.body.email,
                 phone: req.body.phone,
-                //password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria
-                password: req.body.password,
+                password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria
+                // password: req.body.password,
                 birthday: req.body.birthday,
                 genre: req.body.genre
             });        
