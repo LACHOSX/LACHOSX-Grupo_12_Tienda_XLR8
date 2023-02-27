@@ -8,12 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         photo1: {
             type: DataTypes.STRING,
         },
-        //photo2: {
-        //    type: DataTypes.STRING,
-        //},
-        //photo3: {
-        //    type: DataTypes.STRING,
-        //},
         description: {
             type: DataTypes.STRING
         },

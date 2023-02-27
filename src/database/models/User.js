@@ -1,12 +1,7 @@
 const { sequelize, DataTypes } = require("sequelize");
 
-const UserCategory = require("./UserCategory");
-
 module.exports = (sequelize, DataTypes) => {
-    
-    const alias = "User";
-    const cols = {
-                
+    const User = sequelize.define('User', {
         name: {
             type: DataTypes.STRING
         },        
@@ -31,15 +26,13 @@ module.exports = (sequelize, DataTypes) => {
         id_users_categories: {
             type: DataTypes.INTEGER,
             foreignKey: true,
-        }
-    };
-    const config = {
+        },
+    }, {
         tableName: "users",
         timestamps: false
-        };
-    const User = sequelize.define(alias, cols, config);
-
-    User.associate = function(models) {
+        });
+        
+        User.associate = function(models) {
         User.belongsTo(models.UserCategory, {
             as: "usersCategories",
             foreignKey: "id_users_categories",            
