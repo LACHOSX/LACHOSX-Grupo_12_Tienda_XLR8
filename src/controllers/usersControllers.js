@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const model = require("../database/models/User");
+
 const { Op } = require("sequelize");
 const db = require("../database/models"); 
+const User = db.User;
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
@@ -62,39 +64,36 @@ const login = function (req, res) {
 
 //  LOGIN-IN DE USUARIO
 const processLogin = async function (req, res) {    
-	let errors = validationResult(req);
-	let userToLogin = await db.User.findAll({
-        where: {
-            'email': req.body.email}
-        });
-    try { 
-        if (errors.isEmpty()) {
-            if(userToLogin) {
-                let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
-                
-                if (isOkThePassword) {
+	let validationErrors = validationResult(req);
+    console.log(validationErrors)
+
+    if (validationErrors.isEmpty()) {
+        let userToLogin = await User.findOne({
+            where: {
+                email: req.params.email}
+            })
+            console.log(userToLogin)
+            if (userToLogin) {
+                let confirmPassword = bcrypt.compareSync(req.body.password, userToLogin.password);
+                console.log(confirmPassword)
+                if (confirmPassword) {
                     delete userToLogin.password;
                     req.session.userLogged = userToLogin;
-                }            
-                    if(req.body.remember_user) {
-                        res.cookie('email', req.body.email, { maxAge: (1000 * 60) * 60 })
-                    }
-                
-                    return res.redirect('users/profile');
                 }
+                if (req.body.remember_user) {
+                    res.cookie('userEmail', req.body.userEmail,  { maxAge: (1000 * 60) * 20})
+                }
+                return res.render('users/profile')
     
-        }
-    } catch (error) {
-        console.log(errors)
-        res.render('users/login', {
-            errors: errors.errors,
-            old: req.body
-        })
+            } else {
+                console.log(errors)
+                res.render('users/login', {
+                    errorMsg: errors.errors,
+                    old: req.body
+                })
+            }
     }
 }
-
-
-
 
 
 
