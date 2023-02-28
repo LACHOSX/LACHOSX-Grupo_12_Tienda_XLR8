@@ -62,29 +62,37 @@
                         <input type="color" id="color" name="color">
                     </div>
                     <div class="talles">
-                        <p class="talle">Talles:<%= getDetailProduct.size %>
+                        <p class="talle"> TALLES :<%= getDetailProduct.size %>
                         </p>
                     </div>
                     <div class="cantidad">
-                        <label for="cantidad">Cantidad: </label>
+                        <label for="cantidad"> CANTIDAD :  </label>
                         <input class="input" type="number" id="cantidad" name="cantidad">
                     </div>
-                    <input type="submit" class="boton-agregar-carrito"> 
                     
-                    <div class="button-send">
-                        <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
-                            <button type="submit" class="button-div">
-                                Editar producto</button></a>
+                     
+                    <% if (locals.isAdmin) { %>
+                        <div class="button-send">
+                            <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
+                                <button type="submit" class="button-div">
+                                    EDITAR PRODUCTO</button></a>
+    
+                            <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
+                            </form>
+                            
+                        </div>
 
-                        <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
-                        </form>
+                    <% } else { %>
+
                         <div class="agregar-carrito">
                             <a href="/products/cart ">
                                 <button type="submit" class="button-div">Agregar al carrito</button>
                             </a>
                         </div>
-                    </div>
+            
+                    <% } %>
+                    
                     
                 </div>
 
