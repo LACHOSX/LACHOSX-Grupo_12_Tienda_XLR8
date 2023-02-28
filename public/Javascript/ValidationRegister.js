@@ -54,7 +54,7 @@ form.addEventListener("submit", e => {
         parrafo.innerHTML = warnings
     }
     else{
-        parrafo.innerHTML = "Enviado"
+        form.submit()
     }
 })
 

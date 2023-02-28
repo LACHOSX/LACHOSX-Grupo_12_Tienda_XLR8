@@ -30,6 +30,6 @@ router.put('/edit/:id', userController.userUpdate);
 
 router.delete('/delete/:id', userController.deleteUser);
 
-router.get('/logout', usersController.logout);
+router.get('/logout', userController.logout);
 
 module.exports = router;

@@ -17,7 +17,8 @@ const userList = async function (req, res, next){
 }
 
 // CREACION DE USUARIO
-const register = function (req, res) {    
+const register = function (req, res) {   
+    res.cookie('testing', 'Hola Register XLR8', { maxAge: 1000 * 60 * 5});
     res.render('users/register');
 }
 
@@ -32,8 +33,7 @@ const createUser = async function (req, res, next) {
                 last_name: req.body.last_name,
                 email: req.body.email,
                 phone: req.body.phone,
-                password: bcrypt.hashSync(req.body.password, 10), // encriptacion necesaria
-                // password: req.body.password,
+                password: bcrypt.hashSync(req.body.password, 10),          
                 birthday: req.body.birthday,
                 genre: req.body.genre
             });        
@@ -51,34 +51,37 @@ const createUser = async function (req, res, next) {
 }
    
 //  LOGIN DE USUARIO
-const login = function (req, res) {    
+const login = function (req, res) {
+    console.log(req.cookies.testing);
+    res.cookie('testing', 'Hola Login XLR8', { maxAge: 1000 * 60 * 10});
     res.render('users/login');
 }
 
 //  LOGIN-IN DE USUARIO
-const processLogin = async function (req, res) {
+const processLogin = async function (req, res) {    
 	let errors = validationResult(req);
 	let userToLog = [];
 
 	if (errors.isEmpty()) {
-		let userDb = await db.User.findAll(req.params.email)
+		let userDb = await db.User.findOne({
+            where: {
+                email: req.params.email}
+            });
 
-		if( userDb == "") {
-			userToLog = [];
+		if (!userDb) { 			
+            res.send(error)
 		} else {
 			userToLog = db.User;
 		}
+		if (bcrypt.compareSync(req.body.password, userDb.password)) {
+            userToLog = userDb;
+            delete userToLog.password;
+            req.session.userLogged = userToLog;
+
+            if(req.body.remember_user) {
+                res.cookie('userEmail', req.body.email,  { maxAge: 1000 * 60 * 10})
+            };
 		
-		for (let i = 0; i < userDb.length; i ++) {
-			if (userDb[i].email == req.body.email) {
-				if (bcrypt.compareSync(req.body.password, userDb[i].password)) {
-					userToLog = userDb[i];
-                    delete userToLog.password;
-                    req.session.userLogged = userToLog;
-					break;
-				}
-			}
-		}
         return res.render('users/profile')
         		
 	} else {
@@ -88,6 +91,7 @@ const processLogin = async function (req, res) {
             old: req.body
          })
     }
+}
 }
 
 //  EDICION DE USUARIO
@@ -139,25 +143,18 @@ const deleteUser = async function (req, res) {
         console.log("ERROR DELETE USER", error)
     }
 }
-// REVISAR COMO SE AGREGA DESTROY DE SESSION Y COOKIES
 
 // PERFIL DE USUARIO
 const profile = async function (req, res) {
     return res.render('users/profile', {
         user: req.session.userLogged
-    });
-    //try {
-       // let getUserProfile = await db.User.findByPk(req.params.id)
-        
-    //} catch (error) {
-     //   console.log("ERROR PROFILE USER", error)
-    //}  
+    });    
 }
 
 //LOGOUT
 const logout = async function (req, res) {
     try {
-        res.clearCookie('email');
+        res.clearCookie('userEmail');
         req.session.destroy();
         return res.redirect('/');
     } catch (error) {
@@ -167,5 +164,3 @@ const logout = async function (req, res) {
 
 
 module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile, logout};
-
-//logout

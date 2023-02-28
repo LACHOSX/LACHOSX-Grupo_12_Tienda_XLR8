@@ -4,12 +4,13 @@ const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const cookieParser = require('cookie-parser')
 const multer  = require('multer')
 const logMiddleware = require('./middlewares/logMiddleware');
-const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
-const rememberMiddleware = require('./middlewares/rememberMiddleware');
+//const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
+//const rememberMiddleware = require('./middlewares/rememberMiddleware');
 //const adminMiddleware = require('./middlewares/adminMiddleware');
-const cookieParser = require('cookie-parser')
+
 
 
 // ******** EXPRESS () - (dont touch) ******** //
@@ -21,7 +22,6 @@ app.use(logMiddleware);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({extended: false})); //por que no se usa {extended: false} ??
 
-app.use(cookieParser());
 app.use(methodOverride('_method')); //metodo para SOBRE-ESCRIBIR el metodo original del formulario (PUT o DELETE)
 app.use(session({
     secret : "ES UN SECRETO!",
@@ -29,8 +29,10 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-app.use(userLoggedMiddleware);
-app.use(rememberMiddleware);
+app.use(cookieParser());
+
+//app.use(userLoggedMiddleware);
+//app.use(rememberMiddleware);
 //app.use(adminMiddleware);
 
 // app.use(logger('dev'));

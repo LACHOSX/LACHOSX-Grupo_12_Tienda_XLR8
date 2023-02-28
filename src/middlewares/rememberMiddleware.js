@@ -1,7 +1,7 @@
 const rememberMiddleware = async function (req, res, next) {
 	next();
 	
-	if (req.cookies.remember != undefined && req.session.userLogOk == undefined) {
+	if (req.cookies.remember_user != undefined && req.session.userLogged == undefined) {
 
 		let userDb = await db.User.findAll(req.params.email)
         		let userLog;
@@ -18,7 +18,7 @@ const rememberMiddleware = async function (req, res, next) {
 				}
 			}
 
-			req.session.userLogOk = userToLog;
+			req.session.userLogged = userToLog;
 	}
 
 }
