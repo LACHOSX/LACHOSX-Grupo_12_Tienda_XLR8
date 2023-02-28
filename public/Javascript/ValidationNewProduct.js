@@ -2,6 +2,7 @@ const title = document.getElementById('title')
 const description = document.getElementById('description')
 const price = document.getElementById('price')
 const price_discount = document.getElementById('price_discount')
+const avatar = document.getElementById('avatar')
 const form = document.getElementById('newproduct-form')
 const parrafo = document.getElementById('warnings')
 
@@ -27,6 +28,11 @@ form.addEventListener("submit", e => {
         (description.value.length <= 20) {
             warnings += 'La descripcion debe tener al menos 20 carácteres <br>'
             entrar= true
+    }
+
+    if (avatar.value == ''){
+        warnings += 'Debe seleccionar su imagen en formato JPG - PNG ó JPEG. </br>'
+        entrar= true
     }
 
     if (price.value.length == ''){
