@@ -10,7 +10,7 @@ const userLoggedMiddleware = async function (req, res, next) {
         userLogged = req.cookies.userEmail;
     }
     else if(req.session.userLogged){
-        userLogged = req.session.userLogged.email
+        userLogged = req.session.userLogged
     }
     
     try{

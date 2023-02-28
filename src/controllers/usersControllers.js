@@ -57,42 +57,46 @@ const login = function (req, res) {
     res.render('users/login');
 }
 
+
+
+
 //  LOGIN-IN DE USUARIO
 const processLogin = async function (req, res) {    
 	let errors = validationResult(req);
-	let userToLog = [];
+	let userToLogin = User.findOne('email', req.body.email);
+    try { if (errors.isEmpty()) {
+        if(userToLogin) {
+            let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
+            if (isOkThePassword) {
+                delete userToLogin.password;
+                req.session.userLogged = userToLogin;
+            }            
+                if(req.body.remember_user) {
+                    res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+                }
+            
+                return res.redirect('users/profile');
+            }
 
-	if (errors.isEmpty()) {
-		let userDb = await db.User.findOne({
-            where: {
-                email: req.params.email}
-            });
-
-		if (!userDb) { 			
-            res.send(error)
-		} else {
-			userToLog = db.User;
-		}
-		if (bcrypt.compareSync(req.body.password, userDb.password)) {
-            userToLog = userDb;
-            delete userToLog.password;
-            req.session.userLogged = userToLog;
-
-            if(req.body.remember_user) {
-                res.cookie('userEmail', req.body.email,  { maxAge: 1000 * 60 * 10})
-            };
-		
-        return res.render('users/profile')
-        		
-	} else {
-        console.log(errors)
-        res.render('users/login', {
-            errors: errors.errors,
-            old: req.body
-         })
-    }
+            }
+        } catch (error) {
+                console.log(errors)
+                res.render('users/login', {
+                    errors: errors.errors,
+                    old: req.body
+                })
+        }
 }
-}
+
+
+
+
+
+
+
+
+
+
 
 //  EDICION DE USUARIO
 const userEdit = async function (req, res) {
