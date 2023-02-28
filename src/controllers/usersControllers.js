@@ -4,7 +4,7 @@ const model = require("../database/models/User");
 
 const { Op } = require("sequelize");
 const db = require("../database/models"); 
-const User = db.User;
+const {User} = require('../database/models');
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
@@ -70,7 +70,7 @@ const processLogin = async function (req, res) {
     if (validationErrors.isEmpty()) {
         let userToLogin = await User.findOne({
             where: {
-                email: req.params.email}
+                email: req.body.email}
             })
             console.log(userToLogin)
             if (userToLogin) {
@@ -94,12 +94,6 @@ const processLogin = async function (req, res) {
             }
     }
 }
-
-
-
-
-
-
 
 
 //  EDICION DE USUARIO
@@ -154,11 +148,25 @@ const deleteUser = async function (req, res) {
 
 // PERFIL DE USUARIO
 const profile = async function (req, res) {
-    return res.render('users/profile', {
-        user: req.session.userLogged
-    });    
+    try {
+        let getUserProfile = await db.User.findByPk(req.params.id)
+        console.log(getUser);
+        return res.render('users/profile', {
+            user: req.session.userLogged, getUserProfile
+        });    
+    } catch (error) {
+        console.log("ERROR PROFILE", error)
+    }
 }
+   
 
+    // const userId = req.session.userLogged.id;
+    // const addressList = await Address.findAll({
+    //   include: ["city"],
+    //   where: { user_id: userId },
+    // });
+  
+    
 //LOGOUT
 const logout = async function (req, res) {
     try {

@@ -1,6 +1,6 @@
 const {User} = require('../database/models');
 const {body} = require ('express-validator');
-const bcrypt = require('bcryptjs');
+
 
 const validateLogin = [
     body('email').notEmpty().isEmail().withMessage('Debes completar el campo de email'),
