@@ -1,9 +1,9 @@
 INSERT INTO `users` VALUES 
 -- (id, name, last_name, email, phone, password, birthday, genre, id_users_categories) 
-(1, 'Alejandro', 'Negri', 'alemnegri84@gmail.com', 1122926663, 'asd455', '2003-01-01', 'hombre', 1),
-(2, 'Tadeo', 'Negri', 'tadeoab@gmail.com', 1122926663, 'asd455', '2000-03-03', 'hombre', 1),
-(3, 'Nati', 'Admin', 'natiprofeadmin@gmail.com', 1166448855, 'natiadmin123', '2002-05-05', 'mujer', 1),
-(4, 'Nati', 'Cliente', 'natiprofeuser@gmail.com', 1133559988, 'natiuser123', '2002-04-04', 'mujer', 2);
+(1, 'Alejandro', 'Negri', 'alemnegri84@gmail.com', 1122926663, 'ale12345', '1984-10-10', 'hombre', 2),
+(2, 'Tadeo', 'Negri', 'tadeoab@gmail.com', 1122926663, 'tadeo123', '2001-02-08', 'hombre', 2),
+(3, 'Nati', 'Admin', 'natiadmin@gmail.com', 1166448855, 'natiadmin123', '1986-06-01', 'mujer', 2),
+(4, 'Nati', 'Cliente', 'natiuser@gmail.com', 1133559988, 'natiuser123', '1983-04-02', 'mujer', 1);
 
 INSERT INTO `users_categories` VALUES 
 -- (id, name)

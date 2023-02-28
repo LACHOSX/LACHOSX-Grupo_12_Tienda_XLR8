@@ -63,29 +63,34 @@ const login = function (req, res) {
 //  LOGIN-IN DE USUARIO
 const processLogin = async function (req, res) {    
 	let errors = validationResult(req);
-	let userToLogin = User.findOne('email', req.body.email);
-    try { if (errors.isEmpty()) {
-        if(userToLogin) {
-            let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
-            if (isOkThePassword) {
-                delete userToLogin.password;
-                req.session.userLogged = userToLogin;
-            }            
-                if(req.body.remember_user) {
-                    res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+	let userToLogin = await db.User.findAll({
+        where: {
+            'email': req.body.email}
+        });
+    try { 
+        if (errors.isEmpty()) {
+            if(userToLogin) {
+                let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
+                
+                if (isOkThePassword) {
+                    delete userToLogin.password;
+                    req.session.userLogged = userToLogin;
+                }            
+                    if(req.body.remember_user) {
+                        res.cookie('email', req.body.email, { maxAge: (1000 * 60) * 60 })
+                    }
+                
+                    return res.redirect('users/profile');
                 }
-            
-                return res.redirect('users/profile');
-            }
-
-            }
-        } catch (error) {
-                console.log(errors)
-                res.render('users/login', {
-                    errors: errors.errors,
-                    old: req.body
-                })
+    
         }
+    } catch (error) {
+        console.log(errors)
+        res.render('users/login', {
+            errors: errors.errors,
+            old: req.body
+        })
+    }
 }
 
 

@@ -4,20 +4,20 @@ const User = db.User;
 
 const userLoggedMiddleware = async function (req, res, next) {
 	res.locals.isLogged = false;
-    let userLogged = false;
+        let userLogged = false;
 
 	if(req.cookies.userEmail){
         userLogged = req.cookies.userEmail;
-    }
-    else if(req.session.userLogged){
-        userLogged = req.session.userLogged
-    }
+   	   }
+    	   else if(req.session.userLogged){
+           userLogged = req.session.userLogged
+     	   }
     
     try{
         if(userLogged){
             let user = await User.findOne({
-                where:{
-                    email: userLogged
+                where: {
+                    'email': userLogged
                 }
             });
 
@@ -27,7 +27,7 @@ const userLoggedMiddleware = async function (req, res, next) {
                 res.locals.isLogged = true;
                 res.locals.userLogged = req.session.userLogged;
             }
-            if(req.cookies.userCategory == 1){
+            if(req.cookies.userCategory == 2){
                 res.locals.isAdmin = true;
             }
         }
@@ -38,4 +38,3 @@ const userLoggedMiddleware = async function (req, res, next) {
     next();
 };
 module.exports = userLoggedMiddleware;
-
