@@ -54,44 +54,52 @@
                                             <% } %>
                         </p>
                     </div>
-                    <div class="medios-pagos">
-                        <a class="a-pagos" href="#">ver medios de pagos</a>
-                    </div>
+                    
                     <div class="form-color" action="">
-                        <label class="label-color " for="color">Color:</label>
+                        <label class="label-color " for="color"> Color :  <%= getDetailProduct.color %> </label>
                         <input type="color" id="color" name="color">
                     </div>
                     <div class="talles">
-                        <p class="talle"> TALLES :<%= getDetailProduct.size %>
+                        <p class="talle"> TALLE : <%= getDetailProduct.size %>
                         </p>
                     </div>
                     <div class="cantidad">
-                        <label for="cantidad"> CANTIDAD :  </label>
+                        <label for="cantidad"> CANTIDAD :    </label>
                         <input class="input" type="number" id="cantidad" name="cantidad">
                     </div>
+
+                    <br>
+                    <div class="medios-pagos">
+                        <a class="a-pagos" href="#">ver medios de pagos</a>
+                    </div>
+                    <br>
                     
-                     
-                    <% if (locals.isAdmin) { %>
-                        <div class="button-send">
-                            <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
-                                <button type="submit" class="button-div">
-                                    EDITAR PRODUCTO</button></a>
+                    <div class="botones-detalle">
+
+                        <% if (locals.isAdmin) { %>
+                            <div class="button-send">
+                                <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
+                                    <button type="submit" class="botons">
+                                        EDITAR PRODUCTO</button></a>
+        
+                                <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="botons">ELIMINAR PRODUCTO</button>
+                                </form>
+                                
+                            </div>
     
-                            <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
-                                <button type="submit" class="button-div">ELIMINAR PRODUCTO</button>
-                            </form>
-                            
-                        </div>
+                        <% } else { %>
+    
+                            <div class="agregar-carrito">
+                                <a href="/products/cart ">
+                                     AGREGAR AL CARRITO
+                                </a>
+                            </div>
+                
+                        <% } %>
 
-                    <% } else { %>
-
-                        <div class="agregar-carrito">
-                            <a href="/products/cart ">
-                                <button type="submit" class="button-div">Agregar al carrito</button>
-                            </a>
-                        </div>
-            
-                    <% } %>
+                        </div> 
+                    
                     
                     
                 </div>

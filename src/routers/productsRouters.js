@@ -25,7 +25,7 @@ router.get('/', productsController.productList)
 router.get('/create', productsController.createProduct)
 router.post('/create', upload.single('img1'), validateNewProduct, productsController.storeProduct)
 
-router.get('/detail/:id',  productsController.productDetail)
+router.get('/detail/:id', productsController.productDetail)
 
 router.get('/edit/:id', productsController.editProduct)
 router.put('/edit/:id', validateNewProduct, upload.single('img1'), productsController.updateProduct)

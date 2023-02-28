@@ -321,13 +321,25 @@ button, .talle{
     text-align: center;
 }
 
-.boton-agregar-carrito{
-    width: 30%;
+.botones-detalle{
     display: flex;
     justify-content: center;
-    margin: 0 auto;
-    margin-top: 10px;
+
 }
+
+.agregar-carrito a{
+  width: 100%;
+  background: #3A67CB;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 18px;
+  font-family: 'Trebuchet MS';
+  margin-top: 40px;    
+}
+
+
 
 
 .envio{

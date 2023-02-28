@@ -45,7 +45,7 @@ form.addEventListener("submit", e => {
         warnings += 'Debes ingresar la contraseña <br>'
         entrar= true
     }
-    else if (password.value.length <= 8){
+    else if (password.value.length < 8){
         warnings += 'El password debe tener mínimo ocho carácteres <br>'
         entrar= true
     }

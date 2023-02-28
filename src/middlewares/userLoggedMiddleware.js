@@ -1,30 +1,41 @@
-const {User} = require('../database/models')
+const db = require('../database/models');
+
+const User = db.User;
 
 const userLoggedMiddleware = async function (req, res, next) {
 	res.locals.isLogged = false;
+    let userLogged = false;
 
-	let emailInCookie = req.cookies.userEmail;
-	if(!emailInCookie) {
-		return next()
-	}
-	let userFromCookie = await User.findOne({
-		where: {
-			'email': emailInCookie}
-		});
-
-	if (userFromCookie) {
-		req.session.userLogged = userFromCookie;
-	}
-
-	if (req.session.userLogged) {
-		res.locals.isLogged = true;
-		res.locals.userLogged = req.session.userLogged;
-
-	}
-
-    next();
+	if(req.cookies.userEmail){
+        userLogged = req.cookies.userEmail;
+    }
+    else if(req.session.userLogged){
+        userLogged = req.session.userLogged.email
+    }
     
-}
-module.exports = userLoggedMiddleware;
+    try{
+        if(userLogged){
+            let user = await User.findOne({
+                where:{
+                    email: userLogged
+                }
+            });
 
+            req.session.userLogged = user;
+            
+            if ( req.session.userLogged) {
+                res.locals.isLogged = true;
+                res.locals.userLogged = req.session.userLogged;
+            }
+            if(req.cookies.userCategory == 1){
+                res.locals.isAdmin = true;
+            }
+        }
+    }    
+    catch(err){
+        res.redirect('/users/login');
+    }
+    next();
+};
+module.exports = userLoggedMiddleware;
 
