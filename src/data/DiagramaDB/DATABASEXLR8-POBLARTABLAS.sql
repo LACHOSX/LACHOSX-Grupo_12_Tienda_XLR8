@@ -1,9 +1,11 @@
 INSERT INTO `users` VALUES 
 -- (id, name, last_name, email, phone, password, birthday, genre, id_users_categories) 
-(1, 'Alejandro', 'Negri', 'alemnegri84@gmail.com', 1122926663, 'ale12345', '1984-10-10', 'hombre', 2),
-(2, 'Tadeo', 'Negri', 'tadeoab@gmail.com', 1122926663, 'tadeo123', '2001-02-08', 'hombre', 2),
-(3, 'Nati', 'Admin', 'natiadmin@gmail.com', 1166448855, 'natiadmin123', '1986-06-01', 'mujer', 2),
-(4, 'Nati', 'Cliente', 'natiuser@gmail.com', 1133559988, 'natiuser123', '1983-04-02', 'mujer', 1);
+(1, 'Alejandro', 'Negri', 'alemnegri84@gmail.com', 1122926663, 'ale12345', '1984-10-10', 'Masculino', 2),
+(2, 'Tadeo', 'Negri', 'tadeoab@gmail.com', 1122926663, 'tadeo123', '2001-02-08', 'Masculino', 2),
+(3, 'Nati', 'Admin', 'natiadmin@gmail.com', 1166448855, 'natiadmin123', '1986-06-01', 'Femenino', 2),
+(4, 'Nati', 'Cliente', 'natiuser@gmail.com', 1133559988, 'natiuser123', '1983-04-02', 'Femenino', 1),
+(5, 'user', 'prueba', 'user@dh.com', 12345648, '$2a$10$TF4toiaXsUTFx3IvSDPdHOzcLxp2N.FiXb5xrdAWhGdO/zRlnALRi', '2023-03-15', 'Masculino', 1),
+(6, 'admin', 'prueba', 'admin@dh.com', 123456789, '$2a$10$ygAmp9PEZyO43bMVVcScOeU8KIGWBga2H1PsCbBPymE/VqeEC3fqq', '2023-03-15', 'Sin genero', 2);
 
 INSERT INTO `users_categories` VALUES 
 -- (id, name)
