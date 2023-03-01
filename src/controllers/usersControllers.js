@@ -20,7 +20,7 @@ const userList = async function (req, res, next){
 
 // CREACION DE USUARIO
 const register = function (req, res) {   
-    res.cookie('testing', 'Hola Register XLR8', { maxAge: 1000 * 60 * 5});
+    res.cookie('testing', 'Hola Register XLR8', { maxAge: 1000 * 60 * 2});
     res.render('users/register');
 }
 
@@ -55,44 +55,34 @@ const createUser = async function (req, res, next) {
 //  LOGIN DE USUARIO
 const login = function (req, res) {
     console.log(req.cookies.testing);
-    res.cookie('testing', 'Hola Login XLR8', { maxAge: 1000 * 60 * 10});
+    res.cookie('testing', 'Hola Login XLR8', { maxAge: 1000 * 60 * 2});
     res.render('users/login');
 }
-
-
-
 
 //  LOGIN-IN DE USUARIO
 const processLogin = async function (req, res) {    
 	let errors = validationResult(req);
-
     try {
         if (errors.isEmpty()) {
             const userToLog = await User.findOne({
                 where: {
                     'email': req.body.email}
                 })
-                
-                console.log(userToLog)
-                
+
                 if (userToLog) {
                     let confirmPassword = bcrypt.compareSync(req.body.password, userToLog.password);
-                    
                     if (confirmPassword) {
                         delete userToLog.password;
                         req.session.userLogged = userToLog;
                     }
                     if (req.body.remember_user) {
-                        
-                        res.cookie('userEmail', req.body.email,  { maxAge: (1000 * 60) * 5})
+                        res.cookie('userEmail', req.body.email,  { maxAge: 1000 * 60 * 2})
                     }
-
                     req.session.userLogged = userToLog;
-
+                    
                     console.log(userToLog)
-                    
-                    
                     res.render('users/profile', {userToLog:userToLog})
+                    
         
                 } else {                
                     res.render('users/login', {                        
@@ -101,14 +91,10 @@ const processLogin = async function (req, res) {
                     })
                 }
         }
-
     } catch (error) {
         console.log("ERROR LOGGGGGG", error)
-        //return res.render('users/login', {errors: [ {msg: 'credenciales no validadas eh!'}]})
     }
-
 }
-
 
 //  EDICION DE USUARIO
 const userEdit = async function (req, res) {
@@ -161,7 +147,7 @@ const deleteUser = async function (req, res) {
 }
 
 // PERFIL DE USUARIO
-const profile =  function (req, res) {
+const profile =  function (req, res) {    
     return res.render("users/profile", {
         userToLog: req.session.userLogged,
     });

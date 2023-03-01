@@ -2,67 +2,74 @@
 <%- include('../partials/header')  %> 
 
     
-    <main>  
-        <div>            
-            <div>
+    <main>          
                 
-                    <h1 class="lista-usuarios-titulo"> Perfil de Usuario de <%= userToLog.name  %> <%= userToLog.last_name  %></h1>
-                    <section class="form-register">
-                    <ul>
-                        <li>
-                            <h4> Nombre: <%= userToLog.name  %> </h4>
-                            <h4> Apellido: <%= userToLog.last_name  %> </h4>
-                            <h4> E-Mail: <%= userToLog.email  %> </h4>
-                            <h4> Celular: <%= userToLog.phone  %> </h4>
-                            <h4> Fecha de Nacimiento: <%= userToLog.birthday  %> </h4>
-                            <h4> Genero: <%= userToLog.genre  %> </h4> 
-            
-                        </li>                                   
-                    </ul>
-                    <div>                    
-                        <div>                        
-                            <form action="/users/edit/<%= userToLog.id %>" method="GET">   
-                                <input type="submit" value="EDITAR USUARIO">
-                            </form>                                                
-                            <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
-                                <input type="submit" value="BORRAR USUARIO">
-                            </form>
-                        </div>  
-                        
-                            <a href="/users/logout" class="botons">
-                                 LOGOUT
-                            </a>
-                </button>                   
-                    </div>
-                </form>
-            </section> 
-                <form id="register-form">
-                    <section class="botones-profile">
+        <h1 class="lista-usuarios-titulo"> Perfil de Usuario de  <%= userToLog.name  %>  <%= userToLog.last_name  %></h1>
+        <section class="form-register">
 
-                        <div>
-                            <a href="../products/create" class="botons">
-                                CREAR PRODUCTO
-                           </a>
-                        </div>
-                        <br>
-
-                        <div>
-                            <a href="../products" class="botons">
-                                LISTA PRODUCTOS
-                           </a>
-                        </div>
-                        <br>
-
-                        <div>
-                            <a href="./" class="botons">
-                                LISTA DE USUARIOS
-                           </a>
-                        </div>
-                        <br>     
+            <ul>
+                <li>
+                    <h4> Nombre:    <%= userToLog.name  %> </h4>
+                    <h4> Apellido:  <%= userToLog.last_name  %> </h4>
+                    <h4> E-Mail:    <%= userToLog.email  %> </h4>
+                    <h4> Celular:   <%= userToLog.phone  %> </h4>
+                    <h4> Fecha de Nacimiento:   <%= userToLog.birthday  %> </h4>
+                    <h4> Genero:    <%= userToLog.genre  %> </h4> 
+    
+                </li>
+            </ul>
                     
-                </form>
-            </section>
-            
+        </section>
+        
+        <div class="form-register" id="product-div">
+            <% if (userToLog.id_users_categories == 2) { %>
+                <div>                    
+                    <div>                        
+                        <form action="/users/edit/<%= userToLog.id %>" method="GET">   
+                            <a href="../products/create" class="botons"> EDITAR USUARIO </a>
+                        </form>   
+                        <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
+                            <a href="../products/create" class="botons"> BORRAR USUARIO </a>
+                        </form>
+                        <div>
+                            <a href="/users/logout" class="botons"> LOGOUT </a>
+                        </div>                                    
+                    </div> 
+                    <fieldset>
+                        <h2> MENU DE ADMINISTRADOR </h2>
+
+                        <div>
+                            <a href="../products/create" class="botons"> CREAR PRODUCTO </a>
+                        </div>
+
+                        <div>
+                            <a href="../products" class="botons"> LISTA PRODUCTOS </a>
+                        </div>                                    
+
+                        <div>
+                            <a href="./" class="botons"> LISTA DE USUARIOS </a>
+                        </div>
+                    </fieldset> 
+                </div>
+            <% } else { %> 
+                <div>                    
+                    <div>                        
+                        <form action="/users/edit/<%= userToLog.id %>" method="GET">   
+                            <input type="submit" value="EDITAR USUARIO">
+                        </form>                                                
+                        <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
+                            <input type="submit" value="BORRAR USUARIO">
+                        </form>
+                        <div>
+                            <a href="/users/logout" class="botons"> LOGOUT </a>
+                        </div>                                    
+                    </div> 
+                </div>
+    
+            <% } %>
+
+        </div>
+
     </main>
 
 <%- include('../partials/footer')  %>  

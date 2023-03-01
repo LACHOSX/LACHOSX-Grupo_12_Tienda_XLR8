@@ -29,11 +29,6 @@
                             <%= getDetailProduct.title %>
                         </h1>
                     </div>
-                </br>
-                    <h4><b>Descripción del producto</b></h4>
-                    <p id="description" name="description"><%= getDetailProduct.description %></p>
-                </br>
-            </br>
                     <div class="price">
                         <% if (getDetailProduct.price_discount==0) { %>
                             <p class="precio-producto">
@@ -50,7 +45,7 @@
 
                     </div>
                     <div class="cuotas">
-                        <p> 3 cuotas sin interés de
+                        <p class="price"> 3 cuotas sin interés de
                             <% if (getDetailProduct.price_discount==0) { %>
                                 $<%= toThousand(getDetailProduct.price/3) %>
                                     <% } else { %>
@@ -61,7 +56,7 @@
                     </div>
                     
                     <div class="form-color" action="">
-                        <label class="label-color " for="color"> COLOR:  <%= getDetailProduct.color %> </label>
+                        <label class="label-color " for="color"> Color :  <%= getDetailProduct.color %> </label>
                         <input type="color" id="color" name="color">
                     </div>
                     <div class="talles">
@@ -75,13 +70,13 @@
 
                     <br>
                     <div class="medios-pagos">
-                        <a class="a-pagos" href="https://www.mercadopago.com.ar/home">Ver medios de pagos</a>
+                        <a class="a-pagos" href="https://www.mercadopago.com.ar/home">ver medios de pagos</a>
                     </div>
                     <br>
                     
                     <div class="botones-detalle">
 
-                        <% if (locals.isAdmin) { %>
+                        <% if (userToLog.id_users_categories == 2) { %>
                             <div class="button-send">
                                 <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
                                     <button type="submit" class="botons">
@@ -104,10 +99,12 @@
                         <% } %>
 
                         </div> 
-                
+                    
+                    
+                    
                 </div>
 
             </div>
         </div>
     </main>  
-    <%- include('../partials/footer')  %>  
+        <%- include('../partials/footer') %>
