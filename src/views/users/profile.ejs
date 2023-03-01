@@ -26,29 +26,33 @@
                 <div>                    
                     <div>                        
                         <form action="/users/edit/<%= userToLog.id %>" method="GET">   
-                            <a href="../products/create" class="botons"> EDITAR USUARIO </a>
+                            <input type="submit" value="EDITAR USUARIO">
                         </form>   
+
                         <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
-                            <a href="../products/create" class="botons"> BORRAR USUARIO </a>
+                            <input type="submit" value="BORRAR USUARIO">
                         </form>
-                        <div>
-                            <a href="/users/logout" class="botons"> LOGOUT </a>
-                        </div>                                    
+
+                        <form action="/users/logout" method="GET">   
+                            <input type="submit" value="LOGOUT">
+                        </form>
+                                                            
                     </div> 
                     <fieldset>
-                        <h2> MENU DE ADMINISTRADOR </h2>
+                        <h3> MENU DE ADMINISTRADOR </h3>
 
-                        <div>
-                            <a href="../products/create" class="botons"> CREAR PRODUCTO </a>
-                        </div>
+                        <form action="../products/create" method="GET">   
+                            <input type="submit" value="CREAR PRODUCTO">
+                        </form>
 
-                        <div>
-                            <a href="../products" class="botons"> LISTA PRODUCTOS </a>
-                        </div>                                    
+                        <form action="../products" method="GET">   
+                            <input type="submit" value="LISTA PRODUCTOS">
+                        </form>
 
-                        <div>
-                            <a href="./" class="botons"> LISTA DE USUARIOS </a>
-                        </div>
+                        <form action="./" method="GET">   
+                            <input type="submit" value="LISTA DE USUARIOS">
+                        </form>
+                        
                     </fieldset> 
                 </div>
             <% } else { %> 
@@ -56,13 +60,15 @@
                     <div>                        
                         <form action="/users/edit/<%= userToLog.id %>" method="GET">   
                             <input type="submit" value="EDITAR USUARIO">
-                        </form>                                                
+                        </form>   
+
                         <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
                             <input type="submit" value="BORRAR USUARIO">
                         </form>
-                        <div>
-                            <a href="/users/logout" class="botons"> LOGOUT </a>
-                        </div>                                    
+
+                        <form action="/users/logout" method="GET">   
+                            <input type="submit" value="LOGOUT">
+                        </form>                                   
                     </div> 
                 </div>
     
