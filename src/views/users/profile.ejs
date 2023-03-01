@@ -4,27 +4,27 @@
     
     <main>  
         <div>
-            <h1 class="lista-usuarios-titulo"> Perfil de Usuario de <%= getUserProfile.name  %> <%= getUserProfile.last_name  %></h1>
+            <h1 class="lista-usuarios-titulo"> Perfil de Usuario de <%= locals.name  %> <%= locals.last_name  %></h1>
             <div>
                 <form id="register-form">
                     <section class="form-register">
                     <ul>
                         <li>
-                            <h4> Nombre: <%= getUserProfile.name  %> </h4>
-                            <h4> Apellido: <%= getUserProfile.last_name  %> </h4>
-                            <h4> E-Mail: <%= getUserProfile.email  %> </h4>
-                            <h4> Celular: <%= getUserProfile.phone  %> </h4>
-                            <h4> Fecha de Nacimiento: <%= getUserProfile.birthday  %> </h4>
-                            <h4> Genero: <%= getUserProfile.genre  %> </h4> 
+                            <h4> Nombre: <%= locals.name  %> </h4>
+                            <h4> Apellido: <%= locals.last_name  %> </h4>
+                            <h4> E-Mail: <%= locals.email  %> </h4>
+                            <h4> Celular: <%= locals.phone  %> </h4>
+                            <h4> Fecha de Nacimiento: <%= locals.birthday  %> </h4>
+                            <h4> Genero: <%= locals.genre  %> </h4> 
             
                         </li>                                   
                     </ul>
                     <div>                    
                         <div>                        
-                            <form action="/users/edit/<%= getUserProfile.id %>" method="GET">   
+                            <form action="/users/edit/<%= locals.id %>" method="GET">   
                                 <input type="submit" value="EDITAR USUARIO">
                             </form>                                                
-                            <form action="/users/delete/<%= getUserProfile.id %>?_method=DELETE" method="POST">   
+                            <form action="/users/delete/<%= locals.id %>?_method=DELETE" method="POST">   
                                 <input type="submit" value="BORRAR USUARIO">
                             </form>
                         </div>  

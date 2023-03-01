@@ -64,13 +64,13 @@ const login = function (req, res) {
 
 //  LOGIN-IN DE USUARIO
 const processLogin = async function (req, res) {    
-	let validationErrors = validationResult(req);
+	let errors = validationResult(req);
 
     try {
-        if (validationErrors.isEmpty()) {
-            let user = await User.findOne({
+        if (errors.isEmpty()) {
+            const user = await User.findOne({
                 where: {
-                    email: req.body.email}
+                    'email': req.body.email}
                 })
                 
                 if (user) {
@@ -80,14 +80,17 @@ const processLogin = async function (req, res) {
                         delete user.password;
                         req.session.userLogged = user;
                     }
-                    if (req.body.remember_user) {
-                        res.cookie('userEmail', req.body.userEmail,  { maxAge: (1000 * 60) * 20})
+                    if (req.body.remember_user == 'on') {
+                        console.log(req.body.email)
+                        res.cookie('userEmail', req.body.email,  { maxAge: (1000 * 60) * 5})
                     }
+
+                    req.session.user = user;
                     
-                    return res.render('users/profile')
+                    res.render('users/profile')
         
                 } else {                
-                    res.render('users/login', {
+                    res.render('users/login', {                        
                         errors: errors.errors,
                         old: req.body
                     })
@@ -96,6 +99,7 @@ const processLogin = async function (req, res) {
 
     } catch (error) {
         console.log("ERROR LOGGGGGG", error)
+        //return res.render('users/login', {errors: [ {msg: 'credenciales no validadas eh!'}]})
     }
 
 }
@@ -153,13 +157,19 @@ const deleteUser = async function (req, res) {
 
 // PERFIL DE USUARIO
 const profile = function (req, res) {
-    let getUserProfile = req.session.userLogged.id;            
-    return res.render('users/profile', {
-            user: req.session.userLogged, getUserProfile
-         })
+    console.log(req.cookies.userEmail);
+    try {
+        let user;
+        req.session.userLogged = user;
+        return res.render('users/profile', {
+            user: req.session.userLogged
+         });
+    } catch (error) {
+        console.log("ERROR PROFILEEEEE", error)
+    }
+ 
 }
  
-
 
 //         let getUserProfile = await db.User.findAll(req.params.id)
 //         console.log(getUser);

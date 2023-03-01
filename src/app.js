@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const cookieParser = require('cookie-parser')
+const cookies = require('cookie-parser')
 const multer  = require('multer')
 const logMiddleware = require('./middlewares/logMiddleware');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-app.use(cookieParser());
+app.use(cookies());
 
 app.use(userLoggedMiddleware);
 //app.use(rememberMiddleware);
