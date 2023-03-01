@@ -78,25 +78,35 @@
                     </div>
                     <br>
                     
-                    <div class="botones-detalle">
+                    <div class="button-send">
     
                             <div class="agregar-carrito">
                                 <a href="/products/cart ">
                                      AGREGAR AL CARRITO
                                 </a>
                             </div>
+                            
+                            <br>
+                            <br>
 
-                            <% if (locals.isLogged) { %>
-                                <div class="button-send">
-                                    <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
-                                        <button type="submit" class="botons"> EDITAR PRODUCTO</button></a>
-            
-                                    <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
-                                        <button type="submit" class="botons">ELIMINAR PRODUCTO</button>
-                                    </form>                                    
-                                </div>
+                            <div>
+                                <% if (locals.isLogged && userToLog.id_users_categories == 2) { %>
+                                    <div class="button-send">
+                                        <a href="/products/edit/<%= getDetailProduct.id%>" id="input-editar">
+                                            <button type="submit" class="botons"> EDITAR PRODUCTO</button></a>
+                
+                                        <form action="/products/delete/<%= getDetailProduct.id %>?_method=DELETE" method="POST">
+                                            <button type="submit" class="botons">ELIMINAR PRODUCTO</button>
+                                        </form>                                    
+                                    </div>                                
 
-                            <% } %>
+                                <% } else { %>
+
+                                    <% } %>
+
+                            </div>
+
+                            
                         </div> 
                                             
                 </div>

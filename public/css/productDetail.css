@@ -339,11 +339,6 @@ h4{
     margin-left: 10px;
 }
 
-.botones-detalle{
-    display: flex;
-    justify-content: center;
-
-}
 
 .agregar-carrito a{
     width: 100%;
@@ -395,7 +390,7 @@ h4{
 }
 
 .button-send{
-    display: flex;
+    display: flex;    
     justify-content: center;
     padding: 10px;
     

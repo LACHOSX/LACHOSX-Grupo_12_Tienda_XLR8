@@ -875,3 +875,18 @@ footer .menu-contacto {
     text-shadow: 3px;
     transition: all 0.1s ease-in-out;
 }
+
+.menu-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.datos-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}

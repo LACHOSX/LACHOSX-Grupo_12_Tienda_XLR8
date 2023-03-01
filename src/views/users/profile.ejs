@@ -2,73 +2,93 @@
 <%- include('../partials/header')  %> 
 
     
-    <main>          
+    <main>      
+
+        <div class="logo1">
+            <a href="/">
+                <img src="\images\completo-XLR8-mediano.png">
+            </a>
+        </div>            
                 
-        <h1 class="lista-usuarios-titulo"> Perfil de Usuario de  <%= userToLog.name  %>  <%= userToLog.last_name  %></h1>
+        <h1 class="lista-usuarios-titulo"> Perfil de Usuario de : </h1>
+        
+        <h1> <b> <%= userToLog.name  %>  <%= userToLog.last_name  %> </b></h1>
         <section class="form-register">
 
-            <ul>
-                <li>
-                    <h4> Nombre:    <%= userToLog.name  %> </h4>
-                    <h4> Apellido:  <%= userToLog.last_name  %> </h4>
-                    <h4> E-Mail:    <%= userToLog.email  %> </h4>
-                    <h4> Celular:   <%= userToLog.phone  %> </h4>
-                    <h4> Fecha de Nacimiento:   <%= userToLog.birthday  %> </h4>
-                    <h4> Genero:    <%= userToLog.genre  %> </h4> 
-    
-                </li>
-            </ul>
+            <div class="datos-user">
+                <ul>
+                    <li>
+                        <h4> Nombre:    <%= userToLog.name  %> </h4>
+                        <h4> Apellido:  <%= userToLog.last_name  %> </h4>
+                        <h4> E-Mail:    <%= userToLog.email  %> </h4>
+                        <h4> Celular:   <%= userToLog.phone  %> </h4>
+                        <h4> Fecha de Nacimiento:   <%= userToLog.birthday  %> </h4>
+                        <h4> Genero:    <%= userToLog.genre  %> </h4> 
+        
+                    </li>
+                </ul>
+
+            </div>
+
+            
                     
         </section>
         
         <div class="form-register" id="product-div">
             <% if (userToLog.id_users_categories == 2) { %>
                 <div>                    
-                    <div>                        
+                    <div  class="menu-profile">                       
                         <form action="/users/edit/<%= userToLog.id %>" method="GET">   
-                            <input type="submit" value="EDITAR USUARIO">
+                            <input type="submit" value=" EDITAR MI USUARIO ">
                         </form>   
 
                         <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
-                            <input type="submit" value="BORRAR USUARIO">
+                            <input type="submit" value=" BORRAR MI USUARIO ">
                         </form>
 
                         <form action="/users/logout" method="GET">   
-                            <input type="submit" value="LOGOUT">
+                            <input type="submit" value=" CERRAR SESION ">
                         </form>
                                                             
                     </div> 
+
+                    <br>
+                    <br>
+
                     <fieldset>
                         <h3> MENU DE ADMINISTRADOR </h3>
 
-                        <form action="../products/create" method="GET">   
-                            <input type="submit" value="CREAR PRODUCTO">
-                        </form>
-
-                        <form action="../products" method="GET">   
-                            <input type="submit" value="LISTA PRODUCTOS">
-                        </form>
-
-                        <form action="./" method="GET">   
-                            <input type="submit" value="LISTA DE USUARIOS">
-                        </form>
+                        <div  class="menu-profile">
+                            <form action="../products/create" method="GET">   
+                                <input type="submit" value=" CREAR PRODUCTO ">
+                            </form>
+    
+                            <form action="../products" method="GET">   
+                                <input type="submit" value=" LISTA PRODUCTOS ">
+                            </form>
+    
+                            <form action="./" method="GET">   
+                                <input type="submit" value=" LISTA DE USUARIOS ">
+                            </form>
+                        </div>
                         
                     </fieldset> 
                 </div>
             <% } else { %> 
                 <div>                    
-                    <div>                        
+                    <div  class="menu-profile">                       
                         <form action="/users/edit/<%= userToLog.id %>" method="GET">   
-                            <input type="submit" value="EDITAR USUARIO">
+                            <input type="submit" value=" EDITAR MI USUARIO ">
                         </form>   
 
                         <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
-                            <input type="submit" value="BORRAR USUARIO">
+                            <input type="submit" value=" BORRAR MI USUARIO ">
                         </form>
 
                         <form action="/users/logout" method="GET">   
-                            <input type="submit" value="LOGOUT">
-                        </form>                                   
+                            <input type="submit" value=" CERRAR SESION ">
+                        </form>
+                                                            
                     </div> 
                 </div>
     

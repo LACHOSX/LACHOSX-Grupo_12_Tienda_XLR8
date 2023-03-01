@@ -17,6 +17,7 @@ const productList = async function (req, res){
     }    
 }
 
+
 // CREACION DEL PRODUCTO
 const createProduct = function (req, res) {    
     res.render('../views/products/newProduct.ejs');
@@ -48,7 +49,8 @@ const storeProduct = async function (req, res, next) {
 const productDetail = async function (req, res) {
     try {
         let getDetailProduct = await db.Product.findByPk(req.params.id)
-        res.render('products/productDetail', {getDetailProduct, toThousand});
+        
+        res.render('products/productDetail', {getDetailProduct, toThousand, userToLog: req.session.userLogged});
     } catch (error) {
         console.log("ERROR DETAIL PRODUCT", error)
     }  
