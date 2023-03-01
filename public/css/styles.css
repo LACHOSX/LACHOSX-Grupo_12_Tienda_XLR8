@@ -533,9 +533,12 @@ article .fotoProducto img #foto {
     display: flex;
     align-items: center;
 }
+
 .precio-producto {
     display: flex;
-    align-items: center;    
+    align-items: center;
+    font-size: 30px;   
+     
 }
 
 @media (min-width: 768px) {
@@ -854,6 +857,21 @@ footer .menu-contacto {
     font-family: 'Trebuchet MS';
     margin-top: 10px;
   }
+ 
+.menu-perfil.userLogueado a {
+    display: inline-block;
+    text-decoration: none;
+    color: lightgreen;
+    width: 50px;
+    line-height: 45px;
+    margin: 5px;
+    background-color: #24303c;
+    text-align: center;
+    transition: all 300ms ease;    
+}
 
-
-  
+.menu-perfil.userLogueado a:hover{
+    color: yellow;
+    text-shadow: 3px;
+    transition: all 0.1s ease-in-out;
+}
