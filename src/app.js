@@ -25,8 +25,8 @@ app.use(express.urlencoded({extended: false})); //por que no se usa {extended: f
 app.use(methodOverride('_method')); //metodo para SOBRE-ESCRIBIR el metodo original del formulario (PUT o DELETE)
 app.use(session({
     secret : "ES UN SECRETO!",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
 }))
 
 app.use(cookies());

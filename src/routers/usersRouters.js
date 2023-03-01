@@ -23,7 +23,7 @@ router.post('/register', validateCreateForm, userController.createUser);
 router.get('/login', guestMiddleware, userController.login)
 router.post('/login', validateLogin, userController.processLogin)
 
-router.get('/profile', authMiddleware, userController.profile)
+router.get('/profile', userController.profile)
 
 router.get('/edit/:id', userController.userEdit);
 router.put('/edit/:id', userController.userUpdate);

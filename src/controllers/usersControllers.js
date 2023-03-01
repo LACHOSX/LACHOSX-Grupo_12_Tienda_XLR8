@@ -68,26 +68,31 @@ const processLogin = async function (req, res) {
 
     try {
         if (errors.isEmpty()) {
-            const user = await User.findOne({
+            const userToLog = await User.findOne({
                 where: {
                     'email': req.body.email}
                 })
                 
-                if (user) {
-                    let confirmPassword = bcrypt.compareSync(req.body.password, user.password);
+                console.log(userToLog)
+                
+                if (userToLog) {
+                    let confirmPassword = bcrypt.compareSync(req.body.password, userToLog.password);
                     
                     if (confirmPassword) {
-                        delete user.password;
-                        req.session.userLogged = user;
+                        delete userToLog.password;
+                        req.session.userLogged = userToLog;
                     }
-                    if (req.body.remember_user == 'on') {
-                        console.log(req.body.email)
+                    if (req.body.remember_user) {
+                        
                         res.cookie('userEmail', req.body.email,  { maxAge: (1000 * 60) * 5})
                     }
 
-                    req.session.user = user;
+                    req.session.userLogged = userToLog;
+
+                    console.log(userToLog)
                     
-                    res.render('users/profile')
+                    
+                    res.render('users/profile', {userToLog:userToLog})
         
                 } else {                
                     res.render('users/login', {                        
@@ -156,33 +161,39 @@ const deleteUser = async function (req, res) {
 }
 
 // PERFIL DE USUARIO
-const profile = function (req, res) {
-    console.log(req.cookies.userEmail);
-    try {
-        let user;
-        req.session.userLogged = user;
-        return res.render('users/profile', {
-            user: req.session.userLogged
-         });
-    } catch (error) {
-        console.log("ERROR PROFILEEEEE", error)
-    }
- 
+const profile =  function (req, res) {
+    return res.render("users/profile", {
+        userToLog: req.session.userLogged,
+    });
 }
- 
 
-//         let getUserProfile = await db.User.findAll(req.params.id)
-//         console.log(getUser);
-//         return res.render('users/profile', {
-//             user: req.session.userLogged, getUserProfile
-//         });    
-//     } catch (error) {
-//         console.log("ERROR PROFILE", error)
+
+//     if (req.session.userLogged){
+//         const userLog = req.session.userLogged.id;
+//         userLog = await User.findOne({
+//             where: { id: req.session.userProfile },
+//     });
+//     return res.render("users/usersProfile", userLog  
+//       )
 //     }
 // }
-
-  
     
+// //         if (req.session.userLogged){
+// //           const user = await db.User.findByPk(req.session.userLogged.id)
+// //           return res.render('users/profile', {user:user})
+// //         }
+// //         return res.redirect("/")
+        
+// // }
+
+// const profile = async function (req, res) {
+//     const user = await db.User.findByPk(req.session.user.id)
+//     return res.render('users/profile', {user:user})
+// }
+
+
+
+       
 //LOGOUT
 const logout = async function (req, res) {
     try {

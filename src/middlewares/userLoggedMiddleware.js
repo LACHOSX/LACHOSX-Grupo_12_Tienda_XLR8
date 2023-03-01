@@ -10,18 +10,22 @@ async function userLoggedMiddleware (req,res,next) {
     if (emailInCookie) {
 
 
-    let userFromCookie = await Users.findOne({
+    let userFromCookie = await User.findOne({
         where: {'email': emailInCookie}
     });
 
     if (userFromCookie) {
-        req.session.userLogged = userFound;
+        req.session.userLogged = userFromCookie;
     }
 }
 
     if (req.session.userLogged) {
         res.locals.isLogged = true;
         res.locals.userLogged = req.session.userLogged;
+    }
+
+    if(req.cookies.userCategory == 2){
+        res.locals.isAdmin = true;
     }
 
 
