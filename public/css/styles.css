@@ -842,3 +842,17 @@ footer .menu-contacto {
     text-align: justify;
     line-height: 110%;
 }
+
+.form-register .botons {
+    width: 100%;
+    background: #3A67CB;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 18px;
+    font-family: 'Trebuchet MS';
+    margin-top: 10px;
+  }
+
+  

@@ -346,3 +346,7 @@ fieldset{
   text-align: center;
   text-decoration: none;
 }
+
+button.profilebotons {
+  color: red;
+}

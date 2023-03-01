@@ -16,7 +16,11 @@ form.addEventListener("submit", e => {
     }
 
     if (password.value.length == ''){
-        warnings += 'La contraseña no es válida <br>'
+        warnings += 'Debes ingresar la contraseña <br>'
+        entrar= true
+    }
+    else if (password.value.length < 8){
+        warnings += 'El password debe tener mínimo ocho carácteres <br>'
         entrar= true
     }
     

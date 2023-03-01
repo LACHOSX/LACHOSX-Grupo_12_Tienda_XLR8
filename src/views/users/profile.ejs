@@ -2,12 +2,12 @@
 <%- include('../partials/header')  %> 
 
     
-    <main>
-        
+    <main>  
         <div>
             <h1 class="lista-usuarios-titulo"> Perfil de Usuario de <%= getUserProfile.name  %> <%= getUserProfile.last_name  %></h1>
             <div>
-                <fieldset class="profile">
+                <form id="register-form">
+                    <section class="form-register">
                     <ul>
                         <li>
                             <h4> Nombre: <%= getUserProfile.name  %> </h4>
@@ -27,11 +27,37 @@
                             <form action="/users/delete/<%= getUserProfile.id %>?_method=DELETE" method="POST">   
                                 <input type="submit" value="BORRAR USUARIO">
                             </form>
-                        </div>                     
-                    </div> 
-                </fieldset>    
-            </div>
-        </div>
+                        </div>  
+                        <button class="botons" type="submit">
+                            <a href="/users/logout">
+                                 LOGOUT
+                            </a>
+                </button>                   
+                    </div>
+                </form>
+            </section> 
+                <form id="register-form">
+                    <section class="form-register">
+                <button class="botons" type="submit">
+                            <a href="/products/create">
+                                 CREAR PRODUCTO
+                            </a>
+                </button>
+                    </br>
+                    <button class="botons" type="submit">
+                            <a href="/products/edit/1">
+                                 EDITAR PRODUCTOS
+                            </a>
+                    </button>      
+                    </br>
+                    <button class="botons" type="submit">
+                            <a href="/users">
+                                 LISTA DE USUARIOS
+                            </a>
+                    </button>
+                </form>
+            </section>
+            
     </main>
 
 <%- include('../partials/footer')  %>  
