@@ -4,39 +4,23 @@ const User = db.User;
 
 const userLoggedMiddleware = async function (req, res, next) {
 	res.locals.isLogged = false;
-    let userLogged = false;
-    console.log(userLogged)
+        
 
-	if(req.cookies.userEmail){
-        userLogged = req.cookies.userEmail;
-   	   }
-    	   else if(req.session.userLogged){
-           userLogged = req.session.userLogged
-     	   }
-    
-    try{
-        if(userLogged){
-            let user = await User.findOne({
-                where: {
-                    email: userLogged
-                }
-            });
+	let emailInCookie = req.cookies.userEmail;
 
-            req.session.userLogged = user;
-            console.log(user)
-            console.log(req.session.userLogged)
-            
-            if (req.session.userLogged) {
-                res.locals.isLogged = true;
-                res.locals.userLogged = req.session.userLogged;
-            }
-            // if(req.cookies.userCategory == 2){
-            //     res.locals.isAdmin = true;
-            // }
+    if (emailInCookie) {
+        let user = await User.findOne({
+            where: {'email' : emailInCookie }
+        });
+
+        if (user) {
+            req.session.userLogged = user
         }
-    }    
-    catch(errorMsg){
-        res.redirect('/');
+    }
+
+    if (req.session.userLogged) {
+        res.locals.isLogged = true;
+        res.locals.userLogged = req.session.userLogged;
     }
     next();
 };

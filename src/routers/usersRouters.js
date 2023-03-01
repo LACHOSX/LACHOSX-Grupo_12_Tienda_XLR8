@@ -4,7 +4,7 @@ const path = require('path');
 
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
-const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware');
+const adminMiddleware = require('../middlewares/adminMiddleware');
 const validateCreateForm = require('../middlewares/validateCreateForm');
 const validateLogin = require('../middlewares/validateLogin');
 
@@ -23,7 +23,7 @@ router.post('/register', validateCreateForm, userController.createUser);
 router.get('/login', guestMiddleware, userController.login)
 router.post('/login', validateLogin, userController.processLogin)
 
-router.get('/profile/:id', authMiddleware, userController.profile)
+router.get('/profile', authMiddleware, userController.profile)
 
 router.get('/edit/:id', userController.userEdit);
 router.put('/edit/:id', userController.userUpdate);
@@ -31,5 +31,8 @@ router.put('/edit/:id', userController.userUpdate);
 router.delete('/delete/:id', userController.deleteUser);
 
 router.get('/logout', userController.logout);
+
+router.get('/list', userController.userList);
+// debemos agregar adminMiddleware en la ruta LISTA DE USUARIOS
 
 module.exports = router;

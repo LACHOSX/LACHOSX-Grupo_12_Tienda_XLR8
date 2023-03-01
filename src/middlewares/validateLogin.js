@@ -7,7 +7,7 @@ const validateLogin = [
     body('password')
             .notEmpty()
             .isLength({min: 8, max:12})
-            .withMessage('Debe completar al menos 8 caracteres.')            
+            .withMessage('Contraseña incorrecta.')            
   ];
 
   module.exports = validateLogin;

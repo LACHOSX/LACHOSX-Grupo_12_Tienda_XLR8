@@ -65,34 +65,39 @@ const login = function (req, res) {
 //  LOGIN-IN DE USUARIO
 const processLogin = async function (req, res) {    
 	let validationErrors = validationResult(req);
-    console.log(validationErrors)
 
-    if (validationErrors.isEmpty()) {
-        let userToLogin = await User.findOne({
-            where: {
-                email: req.body.email}
-            })
-            console.log(userToLogin)
-            if (userToLogin) {
-                let confirmPassword = bcrypt.compareSync(req.body.password, userToLogin.password);
-                console.log(confirmPassword)
-                if (confirmPassword) {
-                    delete userToLogin.password;
-                    req.session.userLogged = userToLogin;
-                }
-                if (req.body.remember_user) {
-                    res.cookie('userEmail', req.body.userEmail,  { maxAge: (1000 * 60) * 20})
-                }
-                return res.render('users/profile')
-    
-            } else {
-                console.log(errors)
-                res.render('users/login', {
-                    errorMsg: errors.errors,
-                    old: req.body
+    try {
+        if (validationErrors.isEmpty()) {
+            let user = await User.findOne({
+                where: {
+                    email: req.body.email}
                 })
-            }
+                
+                if (user) {
+                    let confirmPassword = bcrypt.compareSync(req.body.password, user.password);
+                    
+                    if (confirmPassword) {
+                        delete user.password;
+                        req.session.userLogged = user;
+                    }
+                    if (req.body.remember_user) {
+                        res.cookie('userEmail', req.body.userEmail,  { maxAge: (1000 * 60) * 20})
+                    }
+                    
+                    return res.render('users/profile')
+        
+                } else {                
+                    res.render('users/login', {
+                        errors: errors.errors,
+                        old: req.body
+                    })
+                }
+        }
+
+    } catch (error) {
+        console.log("ERROR LOGGGGGG", error)
     }
+
 }
 
 
@@ -147,24 +152,25 @@ const deleteUser = async function (req, res) {
 }
 
 // PERFIL DE USUARIO
-const profile = async function (req, res) {
-    try {
-        let getUserProfile = await db.User.findByPk(req.params.id)
-        console.log(getUser);
-        return res.render('users/profile', {
+const profile = function (req, res) {
+    let getUserProfile = req.session.userLogged.id;            
+    return res.render('users/profile', {
             user: req.session.userLogged, getUserProfile
-        });    
-    } catch (error) {
-        console.log("ERROR PROFILE", error)
-    }
+         })
 }
-   
+ 
 
-    // const userId = req.session.userLogged.id;
-    // const addressList = await Address.findAll({
-    //   include: ["city"],
-    //   where: { user_id: userId },
-    // });
+
+//         let getUserProfile = await db.User.findAll(req.params.id)
+//         console.log(getUser);
+//         return res.render('users/profile', {
+//             user: req.session.userLogged, getUserProfile
+//         });    
+//     } catch (error) {
+//         console.log("ERROR PROFILE", error)
+//     }
+// }
+
   
     
 //LOGOUT
