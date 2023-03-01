@@ -28,11 +28,12 @@
                         <h1>
                             <%= getDetailProduct.title %>
                         </h1>
-                        <br>
-                        <h4> <b> Descripción del producto </b> </h4>
-                        <p id="description" name="description"><%= getDetailProduct.description %></p>
-                        <br>
                     </div>
+                </br>
+                    <h4><b>Descripción del producto</b></h4>
+                    <p id="description" name="description"><%= getDetailProduct.description %></p>
+                </br>
+            </br>
                     <div class="price">
                         <% if (getDetailProduct.price_discount==0) { %>
                             <p class="precio-producto">
