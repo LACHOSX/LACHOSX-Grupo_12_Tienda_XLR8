@@ -166,34 +166,7 @@ const profile =  function (req, res) {
         userToLog: req.session.userLogged,
     });
 }
-
-
-//     if (req.session.userLogged){
-//         const userLog = req.session.userLogged.id;
-//         userLog = await User.findOne({
-//             where: { id: req.session.userProfile },
-//     });
-//     return res.render("users/usersProfile", userLog  
-//       )
-//     }
-// }
-    
-// //         if (req.session.userLogged){
-// //           const user = await db.User.findByPk(req.session.userLogged.id)
-// //           return res.render('users/profile', {user:user})
-// //         }
-// //         return res.redirect("/")
-        
-// // }
-
-// const profile = async function (req, res) {
-//     const user = await db.User.findByPk(req.session.user.id)
-//     return res.render('users/profile', {user:user})
-// }
-
-
-
-       
+      
 //LOGOUT
 const logout = async function (req, res) {
     try {
@@ -204,6 +177,5 @@ const logout = async function (req, res) {
         console.log("ERROR LOG OUT USER", error)
     } 
 }
-
 
 module.exports = { userList, register, createUser, login, processLogin, userEdit, userUpdate, deleteUser, profile, logout};
