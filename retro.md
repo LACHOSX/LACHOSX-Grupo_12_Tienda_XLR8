@@ -1,22 +1,20 @@
-Fecha:23/10/2022
-Participantes: Abbruzzese Tadeo, Alonso Lucia, Alonso Natalia, Anderson Marin, Negri Alejandro, Rodriguez Horacio
+Fecha:01/02/2023
+Participantes: Abbruzzese Tadeo, Anderson Marin, Negri Alejandro, Rodriguez Horacio.
 
+RESULTADO:
 
-Resultado:
-
-COMENZAR A HACER::
- Reuniones mas seguidas y de menos duracion, poder crear branch por funcionalidad,crear pull request y solicitar revision, organizar las reuniones(duracion, objetivo, topico,etc.)
+COMENZAR A HACER:
+ Reuniones Daily con comunicacion efectiva y asertiva. Aceptacion de capacidades, habilidades y debilidades propias.Reuniones concretas, cortas, a fin de mostrar micro-avances y reestablecer prioridades.
 
 MAS DE:
- Fomentar la investigacion en sitios similares que nos aporten valor para las tareas requeridas
+ Fomentar mayor y mejor comunicacion sobre las tareas de las cuales estamos aptos en capacidad y tiempo de realizar en cada semana. Entender que el equipo esta conformado por personas, de lugares y con situaciones personales diferentes. Hacer revision del trabajo propio y de mi equipo de trabajo, individual y grupal, a fin de poder brindar apoyo y saber pedirlo al momento de mayor demanda de responsabilidades.
 
 SEGUIR HACIENDO:
  Mantener la comunicacion fluida y seguir trabajando en equipo colaborativamente, Planning meetings, Daily meetings,
- Compromiso con el trabajo y su equipo
+ Compromiso con el trabajo y su equipo.
 
 MENOS DE:
- Nos reunimos siguiendo la metodologia agil, sin embargo se vuelven muy extensas y se pierde el foco rapidamente
+ Reuniones extensas sin preparar contenido, revisar la tarea a realizar y estar espectante sin herramientas resolutivas para aportar a mano al momento de dedicar horas de trabajo.
 
 DEJAR DE HACER:
- Comenzar a utilizar las herramientas adecuadas para comunicar: ejemplo usar mas trello y menos whatsapp
-
+ Utilizar medios de comunicacion donde no estan claras las tareas (whatsapp) o se pierden entre mensajes. Dejar de lado aplicaciones de trabajo colaborativo para mejor comunicacion como el Trello.
