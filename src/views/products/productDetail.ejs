@@ -29,7 +29,7 @@
             
                     <div class="price">
                          <% if (getDetailProduct.price_discount==0) { %> 
-                            <p class="precio-producto">
+                            <p class="precio-descuento">
                                 $<%= toThousand(getDetailProduct.price) %>
                             </p>
                             <% } else { %>
@@ -88,6 +88,16 @@
                         
                         <a class="a-pagos" href="https://www.mercadopago.com.ar/home"> MEDIOS DE PAGO </a>
                     </div>
+
+                    <div >
+                        <section class="envios">
+                            <h5 class="texto-envios">
+                                ENVIOS: Capital y GBA. <br>
+                                Comprando antes de las 12hs, entregamos en el dia.<br>
+                                Costos: MOTO-Mensajeria ($900 C.A.B.A. / $1500 GBA) Entregas Dia Hábil de 14 a 20hs.
+                            </h5>
+                        </section>
+                    </div>
                     
                     <div class="botones-detalle">
                         <% if (locals.isLogged && userToLog.id_users_categories == 2) { %>
@@ -113,7 +123,7 @@
                         <% } %>
     
                     </div>
-                    
+
                 </div>  
 
                     

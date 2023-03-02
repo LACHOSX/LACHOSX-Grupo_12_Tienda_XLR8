@@ -360,6 +360,31 @@ img .img-grande{
     padding: 3px;
 }
 
+.envios {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: rgba(140, 200, 25, 0.5);
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.text-envios {
+    display: flex;
+    justify-content: center;
+    color:#1E1E20;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: justify;
+    text-align: center;
+    line-height: 3px;
+}
+
+
 .botones-detalle {
     display: flex;    
     justify-content: center;    
