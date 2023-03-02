@@ -1,17 +1,22 @@
 # Grupo_12_Tienda_XLR8
 Tienda de Indumentaria Deportiva
-# XLR8
 
 # # # ::: GRUPO 12 ::: # # # 
 
 # REPOSITORIOS DE GITHUB
+GITHUB | https://github.com/LACHOSX/LACHOSX-Grupo_12_Tienda_XLR8
+
+- ANTERIORES REPOSITORIOS
 1º | https://github.com/tadeoabbruzzese/Grupo07-Indumentaria-Deportiva (se tuvo que realizar nuevo repo porque se rompio codigo en este)
+
 2º | https://github.com/alenegri1123/Grupo_07_Tienda_XLR8 (se fueron 2 integrantes del grupo, y decidimos realizar nuevo repo para evitar inconvenientes)
-3º | https://github.com/LACHOSX/LACHOSX-Grupo_12_Tienda_XLR8
+
+
 
 # PLATAFORMA PARA ORGANIZAR EL TRABAJO EN EQUIPO
 https://trello.com/b/FaGLrLk2/indumentaria
 
+_________________________________________________
 # ARRANCAR SERVIDOR
 TERMINAL | $ npm start
 
