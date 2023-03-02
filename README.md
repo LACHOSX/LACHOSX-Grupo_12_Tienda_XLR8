@@ -1,7 +1,6 @@
-# Grupo_12_Tienda_XLR8
-Tienda de Indumentaria Deportiva
+#  ::: GRUPO 12 :::  # 
 
-# # # ::: GRUPO 12 ::: # # # 
+Tienda de Indumentaria Deportiva
 
 # REPOSITORIOS DE GITHUB
 GITHUB | https://github.com/LACHOSX/LACHOSX-Grupo_12_Tienda_XLR8
@@ -49,3 +48,4 @@ Ir a [http://localhost:9558]
 · Negri, Alejandro: Actualmente vivo en Buenos Aires, tengo 37 años. Trabajo de diseñador gráfico en una importadora. Estoy haciendo el curso de Desarrollador Full Stack en Digital House.
 
 · Rodriguez, Horacio: Soy de Mendoza, tengo 42 años, Soy Ingeniero de Grabación en Estudio, Músico, Croupier hace 17 años de casinos. Estoy realizando el curso de Desarrollador Full Stack en DIGITAL HOUSE.
+
