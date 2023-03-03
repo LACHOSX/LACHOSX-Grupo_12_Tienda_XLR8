@@ -891,8 +891,8 @@ h1.lista-usuarios-titulo{
     font-size: 30px;
     text-align: center;
     color: #3A67CB;
-    font-family:'Monserrat';
-    text-decoration: underline;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .profile-accesos {
