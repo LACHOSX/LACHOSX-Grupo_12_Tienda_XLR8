@@ -15,8 +15,8 @@ img {
     max-width: 100%;
 }
 
-/*:::::::::::::::::::::::HEADER:::::::::::::::::::::::*/
-
+/* /:::::::::::::::::::::::HEADER:::::::::::::::::::::::/
+ */
 header {
     background: #1E1E20;
     width: 100%;    
@@ -82,7 +82,7 @@ h2 {
 }
 
 
-.menu-perfil a {
+.userLogueado i {
     display: inline-block;
     text-decoration: none;
     color: #ACEF35;
@@ -94,7 +94,7 @@ h2 {
     transition: all 300ms ease;    
 }
 
-.menu-perfil a:hover{
+.menu-perfil i:hover{
     color:#0EC5D9;
     text-shadow: 3px;
     transition: all 0.1s ease-in-out;
@@ -152,8 +152,8 @@ ul li {
     
 
 
-/*:::::::::::::::::::::::MAIN:::::::::::::::::::::::*/
-
+/* /:::::::::::::::::::::::MAIN:::::::::::::::::::::::/
+ */
 main {
     width: 100%;
     margin: 0% auto;    
@@ -181,8 +181,8 @@ main {
     background-color: white;
 }
 
-/*::::::::::: CARROUSEL ::::::::::::*/
-
+/* /::::::::::: CARROUSEL ::::::::::::/
+ */
 .slider-carrusel .carru {
     width: 100%;    
 }
@@ -297,8 +297,8 @@ input[id="1"]:checked ~ .sistema-slider .sistema-slider-item[for="3"] {
     }
 }
 
-/*::::::::::: BANNER INFO ::::::::::::*/
-
+/* /::::::::::: BANNER INFO ::::::::::::/
+ */
 .banner-info {
     width: 100%;
     margin: 0px;
@@ -384,8 +384,8 @@ main section .banner-info i{
     text-align: center;
 }
 
-/*::::::::::: BANNER FINITO ::::::::::::*/
-
+/* /::::::::::: BANNER FINITO ::::::::::::/
+ */
 .banner-foto {
     position: relative;
     cursor: pointer;
@@ -418,8 +418,8 @@ main section .banner-info i{
 }
 
 
-/*:::::::::::::::::::::::PRODUCTOS:::::::::::::::::::::::*/
-
+/* /:::::::::::::::::::::::PRODUCTOS:::::::::::::::::::::::/
+ */
 section .productos-novedades {
     display: flex;
     justify-content: center;
@@ -559,8 +559,8 @@ article .fotoProducto img #foto {
 }
 
 
-/*:::::::::::::::::::::::FOOTER:::::::::::::::::::::::*/
-
+/* /:::::::::::::::::::::::FOOTER:::::::::::::::::::::::/
+ */
 footer {
     background-color: #1E1E20;
     width: 100%;    
@@ -801,7 +801,7 @@ footer .menu-contacto {
     
 }
 
-/*:::::::::::::::::::::::ERROR 404:::::::::::::::::::::::*/
+/* /:::::::::::::::::::::::ERROR 404:::::::::::::::::::::::/ */
 
 
 .error404 {
@@ -858,10 +858,10 @@ footer .menu-contacto {
     margin-top: 10px;
   }
  
-.menu-perfil.userLogueado a {
+.menu-perfil i {
     display: inline-block;
     text-decoration: none;
-    color: lightgreen;
+    color: #ACEF35;
     width: 50px;
     line-height: 45px;
     margin: 5px;
@@ -870,7 +870,7 @@ footer .menu-contacto {
     transition: all 300ms ease;    
 }
 
-.menu-perfil.userLogueado a:hover{
+.menu-perfil i:hover{
     color: yellow;
     text-shadow: 3px;
     transition: all 0.1s ease-in-out;

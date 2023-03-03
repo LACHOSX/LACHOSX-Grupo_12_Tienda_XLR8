@@ -48,7 +48,7 @@
                                     </a>
                             </div>
                             <h1 class="titulo-producto">
-                                <%=  product.name %>
+                                <%= product.title %>
                             </h1>
                             <div class="descripcion-producto">
                                 <div class="precio-producto">
@@ -71,8 +71,6 @@
                                     <p> Color: <%=  product.color %>
                                     </p>
                                 </div>
-                                <button class="boton-de-compra"
-                                    href="/products/detail/<% product.id %> ">COMPRAR</button>
                             </div>
                         </article>
                         <% }) %>
@@ -149,8 +147,6 @@
                                     <p> Color: <%= product.color %>
                                     </p>
                                 </div>
-                                <button class="boton-de-compra"
-                                    href="/products/detail/<% product.id %> ">COMPRAR</button>
                             </div>
                         </article>
                         <% }) %>
