@@ -34,59 +34,60 @@
                     
         </section>
         
-        <div class="form-register" id="product-div">
+        <div class="profile-accesos">
             <% if (userToLog.id_users_categories == 2) { %>
                 <div>                    
                     <div  class="menu-profile">                       
-                        <form action="/users/edit/<%= userToLog.id %>" method="GET">   
-                            <input type="submit" value=" EDITAR MI USUARIO ">
+                        <form action="/users/edit/<%= userToLog.id %>" method="GET">
+                            <button type="submit" class="boton-admin-profile" > EDITAR USUARIO </button>                               
                         </form>   
 
-                        <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
-                            <input type="submit" value=" BORRAR MI USUARIO ">
+                        <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="boton-admin-profile" > BORRAR USUARIO </button>                               
                         </form>
 
                         <form action="/users/logout" method="GET">   
-                            <input type="submit" value=" CERRAR SESION ">
-                        </form>
-                                                            
+                            <button type="submit" class="boton-admin-profile" > CERRAR SESION </button>                            
+                        </form>                                                            
                     </div> 
 
                     <br>
-                    <br>
+                    <br> 
+                    <h3 class="fieldset-admin"> MENU DE ADMINISTRADOR </h3>
 
-                    <fieldset>
-                        <h3> MENU DE ADMINISTRADOR </h3>
-
-                        <div  class="menu-profile">
-                            <form action="../products/create" method="GET">   
-                                <input type="submit" value=" CREAR PRODUCTO ">
+                    <div  class="menu-profile">                        
+                        <fieldset class="fieldset-admin">
+                            <form action="../products/create" method="GET">
+                                <button type="submit" class="boton-admin-profile" > CREAR PRODUCTO </button>
                             </form>
     
-                            <form action="../products" method="GET">   
-                                <input type="submit" value=" LISTA PRODUCTOS ">
+                            <form action="../products" method="GET">                                   
+                                <button type="submit" class="boton-admin-profile" > LISTA PRODUCTOS </button>
                             </form>
     
-                            <form action="./" method="GET">   
-                                <input type="submit" value=" LISTA DE USUARIOS ">
-                            </form>
-                        </div>
+                            <form action="./" method="GET">
+                                <button type="submit" class="boton-admin-profile" > LISTA DE USUARIOS </button>
+                            </form>          
+                        </fieldset>
+                    </div>               
+
                         
-                    </fieldset> 
+                        
+                    
                 </div>
             <% } else { %> 
                 <div>                    
                     <div  class="menu-profile">                       
-                        <form action="/users/edit/<%= userToLog.id %>" method="GET">   
-                            <input type="submit" value=" EDITAR MI USUARIO ">
+                        <form action="/users/edit/<%= userToLog.id %>" method="GET">
+                            <button type="submit" class="boton-admin-profile" > EDITAR USUARIO </button>                               
                         </form>   
 
-                        <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">   
-                            <input type="submit" value=" BORRAR MI USUARIO ">
+                        <form action="/users/delete/<%= userToLog.id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="boton-admin-profile" > BORRAR USUARIO </button>                               
                         </form>
 
                         <form action="/users/logout" method="GET">   
-                            <input type="submit" value=" CERRAR SESION ">
+                            <button type="submit" class="boton-admin-profile" > CERRAR SESION </button>                            
                         </form>
                                                             
                     </div> 

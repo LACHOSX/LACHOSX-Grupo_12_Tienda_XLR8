@@ -860,7 +860,7 @@ footer .menu-contacto {
     font-size: 18px;
     font-family: 'Trebuchet MS';
     margin-top: 10px;
-  }
+}
  
 .menu-perfil i {
     display: inline-block;
@@ -880,14 +880,6 @@ footer .menu-contacto {
     transition: all 0.1s ease-in-out;
 }
 
-.menu-profile {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-
-}
-
 .datos-user {
     display: flex;
     flex-direction: row;
@@ -902,3 +894,51 @@ h1.lista-usuarios-titulo{
     font-family:'Monserrat';
     text-decoration: underline;
 }
+
+.profile-accesos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 750px;
+    background: #1E1E20;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    border-radius: 40px;
+    font-family: 'Montserrat';
+    color: white; 
+}
+
+.menu-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content:flex-end;
+}
+
+
+.fieldset-admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.boton-admin-profile {
+    width: 90%;
+    height: 40px;
+    background: #3A67CB;
+    border: 10px;
+    margin: 10px;
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+
+.profile-accesos:hover {
+    box-shadow: 10px 10px 15px rgb(100, 100, 100);
+    cursor: pointer;
+  }
