@@ -10,7 +10,7 @@
                 </a>
             </div>
             <div class="menu-perfil">
-                <% if (locals.isLogged) { %>
+                <% if (locals.userToLog) { %>
                    
                    
                      <a href="/users/profile"><i class="fas fa-user-check"></i></a> 
@@ -18,8 +18,8 @@
                    
                 <% } else { %>
 
-                <a href="/users/register"><i class="fas fa-user-plus"></i></a>
-                <a href="/users/login"><i class="fas fa-sign-in-alt"></i></a>
+                    <a href="/users/register"><i class="fas fa-user-plus"></i></a>
+                    <a href="/users/login"><i class="fas fa-sign-in-alt"></i></a>
 
                 <% } %>
 
