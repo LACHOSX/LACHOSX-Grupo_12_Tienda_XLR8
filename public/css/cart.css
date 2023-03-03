@@ -193,11 +193,11 @@ ul li {
 
 .cart-Items .title{
     color: #202020;
-    font-size: 14px;
+    font-size: 20px;
 }
 .cart-Items .subtitle{
     color: #909090;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .cart-Items .counter{
@@ -369,7 +369,7 @@ ul li {
         line-height: 10px;
     }
     .cartCheckout .total-amount{
-        font-size: 36px;
+        font-size: 30px;
     }
     .cartCheckout .button{
         margin-top: 10px;

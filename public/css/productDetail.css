@@ -266,7 +266,7 @@ ul li {
     padding: 2px;
     color:#1259c3;    
     font-weight: 900;
-    font-size: 40px;    
+    font-size: 35px;    
 }
 
 .cuotas{
@@ -524,8 +524,9 @@ footer .footer-flex i{
 }
 
 .etiquetas {
-    font-size: 12px;
-    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3A67CB;
 }
 
 footer .generos {

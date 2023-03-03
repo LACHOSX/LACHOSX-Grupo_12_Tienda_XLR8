@@ -342,7 +342,7 @@ main section .banner-info .textos-ayuda{
     width: 100%;
     color: #0EC5D9;
     text-align: center;
-    background-color: white;
+    background-color: grey;
     padding: 15px;
     margin: 25px 25px;
     box-sizing: border-box;   
@@ -376,7 +376,7 @@ main section #textos-ayuda {
 }
 
 main section .banner-info i{
-    color: #1259c3;
+    color: #0EC5D9;
     margin: 2px;
     margin-top: 5px;
     padding: 5px;
@@ -494,12 +494,13 @@ article .fotoProducto img #foto {
 
 .titulo-producto {
     color: #1E1E20;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: bold;
     padding: 8px;
     margin: 10px 0px 0px;
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .descripcion-producto {
@@ -588,11 +589,13 @@ footer {
 .footer-p1 {
     font-size: 14px;
     font-weight: bolder;
+    color: white;
 }
 
 .footer-p2 {
     font-size: 12px;
     font-weight: 600;
+    color: white;
 }
 
 footer .footer-flex i{
@@ -776,6 +779,7 @@ footer .menu-contacto {
     }
     .footer-flex {
         flex-direction: row;
+        color:grey;
     }
     .cajaFoot .footflex-social-media {
         flex-direction: row;
@@ -889,4 +893,12 @@ footer .menu-contacto {
     flex-direction: row;
     justify-content: center;
     align-content: center;
+}
+
+h1.lista-usuarios-titulo{
+    font-size: 30px;
+    text-align: center;
+    color: #3A67CB;
+    font-family:'Monserrat';
+    text-decoration: underline;
 }

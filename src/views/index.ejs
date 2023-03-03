@@ -64,11 +64,11 @@
                             </div>
                             <div class="etiquetas">
                                 <div>
-                                    <p> Genero: <%=  product.genre %>
+                                    <p> Género: <%= product.genre_product %>
                                     </p>
-                                    <p> Talle: <%=  product.size %>
+                                    <p> Talle: <%= product.size %>
                                     </p>
-                                    <p> Color: <%=  product.color %>
+                                    <p> Color: <%= product.color %>
                                     </p>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="cajatxt-banner">
                         <i class="fab fa-whatsapp"></i>
-                        <p class="info-p1">Contactanos</p>
+                        <p class="info-p1">CONTACTANOS</p>
                         <p class="info-p2">Necesitas mas info sobre los productos? Tenes dudas? Escribinos! </p>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                             </div>
                             <div class="etiquetas">
                                 <div>
-                                    <p> Genero: <%= product.genre %>
+                                    <p> Genero: <%= product.genre_product %>
                                     </p>
                                     <p> Talle: <%= product.size %>
                                     </p>
@@ -158,12 +158,13 @@
                     <img src="/images/banner-01.jpg">
                     <p class="texto-banner"> TU TIENDA DEPORTIVA</p>
                 </div>
-            </section>
-
+           <section class="banner-info">
+            <div class="textos-ayuda">
             <div class="footer-flex">
                 <div class="footflexcontain">
                     <i class="fas fa-credit-card"></i>
                     <p class="footer-p1">Pagá como vos prefieras</p>
+                </br>
                     <p class="footer-p2">Tenes todas las opciones de pago, Efectivo, Transferencia Bancaria o Deposito,
                         Mercadopago, Todo Pago, y Tarjeta de Debito y Credito con hasta 48 Cuotas Fijas. ¡Y siempre es
                         seguro!</p>
@@ -171,16 +172,19 @@
                 <div class="footflexcontain">
                     <i class="fas fa-gift"></i>
                     <p class="footer-p1">Envío gratis desde $ 5.000 </p>
+                </br>
                     <p class="footer-p2">Registrate en nuestra tienda y obtené envíos gratis con tus compras superiores
                         a $5.000. Ademas registrandote, sabrás de las novedades y lanzamientos de XLR8</p>
                 </div>
                 <div class="footflexcontain">
                     <i class="fas fa-user-shield"></i>
                     <p class="footer-p1">Seguridad, de principio a fin</p>
+                </br>
                     <p class="footer-p2">¿No te gusta? ¿No es tu talle? ¡Escribinos! XLR8 tiene productos comodos, si
                         ese no era el tuyo, te lo cambiamos.</p>
                 </div>
             </div>
+        </section>
             <hr>
 
         </main>
