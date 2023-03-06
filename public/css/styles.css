@@ -439,6 +439,8 @@ section .productos-novedades {
     box-shadow: white;    
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    
+
 }
 
 .catalogo-productos article:hover {
