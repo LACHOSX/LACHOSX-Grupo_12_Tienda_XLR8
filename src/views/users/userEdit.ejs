@@ -2,7 +2,7 @@
   <%- include('../partials/header') %>
 
   <main>
-    <form action="/users/edit/<%= getUser.id %> ?_method=PUT" method="POST" enctype="multipart/form-data">
+    <form action="/users/edit/<%= getUser.id %>?_method=PUT" method="POST">
       <!-- Se modifica el Method PUT para editar, desde el action usando el method-override instalado en dependencias para editar formularios -->
       <section class="form-register">
         <div class="logo1">
@@ -19,8 +19,7 @@
         <input class="controls" type="text" name="phone" id="telefono" value=<%= getUser.phone %>>
               <input class=" controls" type="password" name="password" id="password"
           value=<%= getUser.password %>>
-        <input class="controls" type="password" name="password2" id="password">
-        <p>Fecha de nacimiento: <input type="date" name="date" value=<%= getUser.date %>></p>
+        <p>Fecha de nacimiento: <input type="date" name="birthday" value=<%= getUser.birthday %>></p>
         </br>
 
         <label>Seleccione su género:</label>
@@ -38,12 +37,16 @@
           <input type="radio" id="genero" name="genre" value="<%= getUser.genre %>">
           <label for="Sin genero">Sin género</label>
         </div>
+        <h5>Estoy de acuerdo con <a href="../terminos">Terminos y Condiciones</a></h5>
+        <div class="menu-profile">
+          
+          <button class="boton-admin-profile" type="submit"> EDITAR </button>
 
-        <h5>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></h5>
-        <button class="botons" type="submit"> EDITAR </button>
-        <form action="/users/delete/<%= getUser.id %>?_method=DELETE" method="POST">
-          <button type="submit" class="button-div">ELIMINAR USUARIO</button>
-      </form>
+          <form action="/users/delete/<%= getUser.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="boton-admin-profile">ELIMINAR USUARIO</button>
+          </form>
+
+        </div>       
 
 
       </section>

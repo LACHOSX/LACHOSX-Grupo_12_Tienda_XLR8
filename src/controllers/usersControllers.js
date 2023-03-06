@@ -97,10 +97,9 @@ const processLogin = async function (req, res) {
 }
 
 //  EDICION DE USUARIO
-const userEdit = async function (req, res) {
+const userEdit = async function (req, res) {    
     try {
         let getUser = await db.User.findByPk(req.params.id)
-        console.log(getUser);
         res.render('users/userEdit', { getUser: getUser })
     } catch (error) {
         console.log("ERROR EDITUSER", error)
@@ -109,26 +108,34 @@ const userEdit = async function (req, res) {
 
 //  ACTUALIZACION DE USUARIO
 const userUpdate = async function(req, res) {
-    try {
-        await db.User.update({ 
-            name: req.body.name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            phone: req.body.phone,
-            password: req.body.password,
-            birthday: req.body.birthday,
-            genre: req.body.genre
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }); 
-               
-    } catch (error) {
+    let errors = validationResult(req);
+    if (errors.isEmpty()) {
+        try {
+           await db.User.update ({
+                name: req.body.name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                phone: req.body.phone,
+                birthday: req.body.birthday,
+                genre: req.body.genre
+        },{ where: {
+            id: req.params.id,
+        } })
+        } catch (error) {
         console.log("ERROR UPDATE USER", error)
+        }
+        // Acá en la constante userToLog vas a tener los datos del usuario actualizado, ya que los busca en base
+        const userToLog = await db.User.findByPk(req.params.id)
+        // Antes de retornar la vista, necesitarias guardar estos nuevos datos en session, no recuerdo como lo almacenan
+        res.render('users/profile', { userToLog : userToLog })
+    } else {
+        res.render('users/userEdit', {
+            errors: errors.errors,
+            old: req.body
+        })
     }
-    res.redirect('/') //redirecciona a ruta home
 }
+    
 
 //  BORRADO DE USUARIO
 const deleteUser = async function (req, res) {
