@@ -28,11 +28,12 @@
           <table class="table table-dark table-bordered table-hover">
             <thead>
               <tr>
-                <td>n°</td>
+                <td>N°</td>
                 <td>Nombre</td>
+                <td>Apellido</td>
                 <td>Email</td>
                 <td>Celular</td>
-                <td>Descripcion</td>
+                <td>Fecha de nacimiento</td>
               </tr>
             </thead>
             <tbody>
@@ -41,16 +42,10 @@
               <tr>
                 <td><%= (i + 1) %></td>
                 <td><%= getUserList[i].name %></td>
+                <td><%= getUserList[i].last_name %></td>
                 <td><%= getUserList[i].email %></td>
                 <td><%= getUserList[i].phone %></td>
-                <td class="d-flex gap-2">
-                  <a href="/users/edit/<%= getUserList[i].id %>" class="btn btn-info">
-                    Edit
-                  </a>
-                  <form action="/users/delete/<%= getUserList[i].id %>?_method=DELETE" method="POST" class="btn btn-danger">
-                    Delete
-                  </form>
-                </td>
+                <td><%= getUserList[i].birthday %></td>
               </tr>
               <% } %> <% } %>
             </tbody>

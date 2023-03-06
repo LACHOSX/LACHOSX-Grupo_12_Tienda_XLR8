@@ -141,6 +141,8 @@ const userUpdate = async function(req, res) {
 const deleteUser = async function (req, res) {
     try {
         let deleteIdUser = req.params.id;
+        res.clearCookie('userEmail');
+        req.session.destroy();
         await db.User.destroy(
             {
                 where: {
